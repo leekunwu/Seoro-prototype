@@ -1,0 +1,1419 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SEORO Full Prototype</title>
+<style>
+:root{
+  --font-sans:"Helvetica Neue",Helvetica,"SUIT",-apple-system,BlinkMacSystemFont,"Segoe UI","Apple SD Gothic Neo",Arial,sans-serif;
+
+  --bg:#F7F8FA;
+  --surface:#FFFFFF;
+  --surface-subtle:#F3F4F6;
+  --surface-hover:#EEF1F3;
+  --surface-selected:#ECF3F6;
+
+  --text:#1B1D20;
+  --text-2:#62676F;
+  --text-3:#8B9199;
+  --text-disabled:#B7BCC2;
+
+  --border:#E3E6EA;
+  --border-strong:#CCD2D8;
+
+  --accent:#3E647C;
+  --accent-hover:#34566B;
+  --accent-soft:#EDF3F6;
+  --accent-border:#BCD0DB;
+
+  --success:#39745B;
+  --success-soft:#EEF6F1;
+  --warning:#986B2B;
+  --warning-soft:#FBF5E9;
+  --danger:#B44B56;
+  --danger-soft:#FBEDEE;
+
+  --r-sm:8px;
+  --r-md:10px;
+  --r-lg:14px;
+  --r-xl:18px;
+  --shadow-focus:0 0 0 3px rgba(62,100,124,.14);
+  --shadow-float:0 16px 44px rgba(22,29,37,.13);
+
+  --sidebar:228px;
+  --topbar:58px;
+}
+*{box-sizing:border-box}
+html{background:var(--bg)}
+body{
+  margin:0; min-height:100vh; background:var(--bg); color:var(--text);
+  font-family:var(--font-sans); font-size:14px; line-height:1.5;
+  letter-spacing:-.012em; -webkit-font-smoothing:antialiased;
+}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+button:disabled{cursor:not-allowed}
+svg{display:block}
+[hidden]{display:none!important}
+
+.icon{
+  width:20px;height:20px;flex:0 0 auto;
+}
+.icon.sm{width:16px;height:16px}
+.icon.lg{width:22px;height:22px}
+.icon-fill{fill:currentColor}
+.icon-stroke{fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;stroke-width:2.2}
+
+.topbar{
+  height:var(--topbar); position:sticky; top:0; z-index:80;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 24px;background:rgba(255,255,255,.94);
+  border-bottom:1px solid var(--border);
+  backdrop-filter:blur(14px);
+}
+.brand-home{
+  appearance:none;border:0;background:transparent;padding:8px 6px;margin-left:-6px;
+  font-weight:600;font-size:16px;letter-spacing:-.025em;border-radius:8px;
+}
+.brand-home:hover{background:var(--surface-subtle)}
+.brand-home:focus-visible{outline:0;box-shadow:var(--shadow-focus)}
+.product-label{
+  font-size:11px;font-weight:500;letter-spacing:.11em;color:var(--text-3)
+}
+
+/* buttons */
+.btn{
+  min-height:42px;padding:0 15px;border-radius:var(--r-sm);border:1px solid transparent;
+  display:inline-flex;align-items:center;justify-content:center;gap:7px;
+  font-weight:500;background:transparent;transition:.14s ease;
+}
+.btn:hover{transform:translateY(-.5px)}
+.btn:active{transform:translateY(0)}
+.btn:focus-visible{outline:0;box-shadow:var(--shadow-focus)}
+.btn-primary{background:var(--accent);color:#fff}
+.btn-primary:hover{background:var(--accent-hover)}
+.btn-secondary{background:#fff;border-color:var(--border-strong)}
+.btn-secondary:hover{background:var(--surface-subtle)}
+.btn-ghost{color:var(--text-2)}
+.btn-ghost:hover{background:var(--surface-subtle);color:var(--text)}
+.btn-danger{background:var(--danger);color:#fff}
+.btn-sm{min-height:34px;padding:0 11px;font-size:12px}
+.btn-icon{width:38px;padding:0}
+.btn:disabled{opacity:.45;transform:none}
+
+/* typography */
+.page-title{margin:0;font-size:24px;line-height:1.25;font-weight:600;letter-spacing:-.035em}
+.section-title{margin:0;font-size:18px;line-height:1.35;font-weight:600;letter-spacing:-.025em}
+.sub-title{margin:0;font-size:16px;line-height:1.4;font-weight:600}
+.body-strong{font-weight:500}
+.caption{font-size:12px;color:var(--text-2)}
+.micro{font-size:11px;color:var(--text-3)}
+.muted{color:var(--text-2)}
+
+/* fields */
+.field{display:grid;gap:7px}
+.label-row{display:flex;align-items:center;gap:6px}
+.label{font-size:13px;font-weight:500}
+.optional{font-size:11px;color:var(--text-3)}
+.required-dot{width:5px;height:5px;border-radius:50%;background:var(--danger)}
+.control{
+  width:100%;min-height:42px;padding:9px 12px;background:#fff;
+  border:1px solid var(--border-strong);border-radius:var(--r-sm);outline:0;
+}
+.control:hover{border-color:#B8C0C8}
+.control:focus{border-color:var(--accent);box-shadow:var(--shadow-focus)}
+textarea.control{min-height:110px;resize:vertical}
+.helper{font-size:12px;color:var(--text-3)}
+.field-error{font-size:12px;color:var(--danger)}
+.select-wrap{position:relative}
+.select-wrap:after{
+  content:"";position:absolute;right:13px;top:50%;width:6px;height:6px;
+  border-right:2px solid var(--text-3);border-bottom:2px solid var(--text-3);
+  transform:translateY(-70%) rotate(45deg);pointer-events:none
+}
+select.control{appearance:none;padding-right:34px}
+
+/* cards / surfaces */
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-lg)}
+.soft-card{background:var(--surface-subtle);border:1px solid transparent;border-radius:var(--r-lg)}
+.divider{height:1px;background:var(--border)}
+.section-block{padding:22px 0;border-top:1px solid var(--border)}
+.section-block:first-child{border-top:0}
+
+/* entry */
+.entry-stage{min-height:calc(100vh - var(--topbar));display:grid;place-items:center;padding:48px 20px 72px}
+.entry-wrap{width:min(720px,100%)}
+.entry-head{margin-bottom:26px}
+.entry-list{display:grid;gap:10px}
+.entry-choice{
+  width:100%;min-height:92px;padding:18px 20px;border:1px solid var(--border);
+  border-radius:var(--r-lg);background:#fff;display:grid;grid-template-columns:40px 1fr 22px;
+  gap:15px;align-items:center;text-align:left;transition:.14s ease
+}
+.entry-choice:hover{border-color:var(--border-strong);background:#FCFDFD}
+.entry-choice[aria-expanded="true"]{border-color:var(--accent-border);background:var(--accent-soft)}
+.entry-choice:focus-visible{outline:0;box-shadow:var(--shadow-focus)}
+.round-icon{
+  width:40px;height:40px;border-radius:13px;background:var(--surface-subtle);
+  display:grid;place-items:center;color:var(--text-2)
+}
+.entry-choice[aria-expanded="true"] .round-icon{background:#fff;color:var(--accent)}
+.entry-title{display:block;font-size:16px;font-weight:600}
+.entry-copy{display:block;margin-top:3px;font-size:13px;color:var(--text-2)}
+.chevron{color:var(--text-3);transition:transform .16s ease}
+.entry-choice[aria-expanded="true"] .chevron{transform:rotate(180deg)}
+.entry-panel{margin-top:-1px;padding:20px;border:1px solid var(--border);border-radius:0 0 var(--r-lg) var(--r-lg);background:#fff}
+.entry-panel.is-open{display:block}
+.entry-form{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.entry-form .full{grid-column:1/-1}
+.entry-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:18px}
+.code-result{
+  display:grid;gap:16px;padding:22px;border:1px solid var(--accent-border);border-radius:var(--r-lg);
+  background:var(--accent-soft)
+}
+.code-line{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.code{
+  font-size:30px;font-weight:600;letter-spacing:.16em;font-variant-numeric:tabular-nums
+}
+.tip{
+  display:flex;gap:10px;padding:12px 13px;border-radius:var(--r-md);background:#fff;color:var(--text-2)
+}
+.resume-code{
+  font-size:24px;letter-spacing:.18em;text-transform:uppercase;text-align:center;font-weight:600
+}
+.verify-state{
+  display:flex;align-items:center;gap:10px;padding:12px 13px;border-radius:var(--r-md);
+  background:var(--surface-subtle);color:var(--text-2)
+}
+.spinner{
+  width:18px;height:18px;border:2px solid var(--border-strong);border-top-color:var(--accent);
+  border-radius:50%;animation:spin .7s linear infinite
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+.resume-found{
+  padding:15px;border:1px solid var(--border);border-radius:var(--r-md);display:flex;
+  align-items:center;justify-content:space-between;gap:16px
+}
+
+/* workspace */
+.workspace{min-height:calc(100vh - var(--topbar));display:grid;grid-template-columns:var(--sidebar) minmax(0,1fr)}
+.sidebar{
+  min-height:calc(100vh - var(--topbar));position:sticky;top:var(--topbar);
+  align-self:start;padding:18px 12px;border-right:1px solid var(--border);background:#F4F5F7;
+  display:flex;flex-direction:column;gap:14px
+}
+.case-meta{padding:6px 10px 10px}
+.case-code{font-size:11px;font-weight:500;letter-spacing:.08em;color:var(--text-3)}
+.case-title{margin-top:3px;font-size:13px;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.nav{display:grid;gap:3px}
+.nav-btn{
+  width:100%;min-height:40px;padding:9px 10px;border:0;border-radius:9px;background:transparent;
+  display:grid;grid-template-columns:22px 1fr auto;align-items:center;gap:8px;text-align:left;
+  color:var(--text-2);font-size:13px
+}
+.nav-btn:hover{background:rgba(255,255,255,.72);color:var(--text)}
+.nav-btn.active{background:#fff;color:var(--text)}
+.nav-btn.active .nav-icon{color:var(--accent)}
+.nav-icon{color:var(--text-3)}
+.nav-status{font-size:11px;color:var(--text-3);white-space:nowrap}
+.nav-status.complete{color:var(--success)}
+.side-progress{margin-top:auto;padding:14px;background:#fff;border:1px solid var(--border);border-radius:var(--r-md)}
+.progress-track{height:6px;border-radius:999px;background:var(--surface-subtle);overflow:hidden}
+.progress-fill{height:100%;border-radius:inherit;background:var(--accent);transition:width .2s ease}
+.main{min-width:0;padding:34px 42px 64px}
+.page{width:min(1120px,100%);margin:0 auto}
+.page-head{display:flex;align-items:flex-start;justify-content:space-between;gap:24px;margin-bottom:24px}
+.page-desc{margin:7px 0 0;color:var(--text-2)}
+.page-actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.page-progress{display:flex;align-items:center;gap:12px;min-width:230px}
+.small-progress{flex:1}
+.small-progress-row{display:flex;justify-content:space-between;gap:12px;margin-bottom:7px;font-size:12px}
+
+/* dashboard */
+.dashboard-grid{display:grid;grid-template-columns:320px minmax(0,1fr);gap:18px}
+.completion-card{padding:24px;display:grid;place-items:center;text-align:center}
+.donut{
+  --p:68;width:146px;height:146px;border-radius:50%;position:relative;display:grid;place-items:center;
+  background:conic-gradient(var(--accent) calc(var(--p)*1%),var(--surface-subtle) 0)
+}
+.donut:after{content:"";position:absolute;width:112px;height:112px;border-radius:50%;background:#fff}
+.donut-content{position:relative;z-index:1}
+.donut-num{font-size:28px;font-weight:600;letter-spacing:-.04em}
+.section-list{overflow:hidden}
+.section-row{
+  width:100%;min-height:72px;padding:15px 17px;border:0;border-bottom:1px solid var(--border);
+  background:#fff;display:grid;grid-template-columns:38px 1fr auto;gap:12px;align-items:center;text-align:left
+}
+.section-row:last-child{border-bottom:0}
+.section-row:hover{background:#FCFDFD}
+.section-row .round-icon{width:36px;height:36px;border-radius:12px}
+.next-card{margin-top:18px;padding:18px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+.next-copy{display:grid;gap:3px}
+
+/* album */
+.album-grid{display:grid;grid-template-columns:360px minmax(0,1fr);gap:18px;align-items:start}
+.art-panel{padding:18px}
+.cover{
+  aspect-ratio:1/1;border-radius:var(--r-lg);background:
+  radial-gradient(circle at 38% 38%,rgba(255,255,255,.72),transparent 20%),
+  linear-gradient(145deg,#DDE7EC,#C7D3DB 45%,#9FB4C1);
+  display:grid;place-items:center;color:#2F5369;overflow:hidden
+}
+.cover-art{
+  width:62%;height:62%;border-radius:34% 66% 58% 42% / 48% 37% 63% 52%;
+  background:rgba(255,255,255,.62);box-shadow:inset 0 0 0 1px rgba(255,255,255,.65)
+}
+.upload-inline{margin-top:14px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.album-stack{display:grid;gap:14px}
+.form-card{padding:20px}
+.form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}
+.form-grid .full{grid-column:1/-1}
+.artist-chips{display:flex;gap:7px;flex-wrap:wrap;margin-top:10px}
+.chip{
+  min-height:28px;padding:4px 9px;border-radius:999px;border:1px solid var(--border);
+  background:var(--surface-subtle);display:inline-flex;align-items:center;gap:6px;font-size:12px
+}
+.chip.accent{background:var(--accent-soft);border-color:var(--accent-border);color:var(--accent)}
+.chip.success{background:var(--success-soft);border-color:#CDE1D5;color:var(--success)}
+.chip.warning{background:var(--warning-soft);border-color:#E8D5B6;color:var(--warning)}
+.switch-row{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:13px 0;border-top:1px solid var(--border)}
+.switch-row:first-of-type{border-top:0}
+.switch{
+  width:42px;height:24px;border-radius:999px;border:0;background:#D9DEE3;position:relative;padding:0;transition:.16s ease
+}
+.switch:after{content:"";width:18px;height:18px;border-radius:50%;background:#fff;position:absolute;top:3px;left:3px;box-shadow:0 1px 2px rgba(0,0,0,.12);transition:.16s ease}
+.switch.on{background:var(--accent)}
+.switch.on:after{left:21px}
+
+/* tracks */
+.track-layout{display:grid;grid-template-columns:300px minmax(0,1fr);gap:16px;align-items:start}
+.track-list{overflow:hidden}
+.track-list-head{padding:14px 15px;border-bottom:1px solid var(--border);display:flex;justify-content:space-between;align-items:center}
+.track-row{
+  width:100%;min-height:62px;padding:10px 12px;border:0;border-bottom:1px solid var(--border);
+  background:#fff;display:grid;grid-template-columns:22px 30px 1fr auto;gap:8px;align-items:center;text-align:left
+}
+.track-row:last-child{border-bottom:0}
+.track-row:hover{background:var(--surface-subtle)}
+.track-row.active{background:var(--accent-soft)}
+.drag{color:var(--text-3);cursor:grab}
+.track-no{font-size:12px;color:var(--text-3);font-variant-numeric:tabular-nums}
+.track-name{font-size:13px;font-weight:500}
+.track-sub{margin-top:2px;font-size:11px;color:var(--text-3)}
+.track-detail{padding:20px}
+.detail-head{display:flex;justify-content:space-between;gap:16px;align-items:flex-start;padding-bottom:18px}
+.detail-sections{display:grid}
+.role-row{display:grid;grid-template-columns:110px 1fr auto;gap:10px;align-items:center;margin-top:10px}
+.credit-row{display:grid;grid-template-columns:1fr 1fr auto;gap:10px;margin-top:10px}
+.upload-box{
+  min-height:108px;border:1px dashed var(--border-strong);border-radius:var(--r-md);
+  display:flex;align-items:center;justify-content:center;text-align:center;padding:18px;background:#FCFDFD
+}
+.rights-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.option-card{
+  min-height:70px;padding:13px;border:1px solid var(--border);border-radius:var(--r-md);background:#fff;text-align:left
+}
+.option-card.active{border-color:var(--accent-border);background:var(--accent-soft)}
+
+/* artists */
+.artist-layout{display:grid;grid-template-columns:320px minmax(0,1fr);gap:16px;align-items:start}
+.artist-list{overflow:hidden}
+.artist-list-head{padding:14px 15px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+.artist-row{
+  width:100%;padding:13px 14px;border:0;border-bottom:1px solid var(--border);background:#fff;
+  display:grid;grid-template-columns:38px 1fr auto;gap:11px;align-items:center;text-align:left
+}
+.artist-row:last-child{border-bottom:0}
+.artist-row:hover{background:var(--surface-subtle)}
+.artist-row.active{background:var(--accent-soft)}
+.avatar{width:38px;height:38px;border-radius:13px;background:#DDE6EB;color:#385D73;display:grid;place-items:center;font-size:13px;font-weight:600}
+.artist-detail{padding:20px}
+.identity{display:flex;align-items:center;gap:12px}
+.identity .avatar{width:48px;height:48px;border-radius:15px}
+.usage{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.segment{display:inline-grid;grid-auto-flow:column;grid-auto-columns:1fr;padding:3px;border-radius:10px;background:var(--surface-subtle)}
+.segment button{min-width:90px;height:34px;padding:0 12px;border:0;border-radius:8px;background:transparent;color:var(--text-2);font-size:12px}
+.segment button.active{background:#fff;color:var(--text);box-shadow:0 1px 2px rgba(0,0,0,.05)}
+.dsp{overflow:hidden;border:1px solid var(--border);border-radius:var(--r-md)}
+.dsp-row{min-height:62px;padding:10px 13px;display:grid;grid-template-columns:120px 160px 1fr;gap:10px;align-items:center;border-bottom:1px solid var(--border)}
+.dsp-row:last-child{border-bottom:0}
+.toggle-wrap{display:flex;gap:6px}
+.toggle{height:30px;padding:0 10px;border-radius:999px;border:1px solid var(--border-strong);background:#fff;color:var(--text-2);font-size:12px}
+.toggle.active{background:var(--accent-soft);border-color:var(--accent-border);color:var(--accent)}
+.social-row{display:grid;grid-template-columns:140px 1fr auto;gap:9px;align-items:center;margin-top:9px}
+
+/* contract */
+.contract-grid{display:grid;grid-template-columns:minmax(0,1fr) 310px;gap:18px;align-items:start}
+.contract-stack{display:grid;gap:14px}
+.contract-card{padding:20px}
+.step-head{display:flex;align-items:flex-start;justify-content:space-between;gap:14px}
+.step-index{width:28px;height:28px;border-radius:10px;background:var(--surface-subtle);display:grid;place-items:center;font-size:12px;font-weight:600;color:var(--text-2)}
+.doc-row{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:13px 0;border-top:1px solid var(--border)}
+.doc-row:first-of-type{border-top:0}
+.signature-pad{
+  height:180px;border:1px dashed var(--border-strong);border-radius:var(--r-md);
+  background:linear-gradient(#fff,#FCFDFD);display:grid;place-items:center;color:var(--text-3)
+}
+.submit-side{position:sticky;top:calc(var(--topbar) + 18px);padding:18px}
+.check-list{display:grid;gap:10px;margin:14px 0}
+.check-item{display:grid;grid-template-columns:20px 1fr;gap:9px;align-items:start;font-size:13px}
+.check-bullet{
+  width:18px;height:18px;border-radius:50%;background:var(--surface-subtle);display:grid;place-items:center;color:var(--text-3)
+}
+.check-bullet.done{background:var(--success-soft);color:var(--success)}
+.blocker{padding:12px;border-radius:var(--r-md);background:var(--warning-soft);font-size:12px;color:#785220}
+
+/* tracking */
+.tracking-wrap{width:min(760px,100%);margin:0 auto}
+.hero-status{padding:28px;text-align:center}
+.status-orb{width:68px;height:68px;margin:0 auto 16px;border-radius:22px;background:var(--success-soft);color:var(--success);display:grid;place-items:center}
+.timeline{padding:22px}
+.timeline-row{display:grid;grid-template-columns:28px 1fr;gap:12px;position:relative;padding-bottom:22px}
+.timeline-row:not(:last-child):before{content:"";position:absolute;left:13px;top:25px;bottom:-2px;width:1px;background:var(--border)}
+.timeline-dot{width:28px;height:28px;border-radius:50%;background:var(--surface-subtle);display:grid;place-items:center;color:var(--text-3);z-index:1}
+.timeline-dot.done{background:var(--success-soft);color:var(--success)}
+.timeline-dot.active{background:var(--accent-soft);color:var(--accent)}
+.timeline-title{font-weight:500}
+.timeline-meta{margin-top:3px;font-size:12px;color:var(--text-3)}
+
+/* toast / modal */
+.toast{
+  position:fixed;right:22px;bottom:22px;z-index:120;min-width:260px;max-width:360px;
+  padding:12px 14px;border-radius:var(--r-md);background:#1F2429;color:#fff;
+  display:flex;align-items:center;gap:9px;box-shadow:var(--shadow-float)
+}
+.modal-backdrop{
+  position:fixed;inset:0;z-index:110;background:rgba(20,26,31,.28);display:grid;place-items:center;padding:20px
+}
+.modal{width:min(420px,100%);background:#fff;border-radius:var(--r-xl);box-shadow:var(--shadow-float);padding:22px}
+.modal-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:20px}
+.mobile-nav{display:none}
+
+/* dev controls */
+.prototype-badge{
+  position:fixed;left:14px;bottom:14px;z-index:70;padding:7px 10px;border-radius:999px;
+  background:rgba(27,29,32,.86);color:#fff;font-size:10px;letter-spacing:.04em
+}
+
+@media(max-width:980px){
+  :root{--sidebar:200px}
+  .main{padding:30px 26px 54px}
+  .dashboard-grid,.album-grid,.contract-grid{grid-template-columns:1fr}
+  .art-panel{max-width:460px}
+  .track-layout,.artist-layout{grid-template-columns:280px minmax(0,1fr)}
+  .submit-side{position:static}
+}
+@media(max-width:760px){
+  .topbar{padding:0 16px}
+  .workspace{display:block}
+  .sidebar{display:none}
+  .mobile-nav{
+    display:flex;position:sticky;top:var(--topbar);z-index:60;overflow-x:auto;gap:4px;
+    padding:8px 12px;background:rgba(247,248,250,.96);border-bottom:1px solid var(--border)
+  }
+  .mobile-nav button{
+    flex:0 0 auto;height:34px;padding:0 11px;border:1px solid var(--border);border-radius:999px;background:#fff;font-size:12px
+  }
+  .mobile-nav button.active{background:var(--accent-soft);border-color:var(--accent-border);color:var(--accent)}
+  .main{padding:24px 14px 48px}
+  .page-head{flex-direction:column}
+  .page-progress{width:100%}
+  .dashboard-grid,.album-grid,.track-layout,.artist-layout,.contract-grid{grid-template-columns:1fr}
+  .track-list,.artist-list{max-height:none}
+  .form-grid,.rights-grid{grid-template-columns:1fr}
+  .dsp-row,.social-row,.role-row,.credit-row{grid-template-columns:1fr}
+  .entry-form{grid-template-columns:1fr}
+  .entry-form .full{grid-column:auto}
+  .entry-stage{place-items:start center;padding-top:34px}
+  .code-line{align-items:flex-start;flex-direction:column}
+  .prototype-badge{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- reusable inline SVG symbols -->
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <symbol id="i-spark" viewBox="0 0 24 24">
+      <path fill="currentColor" d="M11.1 2.8a1 1 0 0 1 1.8 0l1.15 3.06a5.4 5.4 0 0 0 3.15 3.14l3.04 1.14a1 1 0 0 1 0 1.87l-3.04 1.14a5.4 5.4 0 0 0-3.15 3.14l-1.15 3.06a1 1 0 0 1-1.8 0l-1.15-3.06a5.4 5.4 0 0 0-3.15-3.14L3.76 12a1 1 0 0 1 0-1.87L6.8 9a5.4 5.4 0 0 0 3.15-3.14L11.1 2.8Z"/>
+    </symbol>
+    <symbol id="i-history" viewBox="0 0 24 24">
+      <path fill="currentColor" d="M11.8 3.1a8.9 8.9 0 1 1-7.6 13.5 1.2 1.2 0 1 1 2.05-1.25A6.5 6.5 0 1 0 6.1 9.2h2.2a1.2 1.2 0 0 1 0 2.4H3.5a1.2 1.2 0 0 1-1.2-1.2V5.6a1.2 1.2 0 0 1 2.4 0v1.6a8.85 8.85 0 0 1 7.1-4.1Zm.2 4.1a1.2 1.2 0 0 1 1.2 1.2v3.05l2.2 1.3a1.2 1.2 0 0 1-1.2 2.08l-2.8-1.66a1.2 1.2 0 0 1-.6-1.04V8.4A1.2 1.2 0 0 1 12 7.2Z"/>
+    </symbol>
+    <symbol id="i-chevron" viewBox="0 0 24 24">
+      <path class="icon-stroke" d="m7.5 9.5 4.5 4.5 4.5-4.5"/>
+    </symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24">
+      <path class="icon-stroke" d="M5 12h13M13.5 6.5 19 12l-5.5 5.5"/>
+    </symbol>
+    <symbol id="i-copy" viewBox="0 0 24 24">
+      <rect x="8" y="8" width="11" height="11" rx="3" fill="currentColor"/>
+      <path d="M5.5 15H5a3 3 0 0 1-3-3V5a3 3 0 0 1 3-3h7a3 3 0 0 1 3 3v.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="i-info" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="9" fill="currentColor"/>
+      <rect x="11" y="10.5" width="2" height="6" rx="1" fill="white"/>
+      <circle cx="12" cy="7.5" r="1.2" fill="white"/>
+    </symbol>
+    <symbol id="i-check" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="10" fill="currentColor"/>
+      <path d="m7.6 12.2 2.8 2.8 6.2-6.2" fill="none" stroke="white" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+    <symbol id="i-album" viewBox="0 0 24 24">
+      <rect x="3" y="3" width="18" height="18" rx="5" fill="currentColor"/>
+      <circle cx="12" cy="12" r="4.2" fill="white" opacity=".92"/>
+      <circle cx="12" cy="12" r="1.3" fill="currentColor"/>
+    </symbol>
+    <symbol id="i-track" viewBox="0 0 24 24">
+      <path fill="currentColor" d="M9 4.5a2 2 0 0 1 1.6-1.96l7-1.4A2 2 0 0 1 20 3.1v11.4a4.2 4.2 0 1 1-2.4-3.8V6.4l-6.2 1.24v8.86A4.2 4.2 0 1 1 9 12.7V4.5Z"/>
+    </symbol>
+    <symbol id="i-user" viewBox="0 0 24 24">
+      <circle cx="12" cy="8" r="4.2" fill="currentColor"/>
+      <path d="M4.2 19.4c.55-4 3.4-6.2 7.8-6.2s7.25 2.2 7.8 6.2a1.4 1.4 0 0 1-1.38 1.6H5.58a1.4 1.4 0 0 1-1.38-1.6Z" fill="currentColor"/>
+    </symbol>
+    <symbol id="i-doc" viewBox="0 0 24 24">
+      <path d="M6 2h8.6L20 7.4V19a3 3 0 0 1-3 3H6a3 3 0 0 1-3-3V5a3 3 0 0 1 3-3Z" fill="currentColor"/>
+      <path d="M14 2v5.5h5.5" fill="white" opacity=".85"/>
+      <rect x="7" y="11" width="9" height="1.8" rx=".9" fill="white"/>
+      <rect x="7" y="15" width="7" height="1.8" rx=".9" fill="white"/>
+    </symbol>
+    <symbol id="i-home" viewBox="0 0 24 24">
+      <path fill="currentColor" d="M3.5 10.4 11 3.7a1.5 1.5 0 0 1 2 0l7.5 6.7a1.5 1.5 0 0 1 .5 1.12V19a2.5 2.5 0 0 1-2.5 2.5h-4V15a2.5 2.5 0 0 0-5 0v6.5h-4A2.5 2.5 0 0 1 3 19v-7.48a1.5 1.5 0 0 1 .5-1.12Z"/>
+    </symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="10" fill="currentColor"/>
+      <path d="M12 7v10M7 12h10" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="i-grip" viewBox="0 0 24 24">
+      <circle cx="8" cy="7" r="2" fill="currentColor"/><circle cx="16" cy="7" r="2" fill="currentColor"/>
+      <circle cx="8" cy="12" r="2" fill="currentColor"/><circle cx="16" cy="12" r="2" fill="currentColor"/>
+      <circle cx="8" cy="17" r="2" fill="currentColor"/><circle cx="16" cy="17" r="2" fill="currentColor"/>
+    </symbol>
+    <symbol id="i-upload" viewBox="0 0 24 24">
+      <path fill="currentColor" d="M12 2.5a1.4 1.4 0 0 1 1 .4l4.5 4.5a1.4 1.4 0 1 1-2 2L13.4 7.3V15a1.4 1.4 0 1 1-2.8 0V7.3L8.5 9.4a1.4 1.4 0 0 1-2-2L11 2.9a1.4 1.4 0 0 1 1-.4ZM4.5 14.5A1.5 1.5 0 0 1 6 16v2.5h12V16a1.5 1.5 0 0 1 3 0v3a2.5 2.5 0 0 1-2.5 2.5h-13A2.5 2.5 0 0 1 3 19v-3a1.5 1.5 0 0 1 1.5-1.5Z"/>
+    </symbol>
+    <symbol id="i-alert" viewBox="0 0 24 24">
+      <path d="M10.2 3.4a2.1 2.1 0 0 1 3.6 0l8 13.8a2.1 2.1 0 0 1-1.8 3.15H4a2.1 2.1 0 0 1-1.8-3.15l8-13.8Z" fill="currentColor"/>
+      <rect x="11" y="8" width="2" height="6" rx="1" fill="white"/>
+      <circle cx="12" cy="17" r="1.2" fill="white"/>
+    </symbol>
+  </defs>
+</svg>
+
+<header class="topbar">
+  <button class="brand-home" type="button" onclick="goHome()">SEORO</button>
+  <span class="product-label">DISTRIBUTION</span>
+</header>
+
+<!-- ENTRY -->
+<main id="entryView" class="entry-stage">
+  <section class="entry-wrap">
+    <div class="entry-head">
+      <h1 class="page-title">어떻게 시작할까요?</h1>
+    </div>
+
+    <div class="entry-list">
+      <button class="entry-choice" id="newChoice" type="button" aria-expanded="false" onclick="toggleEntry('new')">
+        <span class="round-icon"><svg class="icon"><use href="#i-spark"/></svg></span>
+        <span>
+          <span class="entry-title">새로 발매해요</span>
+          <span class="entry-copy">발매 코드를 만들어요</span>
+        </span>
+        <svg class="icon sm chevron"><use href="#i-chevron"/></svg>
+      </button>
+      <section class="entry-panel" id="newPanel" hidden>
+        <div id="newFormWrap">
+          <div class="entry-form">
+            <div class="field">
+              <div class="label-row"><label class="label" for="ownerName">이름</label><span class="required-dot"></span></div>
+              <input class="control" id="ownerName" value="김서로" autocomplete="name">
+            </div>
+            <div class="field">
+              <div class="label-row"><label class="label" for="ownerEmail">이메일</label><span class="required-dot"></span></div>
+              <input class="control" id="ownerEmail" value="hello@example.com" autocomplete="email">
+            </div>
+            <div class="field full">
+              <div class="label-row"><label class="label" for="ownerPhone">연락처</label><span class="optional">선택</span></div>
+              <input class="control" id="ownerPhone" placeholder="010-0000-0000" autocomplete="tel">
+            </div>
+          </div>
+          <div class="entry-actions">
+            <button class="btn btn-primary" type="button" onclick="issueCode()">발매 코드 발급</button>
+          </div>
+        </div>
+
+        <div id="issuedWrap" hidden>
+          <div class="code-result">
+            <div>
+              <div class="sub-title">발매 코드가 만들어졌어요</div>
+              <div class="caption" style="margin-top:4px">이 코드는 다시 들어올 때 필요해요.</div>
+            </div>
+            <div class="code-line">
+              <div class="code">AB12CD</div>
+              <button class="btn btn-secondary btn-sm" type="button" onclick="copyCode()">
+                <svg class="icon sm"><use href="#i-copy"/></svg>복사
+              </button>
+            </div>
+            <div class="tip">
+              <svg class="icon sm" style="color:var(--accent);margin-top:1px"><use href="#i-info"/></svg>
+              <div>
+                <div class="body-strong">캡처해 두면 다음에 바로 이어서 작성할 수 있어요.</div>
+                <div class="caption" style="margin-top:3px">이메일에서도 확인할 수 있어요. 메일이 보이지 않으면 스팸함도 확인해 주세요.</div>
+              </div>
+            </div>
+            <div class="entry-actions" style="margin-top:0">
+              <button class="btn btn-ghost" type="button" onclick="resetEntry()">나중에 할게요</button>
+              <button class="btn btn-primary" type="button" onclick="enterWorkspace('overview')">작성 시작<svg class="icon sm"><use href="#i-arrow"/></svg></button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <button class="entry-choice" id="resumeChoice" type="button" aria-expanded="false" onclick="toggleEntry('resume')">
+        <span class="round-icon"><svg class="icon"><use href="#i-history"/></svg></span>
+        <span>
+          <span class="entry-title">발매 코드가 있어요</span>
+          <span class="entry-copy">이어서 작성해요</span>
+        </span>
+        <svg class="icon sm chevron"><use href="#i-chevron"/></svg>
+      </button>
+      <section class="entry-panel" id="resumePanel" hidden>
+        <div class="field">
+          <label class="label" for="resumeCode">발매 코드</label>
+          <input class="control resume-code" id="resumeCode" maxlength="6" autocomplete="off" placeholder="AB12CD" oninput="handleCodeInput(this)">
+          <div class="helper">6자리를 입력하면 자동으로 확인해요.</div>
+        </div>
+        <div id="verifyLoading" class="verify-state" style="margin-top:14px" hidden>
+          <div class="spinner"></div>
+          <span>발매 코드를 확인하고 있어요</span>
+        </div>
+        <div id="verifyFound" class="resume-found" style="margin-top:14px" hidden>
+          <div>
+            <div class="body-strong">SEORO — Our Summer</div>
+            <div class="caption" style="margin-top:3px">아티스트 정보 입력 중</div>
+          </div>
+          <button class="btn btn-primary btn-sm" type="button" onclick="enterWorkspace('artists')">이어서 작성</button>
+        </div>
+        <div id="verifyError" class="field-error" style="margin-top:10px" hidden>발매 코드를 찾을 수 없어요. 코드를 다시 확인해 주세요.</div>
+      </section>
+    </div>
+  </section>
+</main>
+
+<!-- WORKSPACE -->
+<div id="workspaceView" hidden>
+  <div class="workspace">
+    <aside class="sidebar">
+      <div class="case-meta">
+        <div class="case-code">AB12CD</div>
+        <div class="case-title">SEORO — Our Summer</div>
+      </div>
+
+      <nav class="nav">
+        <button class="nav-btn active" data-page="overview" onclick="showPage('overview')">
+          <svg class="icon sm nav-icon"><use href="#i-home"/></svg>
+          <span>진행 현황</span><span class="nav-status">68%</span>
+        </button>
+        <button class="nav-btn" data-page="album" onclick="showPage('album')">
+          <svg class="icon sm nav-icon"><use href="#i-album"/></svg>
+          <span>앨범 정보</span><span class="nav-status">75%</span>
+        </button>
+        <button class="nav-btn" data-page="tracks" onclick="showPage('tracks')">
+          <svg class="icon sm nav-icon"><use href="#i-track"/></svg>
+          <span>트랙 정보</span><span class="nav-status">2 / 4</span>
+        </button>
+        <button class="nav-btn" data-page="artists" onclick="showPage('artists')">
+          <svg class="icon sm nav-icon"><use href="#i-user"/></svg>
+          <span>아티스트</span><span class="nav-status">2 / 3</span>
+        </button>
+        <button class="nav-btn" data-page="contract" onclick="showPage('contract')">
+          <svg class="icon sm nav-icon"><use href="#i-doc"/></svg>
+          <span>계약 및 제출</span><span class="nav-status">40%</span>
+        </button>
+      </nav>
+
+      <div class="side-progress">
+        <div class="small-progress-row"><span class="body-strong">전체 진행률</span><span>68%</span></div>
+        <div class="progress-track"><div class="progress-fill" style="width:68%"></div></div>
+        <div class="micro" style="margin-top:7px">17 / 25 필수 항목 완료</div>
+      </div>
+    </aside>
+
+    <div>
+      <nav class="mobile-nav">
+        <button class="active" data-page="overview" onclick="showPage('overview')">진행 현황</button>
+        <button data-page="album" onclick="showPage('album')">앨범</button>
+        <button data-page="tracks" onclick="showPage('tracks')">트랙</button>
+        <button data-page="artists" onclick="showPage('artists')">아티스트</button>
+        <button data-page="contract" onclick="showPage('contract')">계약</button>
+      </nav>
+
+      <main class="main">
+        <!-- OVERVIEW -->
+        <section class="page workspace-page" id="page-overview">
+          <div class="page-head">
+            <div>
+              <h1 class="page-title">진행 현황</h1>
+              <p class="page-desc">남은 필수 항목을 확인하고 필요한 곳부터 이어서 작성할 수 있어요.</p>
+            </div>
+          </div>
+
+          <div class="dashboard-grid">
+            <article class="card completion-card">
+              <div class="donut" style="--p:68">
+                <div class="donut-content">
+                  <div class="donut-num">68%</div>
+                  <div class="micro">전체 완료도</div>
+                </div>
+              </div>
+              <div class="body-strong" style="margin-top:18px">17 / 25 필수 항목 완료</div>
+              <div class="caption" style="margin-top:4px">선택 항목은 완료도에 포함하지 않아요.</div>
+            </article>
+
+            <article class="card section-list">
+              <button class="section-row" onclick="showPage('album')">
+                <span class="round-icon"><svg class="icon sm"><use href="#i-album"/></svg></span>
+                <span><span class="body-strong">앨범 정보</span><span class="caption" style="display:block;margin-top:2px">6 / 8 필수 항목 완료</span></span>
+                <span class="chip">75%</span>
+              </button>
+              <button class="section-row" onclick="showPage('tracks')">
+                <span class="round-icon"><svg class="icon sm"><use href="#i-track"/></svg></span>
+                <span><span class="body-strong">트랙 정보</span><span class="caption" style="display:block;margin-top:2px">2 / 4 트랙 완료</span></span>
+                <span class="chip">50%</span>
+              </button>
+              <button class="section-row" onclick="showPage('artists')">
+                <span class="round-icon"><svg class="icon sm"><use href="#i-user"/></svg></span>
+                <span><span class="body-strong">아티스트</span><span class="caption" style="display:block;margin-top:2px">2 / 3명 완료</span></span>
+                <span class="chip">67%</span>
+              </button>
+              <button class="section-row" onclick="showPage('contract')">
+                <span class="round-icon"><svg class="icon sm"><use href="#i-doc"/></svg></span>
+                <span><span class="body-strong">계약 및 제출</span><span class="caption" style="display:block;margin-top:2px">권리자 정보 입력 중</span></span>
+                <span class="chip">40%</span>
+              </button>
+            </article>
+          </div>
+
+          <article class="card next-card">
+            <div class="next-copy">
+              <span class="micro">다음으로 추천해요</span>
+              <span class="sub-title">2번 트랙 오디오를 추가해 주세요</span>
+              <span class="caption">트랙 정보에 필수 항목 2개가 남아 있어요.</span>
+            </div>
+            <button class="btn btn-primary" onclick="showPage('tracks')">트랙 정보 열기<svg class="icon sm"><use href="#i-arrow"/></svg></button>
+          </article>
+        </section>
+
+        <!-- ALBUM -->
+        <section class="page workspace-page" id="page-album" hidden>
+          <div class="page-head">
+            <div>
+              <h1 class="page-title">앨범 정보</h1>
+              <p class="page-desc">앨범을 대표하는 정보와 아트워크를 정리해 주세요.</p>
+            </div>
+            <div class="page-progress">
+              <div class="small-progress">
+                <div class="small-progress-row"><span>6 / 8 필수 항목</span><span>75%</span></div>
+                <div class="progress-track"><div class="progress-fill" style="width:75%"></div></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="album-grid">
+            <article class="card art-panel">
+              <div class="cover" aria-label="앨범 아트워크 미리보기"><div class="cover-art"></div></div>
+              <div class="upload-inline">
+                <div><div class="body-strong">앨범 아트워크</div><div class="caption">3000 × 3000 JPG</div></div>
+                <button class="btn btn-secondary btn-sm" onclick="markDirty()">교체</button>
+              </div>
+            </article>
+
+            <div class="album-stack">
+              <article class="card form-card">
+                <h2 class="sub-title">기본 정보</h2>
+                <div class="form-grid" style="margin-top:16px">
+                  <div class="field">
+                    <div class="label-row"><label class="label">앨범명</label><span class="required-dot"></span></div>
+                    <input class="control dirty-input" value="Our Summer">
+                  </div>
+                  <div class="field">
+                    <label class="label">버전</label>
+                    <input class="control dirty-input" placeholder="예: Deluxe">
+                  </div>
+                  <div class="field">
+                    <div class="label-row"><label class="label">앨범 유형</label><span class="required-dot"></span></div>
+                    <div class="select-wrap"><select class="control dirty-input"><option>싱글</option><option>EP</option><option>정규</option></select></div>
+                  </div>
+                  <div class="field">
+                    <div class="label-row"><label class="label">장르</label><span class="required-dot"></span></div>
+                    <div class="select-wrap"><select class="control dirty-input"><option>Pop</option><option>R&B</option><option>Rock</option></select></div>
+                  </div>
+                  <div class="field full">
+                    <div class="label-row"><label class="label">발매 희망일</label><span class="required-dot"></span></div>
+                    <input class="control dirty-input" type="date" value="2026-10-16">
+                  </div>
+                </div>
+              </article>
+
+              <article class="card form-card">
+                <div style="display:flex;align-items:center;justify-content:space-between;gap:14px">
+                  <h2 class="sub-title">앨범 아티스트</h2>
+                  <button class="btn btn-secondary btn-sm" onclick="markDirty()"><svg class="icon sm"><use href="#i-plus"/></svg>추가</button>
+                </div>
+                <div class="artist-chips">
+                  <span class="chip accent">SEORO <button class="btn btn-ghost btn-sm" style="min-height:20px;padding:0 2px" onclick="markDirty()">×</button></span>
+                  <span class="chip">김하늘 <button class="btn btn-ghost btn-sm" style="min-height:20px;padding:0 2px" onclick="markDirty()">×</button></span>
+                </div>
+                <div class="helper" style="margin-top:10px">여기서 추가한 아티스트는 아티스트 화면에 자동으로 모여요.</div>
+              </article>
+
+              <article class="card form-card">
+                <h2 class="sub-title">앨범 소개</h2>
+                <div class="field" style="margin-top:14px">
+                  <textarea class="control dirty-input">여름의 한가운데에서 지나간 순간들을 기록한 앨범입니다.</textarea>
+                </div>
+                <div class="section-block" style="margin-top:18px">
+                  <div class="body-strong">AI 사용</div>
+                  <div class="caption" style="margin-top:3px">아트워크와 시각 콘텐츠에 사용한 AI만 여기서 확인해요.</div>
+
+                  <div class="switch-row">
+                    <div><div class="body-strong">앨범 아트 제작에 AI를 사용했어요</div><div class="caption">생성 또는 편집을 포함해요.</div></div>
+                    <button class="switch" type="button" aria-pressed="false" onclick="toggleSwitch(this)"></button>
+                  </div>
+                  <div class="switch-row">
+                    <div><div class="body-strong">모션 아트에 AI를 사용했어요</div><div class="caption">모션 아트를 제출하는 경우에만 확인해요.</div></div>
+                    <button class="switch" type="button" aria-pressed="false" onclick="toggleSwitch(this)"></button>
+                  </div>
+                </div>
+              </article>
+
+              <div style="display:flex;justify-content:flex-end">
+                <button class="btn btn-primary" onclick="saveSection('앨범 정보')">저장</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- TRACKS -->
+        <section class="page workspace-page" id="page-tracks" hidden>
+          <div class="page-head">
+            <div>
+              <h1 class="page-title">트랙 정보</h1>
+              <p class="page-desc">트랙 순서와 각 곡의 상세 정보를 한 곳에서 관리해요.</p>
+            </div>
+            <div class="page-progress">
+              <div class="small-progress">
+                <div class="small-progress-row"><span>2 / 4 트랙 완료</span><span>50%</span></div>
+                <div class="progress-track"><div class="progress-fill" style="width:50%"></div></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="track-layout">
+            <article class="card track-list">
+              <div class="track-list-head">
+                <span class="sub-title">트랙</span>
+                <button class="btn btn-secondary btn-sm" onclick="addTrack()"><svg class="icon sm"><use href="#i-plus"/></svg>추가</button>
+              </div>
+              <div id="trackRows">
+                <button class="track-row active" data-track="1" onclick="selectTrack(1)">
+                  <svg class="icon sm drag"><use href="#i-grip"/></svg><span class="track-no">01</span>
+                  <span><span class="track-name">Our Summer</span><span class="track-sub">완료</span></span><span class="chip success">완료</span>
+                </button>
+                <button class="track-row" data-track="2" onclick="selectTrack(2)">
+                  <svg class="icon sm drag"><use href="#i-grip"/></svg><span class="track-no">02</span>
+                  <span><span class="track-name">Blue Window</span><span class="track-sub">오디오 필요</span></span><span class="chip warning">2개 남음</span>
+                </button>
+                <button class="track-row" data-track="3" onclick="selectTrack(3)">
+                  <svg class="icon sm drag"><use href="#i-grip"/></svg><span class="track-no">03</span>
+                  <span><span class="track-name">Night Drive</span><span class="track-sub">완료</span></span><span class="chip success">완료</span>
+                </button>
+                <button class="track-row" data-track="4" onclick="selectTrack(4)">
+                  <svg class="icon sm drag"><use href="#i-grip"/></svg><span class="track-no">04</span>
+                  <span><span class="track-name">Stay</span><span class="track-sub">정보 필요</span></span><span class="chip warning">4개 남음</span>
+                </button>
+              </div>
+            </article>
+
+            <article class="card track-detail">
+              <div class="detail-head">
+                <div><div class="micro" id="trackDetailNo">TRACK 01</div><h2 class="section-title" id="trackDetailTitle" style="margin-top:2px">Our Summer</h2></div>
+                <span class="chip success" id="trackStatusChip">완료</span>
+              </div>
+
+              <div class="detail-sections">
+                <section class="section-block">
+                  <h3 class="sub-title">기본 정보</h3>
+                  <div class="form-grid" style="margin-top:14px">
+                    <div class="field">
+                      <div class="label-row"><label class="label">트랙명</label><span class="required-dot"></span></div>
+                      <input class="control dirty-input" id="trackTitleInput" value="Our Summer">
+                    </div>
+                    <div class="field">
+                      <label class="label">버전</label>
+                      <input class="control dirty-input" placeholder="예: Acoustic">
+                    </div>
+                  </div>
+                </section>
+
+                <section class="section-block">
+                  <div style="display:flex;justify-content:space-between;align-items:center;gap:12px">
+                    <h3 class="sub-title">아티스트</h3>
+                    <button class="btn btn-secondary btn-sm" onclick="markDirty()"><svg class="icon sm"><use href="#i-plus"/></svg>추가</button>
+                  </div>
+                  <div class="role-row">
+                    <span class="chip accent">Main</span><input class="control dirty-input" value="SEORO"><button class="btn btn-ghost btn-sm" onclick="markDirty()">삭제</button>
+                  </div>
+                  <div class="role-row">
+                    <span class="chip">Featuring</span><input class="control dirty-input" value="김하늘"><button class="btn btn-ghost btn-sm" onclick="markDirty()">삭제</button>
+                  </div>
+                </section>
+
+                <section class="section-block">
+                  <div style="display:flex;justify-content:space-between;align-items:center;gap:12px">
+                    <h3 class="sub-title">크레딧</h3>
+                    <button class="btn btn-secondary btn-sm" onclick="addCredit()"><svg class="icon sm"><use href="#i-plus"/></svg>추가</button>
+                  </div>
+                  <div id="credits">
+                    <div class="credit-row"><input class="control dirty-input" value="작사"><input class="control dirty-input" value="SEORO"><button class="btn btn-ghost btn-sm" onclick="this.parentElement.remove();markDirty()">삭제</button></div>
+                    <div class="credit-row"><input class="control dirty-input" value="작곡"><input class="control dirty-input" value="SEORO"><button class="btn btn-ghost btn-sm" onclick="this.parentElement.remove();markDirty()">삭제</button></div>
+                  </div>
+                </section>
+
+                <section class="section-block">
+                  <h3 class="sub-title">가사</h3>
+                  <textarea class="control dirty-input" style="margin-top:12px" placeholder="가사를 입력해 주세요.">We were young in the summer...</textarea>
+                </section>
+
+                <section class="section-block">
+                  <h3 class="sub-title">오디오</h3>
+                  <div class="upload-box" style="margin-top:12px">
+                    <div>
+                      <svg class="icon lg" style="margin:0 auto 8px;color:var(--accent)"><use href="#i-upload"/></svg>
+                      <div class="body-strong">Our Summer_MASTER.wav</div>
+                      <div class="caption">WAV · 48kHz · 24bit</div>
+                      <button class="btn btn-secondary btn-sm" style="margin-top:10px" onclick="markDirty()">교체</button>
+                    </div>
+                  </div>
+                </section>
+
+                <section class="section-block">
+                  <h3 class="sub-title">AI 사용</h3>
+                  <div class="caption" style="margin-top:3px">곡 제작 과정에서 사용한 항목만 선택해요.</div>
+                  <div class="rights-grid" style="margin-top:12px">
+                    <button class="option-card" onclick="toggleOption(this)"><span class="body-strong">작사</span><span class="caption" style="display:block;margin-top:3px">AI 도움을 받았어요</span></button>
+                    <button class="option-card active" onclick="toggleOption(this)"><span class="body-strong">작곡</span><span class="caption" style="display:block;margin-top:3px">AI 도움을 받았어요</span></button>
+                    <button class="option-card" onclick="toggleOption(this)"><span class="body-strong">보컬</span><span class="caption" style="display:block;margin-top:3px">합성·변환 포함</span></button>
+                    <button class="option-card" onclick="toggleOption(this)"><span class="body-strong">후반 작업</span><span class="caption" style="display:block;margin-top:3px">믹싱·마스터링 포함</span></button>
+                  </div>
+                </section>
+
+                <section class="section-block">
+                  <h3 class="sub-title">리메이크 및 권리</h3>
+                  <div class="switch-row" style="margin-top:8px">
+                    <div><div class="body-strong">기존 곡을 리메이크하거나 커버했어요</div><div class="caption">선택하면 원곡 권리 정보를 추가로 확인해요.</div></div>
+                    <button class="switch" type="button" aria-pressed="false" onclick="toggleRemake(this)"></button>
+                  </div>
+                  <div id="remakeFields" class="soft-card" style="margin-top:12px;padding:14px" hidden>
+                    <div class="form-grid">
+                      <div class="field"><label class="label">원곡명</label><input class="control dirty-input" placeholder="원곡명"></div>
+                      <div class="field"><label class="label">원 아티스트</label><input class="control dirty-input" placeholder="아티스트"></div>
+                      <div class="field full"><label class="label">권리 확인</label><div class="select-wrap"><select class="control dirty-input"><option>권리 확인 완료</option><option>확인 중</option></select></div></div>
+                    </div>
+                  </div>
+                </section>
+
+                <section class="section-block" style="display:flex;justify-content:flex-end">
+                  <button class="btn btn-primary" onclick="saveSection('트랙 정보')">저장</button>
+                </section>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- ARTISTS -->
+        <section class="page workspace-page" id="page-artists" hidden>
+          <div class="page-head">
+            <div>
+              <h1 class="page-title">아티스트</h1>
+              <p class="page-desc">앨범과 트랙에 참여한 아티스트가 자동으로 모여요.</p>
+            </div>
+            <div class="page-progress">
+              <div class="small-progress">
+                <div class="small-progress-row"><span>2 / 3명 완료</span><span>67%</span></div>
+                <div class="progress-track"><div class="progress-fill" style="width:67%"></div></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="artist-layout">
+            <article class="card artist-list">
+              <div class="artist-list-head"><span class="sub-title">아티스트</span><span class="caption">3명</span></div>
+              <button class="artist-row" data-artist="seoro" onclick="selectArtist('seoro')">
+                <span class="avatar">SR</span><span><span class="body-strong">SEORO</span><span class="caption" style="display:block;margin-top:2px">모든 트랙에 참여했어요</span></span><span class="chip success">완료</span>
+              </button>
+              <button class="artist-row" data-artist="haneul" onclick="selectArtist('haneul')">
+                <span class="avatar">김</span><span><span class="body-strong">김하늘</span><span class="caption" style="display:block;margin-top:2px">2번, 5번 트랙에 참여했어요</span></span><span class="chip success">완료</span>
+              </button>
+              <button class="artist-row active" data-artist="hong" onclick="selectArtist('hong')">
+                <span class="avatar">홍</span><span><span class="body-strong">홍길동</span><span class="caption" style="display:block;margin-top:2px">5개 트랙에 참여했어요</span></span><span class="chip warning">정보 필요</span>
+              </button>
+            </article>
+
+            <article class="card artist-detail">
+              <div class="detail-head">
+                <div>
+                  <div class="identity">
+                    <span class="avatar" id="artistAvatar">홍</span>
+                    <div><h2 class="section-title" id="artistName">홍길동</h2><div class="caption" id="artistParticipation">5개 트랙에 참여했어요</div></div>
+                  </div>
+                  <div class="usage" id="artistUsage">
+                    <span class="chip">1번 · Main</span><span class="chip">2번 · Main</span><span class="chip accent">3번 · Featuring</span><span class="chip">5번 · Main</span><span class="chip">7번 · Main</span>
+                  </div>
+                </div>
+                <span class="chip warning" id="artistState">정보 필요</span>
+              </div>
+
+              <section class="section-block">
+                <h3 class="sub-title">기본 정보</h3>
+                <div class="form-grid" style="margin-top:14px">
+                  <div class="field"><label class="label">아티스트명 (국문)</label><input class="control dirty-input" id="artistKo" value="홍길동"></div>
+                  <div class="field"><label class="label">아티스트명 (영문)</label><input class="control dirty-input" id="artistEn" placeholder="선택"></div>
+                </div>
+                <div style="margin-top:16px">
+                  <div class="label" style="margin-bottom:8px">발매 이력</div>
+                  <div class="segment" id="artistType">
+                    <button class="active" onclick="setArtistType(this,'existing')">기존 발매</button>
+                    <button onclick="setArtistType(this,'new')">첫 발매</button>
+                  </div>
+                </div>
+              </section>
+
+              <section class="section-block" id="dspSection">
+                <h3 class="sub-title">DSP 매칭</h3>
+                <div class="caption" style="margin:3px 0 12px">기존 아티스트 페이지가 있으면 연결해 주세요.</div>
+                <div class="dsp">
+                  <div class="dsp-row"><div class="body-strong">Spotify</div><div class="toggle-wrap"><button class="toggle active" onclick="setToggle(this)">있어요</button><button class="toggle" onclick="setToggle(this)">없어요</button></div><input class="control dirty-input" value="https://open.spotify.com/artist/..."></div>
+                  <div class="dsp-row"><div class="body-strong">Apple Music</div><div class="toggle-wrap"><button class="toggle" onclick="setToggle(this)">있어요</button><button class="toggle active" onclick="setToggle(this)">없어요</button></div><span class="caption">신규 생성</span></div>
+                  <div class="dsp-row"><div class="body-strong">Melon</div><div class="toggle-wrap"><button class="toggle" onclick="setToggle(this)">있어요</button><button class="toggle active" onclick="setToggle(this)">없어요</button></div><span class="caption">신규 생성</span></div>
+                </div>
+              </section>
+
+              <section class="section-block">
+                <div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
+                  <div><h3 class="sub-title">SNS</h3><div class="caption" style="margin-top:3px">선택 항목이에요.</div></div>
+                  <button class="btn btn-secondary btn-sm" onclick="addSocial()"><svg class="icon sm"><use href="#i-plus"/></svg>링크 추가</button>
+                </div>
+                <div id="socialRows">
+                  <div class="social-row"><div class="select-wrap"><select class="control dirty-input"><option>Instagram</option><option>YouTube</option><option>TikTok</option><option>Website</option></select></div><input class="control dirty-input" placeholder="https://"><button class="btn btn-ghost btn-sm" onclick="this.parentElement.remove();markDirty()">삭제</button></div>
+                </div>
+              </section>
+
+              <section class="section-block" style="display:flex;justify-content:flex-end">
+                <button class="btn btn-primary" onclick="saveSection('아티스트 정보')">저장</button>
+              </section>
+            </article>
+          </div>
+        </section>
+
+        <!-- CONTRACT -->
+        <section class="page workspace-page" id="page-contract" hidden>
+          <div class="page-head">
+            <div>
+              <h1 class="page-title">계약 및 제출</h1>
+              <p class="page-desc">권리자와 정산 정보를 확인한 뒤 계약서에 서명하고 제출해요.</p>
+            </div>
+            <div class="page-progress">
+              <div class="small-progress">
+                <div class="small-progress-row"><span>4 / 10 필수 항목</span><span>40%</span></div>
+                <div class="progress-track"><div class="progress-fill" style="width:40%"></div></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="contract-grid">
+            <div class="contract-stack">
+              <article class="card contract-card">
+                <div class="step-head">
+                  <div style="display:flex;gap:11px"><span class="step-index">1</span><div><h2 class="sub-title">권리자 및 정산 정보</h2><div class="caption" style="margin-top:3px">계약과 정산에 사용할 정보를 입력해 주세요.</div></div></div>
+                  <span class="chip warning">입력 중</span>
+                </div>
+                <div class="form-grid" style="margin-top:18px">
+                  <div class="field"><label class="label">권리자 구분</label><div class="select-wrap"><select class="control dirty-input"><option>개인</option><option>법인</option></select></div></div>
+                  <div class="field"><label class="label">권리자명</label><input class="control dirty-input" value="김서로"></div>
+                  <div class="field"><label class="label">은행</label><div class="select-wrap"><select class="control dirty-input"><option>국민은행</option><option>신한은행</option><option>기타</option></select></div></div>
+                  <div class="field"><label class="label">계좌번호</label><input class="control dirty-input" placeholder="계좌번호"></div>
+                </div>
+                <div style="display:flex;justify-content:flex-end;margin-top:16px"><button class="btn btn-secondary" onclick="saveSection('권리자 정보')">저장</button></div>
+              </article>
+
+              <article class="card contract-card">
+                <div class="step-head">
+                  <div style="display:flex;gap:11px"><span class="step-index">2</span><div><h2 class="sub-title">서류</h2><div class="caption" style="margin-top:3px">필요한 서류만 업로드해요.</div></div></div>
+                  <span class="chip">1 / 2</span>
+                </div>
+                <div style="margin-top:14px">
+                  <div class="doc-row"><div><div class="body-strong">신분 확인 서류</div><div class="caption">업로드 완료 · identification.pdf</div></div><button class="btn btn-secondary btn-sm" onclick="markDirty()">교체</button></div>
+                  <div class="doc-row"><div><div class="body-strong">통장 사본</div><div class="caption">아직 업로드하지 않았어요.</div></div><button class="btn btn-secondary btn-sm" onclick="markDirty()"><svg class="icon sm"><use href="#i-upload"/></svg>업로드</button></div>
+                </div>
+              </article>
+
+              <article class="card contract-card">
+                <div class="step-head">
+                  <div style="display:flex;gap:11px"><span class="step-index">3</span><div><h2 class="sub-title">계약 확인</h2><div class="caption" style="margin-top:3px">필수 정보가 완료되면 계약서를 만들 수 있어요.</div></div></div>
+                  <span class="chip">대기</span>
+                </div>
+                <div class="soft-card" style="padding:14px;margin-top:14px">
+                  <div class="body-strong">SEORO 음원 유통 계약서</div>
+                  <div class="caption" style="margin-top:3px">Prototype에서는 문서를 실제 생성하지 않아요.</div>
+                  <button class="btn btn-secondary btn-sm" style="margin-top:12px" onclick="toast('계약서 미리보기 mock을 열었어요.')">미리보기</button>
+                </div>
+              </article>
+
+              <article class="card contract-card">
+                <div class="step-head">
+                  <div style="display:flex;gap:11px"><span class="step-index">4</span><div><h2 class="sub-title">서명</h2><div class="caption" style="margin-top:3px">계약 내용을 확인한 뒤 서명해 주세요.</div></div></div>
+                  <span class="chip">미완료</span>
+                </div>
+                <div class="signature-pad" style="margin-top:14px" onclick="signPrototype()" id="signaturePad">
+                  클릭해서 서명 완료 상태를 테스트해 보세요.
+                </div>
+              </article>
+            </div>
+
+            <aside class="card submit-side">
+              <h2 class="sub-title">제출 준비</h2>
+              <div class="caption" style="margin-top:4px">필수 항목이 모두 완료되면 제출할 수 있어요.</div>
+              <div class="check-list">
+                <div class="check-item"><span class="check-bullet done"><svg class="icon sm"><use href="#i-check"/></svg></span><span>앨범 정보</span></div>
+                <div class="check-item"><span class="check-bullet"><svg class="icon sm"><use href="#i-alert"/></svg></span><span>2번 트랙 오디오</span></div>
+                <div class="check-item"><span class="check-bullet"><svg class="icon sm"><use href="#i-alert"/></svg></span><span>홍길동 Apple Music 확인</span></div>
+                <div class="check-item"><span class="check-bullet"><svg class="icon sm"><use href="#i-alert"/></svg></span><span>통장 사본</span></div>
+                <div class="check-item"><span class="check-bullet" id="signCheck"><svg class="icon sm"><use href="#i-alert"/></svg></span><span>서명</span></div>
+              </div>
+              <div class="blocker">아직 4개 항목이 남아 있어요. Prototype에서는 강제로 제출 흐름도 확인할 수 있어요.</div>
+              <button class="btn btn-primary" style="width:100%;margin-top:14px" onclick="submitPrototype()">제출 흐름 테스트</button>
+            </aside>
+          </div>
+        </section>
+
+        <!-- TRACKING -->
+        <section class="page workspace-page" id="page-tracking" hidden>
+          <div class="tracking-wrap">
+            <article class="card hero-status">
+              <div class="status-orb"><svg class="icon lg"><use href="#i-check"/></svg></div>
+              <h1 class="page-title">유통 신청을 제출했어요</h1>
+              <p class="page-desc">발매 코드 AB12CD로 진행 상태를 다시 확인할 수 있어요.</p>
+              <div class="code" style="font-size:22px;margin-top:16px">AB12CD</div>
+            </article>
+
+            <article class="card timeline" style="margin-top:16px">
+              <div class="timeline-row">
+                <span class="timeline-dot done"><svg class="icon sm"><use href="#i-check"/></svg></span>
+                <div><div class="timeline-title">신청 완료</div><div class="timeline-meta">정보와 계약이 제출됐어요.</div></div>
+              </div>
+              <div class="timeline-row">
+                <span class="timeline-dot active"><svg class="icon sm"><use href="#i-doc"/></svg></span>
+                <div><div class="timeline-title">검토 중</div><div class="timeline-meta">제출 내용을 확인하고 있어요.</div></div>
+              </div>
+              <div class="timeline-row">
+                <span class="timeline-dot"><svg class="icon sm"><use href="#i-track"/></svg></span>
+                <div><div class="timeline-title">유통 준비</div><div class="timeline-meta">검토가 끝나면 유통 준비가 시작돼요.</div></div>
+              </div>
+              <div class="timeline-row">
+                <span class="timeline-dot"><svg class="icon sm"><use href="#i-check"/></svg></span>
+                <div><div class="timeline-title">완료</div><div class="timeline-meta">발매 상태가 완료되면 여기에서 확인할 수 있어요.</div></div>
+              </div>
+            </article>
+
+            <div style="display:flex;justify-content:center;margin-top:18px">
+              <button class="btn btn-secondary" onclick="exitToEntry()">메인으로</button>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+</div>
+
+<div class="prototype-badge">INTERACTIVE PROTOTYPE · NO SERVER SAVE</div>
+
+<div class="modal-backdrop" id="unsavedModal" hidden>
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="unsavedTitle">
+    <h2 class="section-title" id="unsavedTitle">저장하지 않은 내용이 있어요</h2>
+    <p class="page-desc" style="margin-top:8px">지금 나가면 변경사항이 사라질 수 있어요.</p>
+    <div class="modal-actions">
+      <button class="btn btn-secondary" onclick="closeUnsaved()">계속 작성</button>
+      <button class="btn btn-primary" onclick="confirmLeave()">나가기</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast" hidden>
+  <svg class="icon sm" style="color:#BCE7CE"><use href="#i-check"/></svg>
+  <span id="toastText">저장했어요.</span>
+</div>
+
+<script>
+const state={
+  entryOpen:null,
+  dirty:false,
+  currentPage:'overview',
+  verifyTimer:null,
+  selectedTrack:1,
+  selectedArtist:'hong',
+  signed:false
+};
+
+const trackData={
+  1:{title:'Our Summer',status:'완료',chip:'success'},
+  2:{title:'Blue Window',status:'2개 남음',chip:'warning'},
+  3:{title:'Night Drive',status:'완료',chip:'success'},
+  4:{title:'Stay',status:'4개 남음',chip:'warning'}
+};
+
+const artistData={
+  seoro:{avatar:'SR',name:'SEORO',part:'모든 트랙에 참여했어요',state:'완료',chip:'success',ko:'SEORO',en:'SEORO',usage:['1번 · Main','2번 · Main','3번 · Main','4번 · Main']},
+  haneul:{avatar:'김',name:'김하늘',part:'2번, 5번 트랙에 참여했어요',state:'완료',chip:'success',ko:'김하늘',en:'HANEUL',usage:['2번 · Featuring','5번 · Main']},
+  hong:{avatar:'홍',name:'홍길동',part:'5개 트랙에 참여했어요',state:'정보 필요',chip:'warning',ko:'홍길동',en:'',usage:['1번 · Main','2번 · Main','3번 · Featuring','5번 · Main','7번 · Main']}
+};
+
+function iconUse(id){return '<svg class="icon sm"><use href="#'+id+'"/></svg>'}
+
+function toggleEntry(which){
+  state.entryOpen = state.entryOpen===which ? null : which;
+  ['new','resume'].forEach(key=>{
+    const choice=document.getElementById(key+'Choice');
+    const panel=document.getElementById(key+'Panel');
+    const open=state.entryOpen===key;
+    choice.setAttribute('aria-expanded',String(open));
+    panel.hidden=!open;
+  });
+  if(state.entryOpen==='resume') setTimeout(()=>document.getElementById('resumeCode').focus(),30);
+}
+
+function resetEntry(){
+  document.getElementById('newFormWrap').hidden=false;
+  document.getElementById('issuedWrap').hidden=true;
+  state.entryOpen=null;
+  ['new','resume'].forEach(key=>{
+    document.getElementById(key+'Choice').setAttribute('aria-expanded','false');
+    document.getElementById(key+'Panel').hidden=true;
+  });
+}
+
+function issueCode(){
+  const name=document.getElementById('ownerName').value.trim();
+  const email=document.getElementById('ownerEmail').value.trim();
+  if(!name || !email || !email.includes('@')){
+    toast('이름과 이메일을 확인해 주세요.');
+    return;
+  }
+  document.getElementById('newFormWrap').hidden=true;
+  document.getElementById('issuedWrap').hidden=false;
+}
+
+function copyCode(){
+  if(navigator.clipboard){navigator.clipboard.writeText('AB12CD').catch(()=>{});}
+  toast('발매 코드를 복사했어요.');
+}
+
+function handleCodeInput(input){
+  const val=input.value.toUpperCase().replace(/[^A-Z0-9]/g,'').slice(0,6);
+  input.value=val;
+  document.getElementById('verifyFound').hidden=true;
+  document.getElementById('verifyError').hidden=true;
+  document.getElementById('verifyLoading').hidden=true;
+  clearTimeout(state.verifyTimer);
+
+  if(val.length===6){
+    document.getElementById('verifyLoading').hidden=false;
+    state.verifyTimer=setTimeout(()=>{
+      document.getElementById('verifyLoading').hidden=true;
+      if(val==='ZZZZZZ'){
+        document.getElementById('verifyError').hidden=false;
+      }else{
+        document.getElementById('verifyFound').hidden=false;
+      }
+    },700);
+  }
+}
+
+function enterWorkspace(page='overview'){
+  document.getElementById('entryView').hidden=true;
+  document.getElementById('workspaceView').hidden=false;
+  state.dirty=false;
+  showPage(page);
+  window.scrollTo(0,0);
+}
+
+function exitToEntry(){
+  state.dirty=false;
+  document.getElementById('workspaceView').hidden=true;
+  document.getElementById('entryView').hidden=false;
+  resetEntry();
+  window.scrollTo(0,0);
+}
+
+function goHome(){
+  if(document.getElementById('workspaceView').hidden){
+    window.scrollTo(0,0);return;
+  }
+  if(state.dirty){
+    document.getElementById('unsavedModal').hidden=false;
+  }else{
+    exitToEntry();
+  }
+}
+
+function closeUnsaved(){document.getElementById('unsavedModal').hidden=true}
+function confirmLeave(){document.getElementById('unsavedModal').hidden=true;exitToEntry()}
+
+function showPage(page){
+  state.currentPage=page;
+  document.querySelectorAll('.workspace-page').forEach(el=>el.hidden=true);
+  document.getElementById('page-'+page).hidden=false;
+
+  document.querySelectorAll('[data-page]').forEach(btn=>{
+    btn.classList.toggle('active',btn.dataset.page===page);
+  });
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function markDirty(){state.dirty=true}
+document.addEventListener('input',e=>{
+  if(e.target.classList && e.target.classList.contains('dirty-input')) markDirty();
+});
+document.addEventListener('change',e=>{
+  if(e.target.classList && e.target.classList.contains('dirty-input')) markDirty();
+});
+
+function saveSection(name){
+  state.dirty=false;
+  toast(name+'를 저장했어요.');
+}
+
+function toast(text){
+  const el=document.getElementById('toast');
+  document.getElementById('toastText').textContent=text;
+  el.hidden=false;
+  clearTimeout(window.__toastTimer);
+  window.__toastTimer=setTimeout(()=>el.hidden=true,1900);
+}
+
+function toggleSwitch(btn){
+  btn.classList.toggle('on');
+  btn.setAttribute('aria-pressed',String(btn.classList.contains('on')));
+  markDirty();
+}
+
+function toggleOption(btn){btn.classList.toggle('active');markDirty()}
+
+function toggleRemake(btn){
+  toggleSwitch(btn);
+  document.getElementById('remakeFields').hidden=!btn.classList.contains('on');
+}
+
+function selectTrack(n){
+  state.selectedTrack=n;
+  document.querySelectorAll('.track-row').forEach(r=>r.classList.toggle('active',Number(r.dataset.track)===n));
+  const d=trackData[n];
+  document.getElementById('trackDetailNo').textContent='TRACK '+String(n).padStart(2,'0');
+  document.getElementById('trackDetailTitle').textContent=d.title;
+  document.getElementById('trackTitleInput').value=d.title;
+  const chip=document.getElementById('trackStatusChip');
+  chip.textContent=d.status;
+  chip.className='chip '+d.chip;
+  if(n===2){
+    document.querySelector('.upload-box .body-strong').textContent='오디오 파일이 필요해요';
+    document.querySelector('.upload-box .caption').textContent='WAV 파일을 추가해 주세요.';
+  }else{
+    document.querySelector('.upload-box .body-strong').textContent=d.title+'_MASTER.wav';
+    document.querySelector('.upload-box .caption').textContent='WAV · 48kHz · 24bit';
+  }
+}
+
+function addTrack(){
+  toast('Prototype: 새 트랙 입력 화면을 추가할 위치예요.');
+  markDirty();
+}
+
+function addCredit(){
+  const row=document.createElement('div');
+  row.className='credit-row';
+  row.innerHTML='<input class="control dirty-input" placeholder="역할"><input class="control dirty-input" placeholder="이름"><button class="btn btn-ghost btn-sm" onclick="this.parentElement.remove();markDirty()">삭제</button>';
+  document.getElementById('credits').appendChild(row);
+  markDirty();
+}
+
+function selectArtist(key){
+  state.selectedArtist=key;
+  document.querySelectorAll('.artist-row').forEach(r=>r.classList.toggle('active',r.dataset.artist===key));
+  const a=artistData[key];
+  document.getElementById('artistAvatar').textContent=a.avatar;
+  document.getElementById('artistName').textContent=a.name;
+  document.getElementById('artistParticipation').textContent=a.part;
+  document.getElementById('artistKo').value=a.ko;
+  document.getElementById('artistEn').value=a.en;
+  document.getElementById('artistState').textContent=a.state;
+  document.getElementById('artistState').className='chip '+a.chip;
+  document.getElementById('artistUsage').innerHTML=a.usage.map((u,i)=>'<span class="chip '+(i===2?'accent':'')+'">'+u+'</span>').join('');
+}
+
+function setArtistType(button,type){
+  document.querySelectorAll('#artistType button').forEach(el=>el.classList.remove('active'));
+  button.classList.add('active');
+  document.getElementById('dspSection').hidden=type==='new';
+  markDirty();
+}
+
+function setToggle(button){
+  button.parentElement.querySelectorAll('.toggle').forEach(b=>b.classList.remove('active'));
+  button.classList.add('active');
+  markDirty();
+}
+
+function addSocial(){
+  const row=document.createElement('div');
+  row.className='social-row';
+  row.innerHTML='<div class="select-wrap"><select class="control dirty-input"><option>Instagram</option><option>YouTube</option><option>TikTok</option><option>Website</option></select></div><input class="control dirty-input" placeholder="https://"><button class="btn btn-ghost btn-sm" onclick="this.parentElement.remove();markDirty()">삭제</button>';
+  document.getElementById('socialRows').appendChild(row);
+  markDirty();
+}
+
+function signPrototype(){
+  state.signed=!state.signed;
+  const pad=document.getElementById('signaturePad');
+  const bullet=document.getElementById('signCheck');
+  if(state.signed){
+    pad.innerHTML='<div style="text-align:center"><div style="font-family:cursive;font-size:28px;color:var(--text)">Kim Seoro</div><div class="caption" style="margin-top:5px">서명 완료</div></div>';
+    bullet.classList.add('done');
+    bullet.innerHTML=iconUse('i-check');
+  }else{
+    pad.textContent='클릭해서 서명 완료 상태를 테스트해 보세요.';
+    bullet.classList.remove('done');
+    bullet.innerHTML=iconUse('i-alert');
+  }
+  markDirty();
+}
+
+function submitPrototype(){
+  if(!state.signed){
+    toast('먼저 서명 상태를 테스트해 주세요.');
+    return;
+  }
+  state.dirty=false;
+  showPage('tracking');
+}
+
+window.addEventListener('beforeunload',e=>{
+  if(state.dirty){
+    e.preventDefault();
+    e.returnValue='';
+  }
+});
+</script>
+</body>
+</html>
