@@ -3,46 +3,47 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>SEORO Full Prototype</title>
+<title>음원 발매 접수 · SEORO</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sunn-us/SUIT/fonts/variable/stylesheet.css">
 <style>
 :root{
   --font-sans:"Helvetica Neue",Helvetica,"SUIT",-apple-system,BlinkMacSystemFont,"Segoe UI","Apple SD Gothic Neo",Arial,sans-serif;
 
-  --bg:#F7F8FA;
+  --bg:#F3F0E8;
   --surface:#FFFFFF;
-  --surface-subtle:#F3F4F6;
-  --surface-hover:#EEF1F3;
-  --surface-selected:#ECF3F6;
+  --surface-subtle:#ECEEF2;
+  --surface-hover:#E5E8EC;
+  --surface-selected:#DCE5F2;
 
-  --text:#1B1D20;
-  --text-2:#62676F;
-  --text-3:#8B9199;
+  --text:#101827;
+  --text-2:#606B79;
+  --text-3:#697483;
   --text-disabled:#B7BCC2;
 
-  --border:#E3E6EA;
-  --border-strong:#CCD2D8;
+  --border:#E1E3E6;
+  --border-strong:#C9CED5;
 
-  --accent:#3E647C;
-  --accent-hover:#34566B;
-  --accent-soft:#EDF3F6;
-  --accent-border:#BCD0DB;
+  --accent:#315DDF;
+  --accent-hover:#254BBE;
+  --accent-soft:#EDF2FC;
+  --accent-border:#AEBFDC;
 
   --success:#39745B;
   --success-soft:#EEF6F1;
-  --warning:#986B2B;
-  --warning-soft:#FBF5E9;
+  --warning:#3156AD;
+  --warning-soft:#EDF2FC;
   --danger:#B44B56;
   --danger-soft:#FBEDEE;
 
   --r-sm:8px;
   --r-md:10px;
-  --r-lg:14px;
-  --r-xl:18px;
-  --shadow-focus:0 0 0 3px rgba(62,100,124,.14);
+  --r-lg:20px;
+  --r-xl:24px;
+  --shadow-focus:0 0 0 3px rgba(49,93,223,.18);
   --shadow-float:0 16px 44px rgba(22,29,37,.13);
 
   --sidebar:228px;
-  --topbar:58px;
+  --topbar:72px;
 }
 *{box-sizing:border-box}
 html{background:var(--bg)}
@@ -276,7 +277,7 @@ select.control{appearance:none;padding-right:34px}
 }
 .chip.accent{background:var(--accent-soft);border-color:var(--accent-border);color:var(--accent)}
 .chip.success{background:var(--success-soft);border-color:#CDE1D5;color:var(--success)}
-.chip.warning{background:var(--warning-soft);border-color:#E8D5B6;color:var(--warning)}
+.chip.warning{background:var(--warning-soft);border-color:#AEBFDC;color:var(--warning)}
 .switch-row{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:13px 0;border-top:1px solid var(--border)}
 .switch-row:first-of-type{border-top:0}
 .switch{
@@ -362,7 +363,7 @@ select.control{appearance:none;padding-right:34px}
   width:18px;height:18px;border-radius:50%;background:var(--surface-subtle);display:grid;place-items:center;color:var(--text-3)
 }
 .check-bullet.done{background:var(--success-soft);color:var(--success)}
-.blocker{padding:12px;border-radius:var(--r-md);background:var(--warning-soft);font-size:12px;color:#785220}
+.blocker{padding:12px;border-radius:var(--r-md);background:var(--warning-soft);font-size:12px;color:#3156AD}
 
 /* tracking */
 .tracking-wrap{width:min(760px,100%);margin:0 auto}
@@ -429,6 +430,33 @@ select.control{appearance:none;padding-right:34px}
   .code-line{align-items:flex-start;flex-direction:column}
   .prototype-badge{display:none}
 }
+
+/* SEORO — release workspace */
+a{color:inherit}.topbar{background:rgba(243,240,232,.95);padding:0 36px;border-color:rgba(16,24,39,.08)}
+.brand-home{font-family:"SUIT",sans-serif;font-size:25px;font-weight:850;letter-spacing:-.055em;text-decoration:none}
+.header-tools{display:flex;align-items:center;gap:24px}.header-back{font-size:12px;text-decoration:none;color:var(--text-2)}
+.header-back:hover{color:var(--accent)}.product-label{color:var(--text-2);letter-spacing:.16em;font-size:10px}
+.entry-stage{position:relative;overflow:hidden;isolation:isolate;background:#0C1728;color:#F3F0E8;padding:72px 36px 36px;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:60px}
+.entry-stage:before{content:"";position:absolute;z-index:-1;inset:-25%;background:radial-gradient(ellipse at 20% 25%,rgba(49,93,223,.24),transparent 50%),radial-gradient(ellipse at 82% 65%,rgba(174,191,220,.12),transparent 42%);animation:entryFlow 16s ease-in-out infinite alternate;pointer-events:none}
+@keyframes entryFlow{to{transform:translate(3%,-2%) scale(1.08)}}
+.entry-wrap{width:min(1120px,100%);display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.entry-head{margin:0;align-self:start;padding-top:12px}.eyebrow{font-size:11px;letter-spacing:.18em;font-weight:600;color:#AEBFDC;margin:0 0 22px}
+.entry-head .page-title{font-size:clamp(36px,4.3vw,60px);font-weight:650;line-height:1.2;letter-spacing:-.055em}
+.entry-head .page-title span{color:#AEBFDC}.entry-intro{color:#AEBFDC;line-height:1.85;font-size:14px;margin:24px 0 0;max-width:340px}
+.sound-sculpture{width:240px;height:150px;position:relative;margin:28px 0 0;perspective:600px;opacity:.8}
+.sound-sculpture i{position:absolute;inset:12px 24px;border:1px solid rgba(174,191,220,.42);border-radius:50%;transform:rotate(-25deg) rotateY(var(--angle));box-shadow:0 0 25px rgba(49,93,223,.06)}
+.sound-sculpture:after{content:"";position:absolute;width:8px;height:8px;border-radius:50%;background:#AEBFDC;top:70px;left:117px;box-shadow:0 0 28px #5276DF}
+.entry-list{color:var(--text);gap:12px}.entry-choice{min-height:112px;padding:22px 24px;border:0;background:#F3F0E8;border-radius:20px;gap:18px;transition:background .2s,box-shadow .2s,transform .2s}
+.entry-choice:hover{background:#fff;transform:translateY(-2px);box-shadow:0 12px 30px #0002}.entry-choice[aria-expanded="true"]{background:#DCE5F2;box-shadow:inset 0 0 0 2px #AEBFDC}
+.entry-choice .round-icon{background:#DCE5F2;color:#315DDF;width:44px;height:44px;border-radius:14px}.entry-title{font-size:19px;font-weight:650;letter-spacing:-.035em}.entry-copy{margin-top:5px}.entry-panel{margin-top:-4px;padding:24px;border:0;border-radius:20px}.entry-note{font-size:11px;color:#AEBFDC;line-height:1.7;margin:8px 4px 0}
+.entry-footer{width:min(1120px,100%);display:flex;justify-content:space-between;gap:16px;align-items:center;border-top:1px solid #aebfdc26;padding-top:22px;color:#AEBFDC;font-size:11px}.entry-footer a{text-decoration:none}
+.btn{font-weight:600;border-radius:10px;min-height:44px}.btn-sm{min-height:36px}.btn-primary{box-shadow:0 3px 10px #315ddf18}.btn-primary:hover{box-shadow:0 5px 16px #315ddf28}.btn:focus-visible,a:focus-visible,button:focus-visible{outline:2px solid #5276DF;outline-offset:3px}
+.sidebar{background:#0C1728;border:0;padding:28px 16px;gap:24px}.case-meta{border-bottom:1px solid #aebfdc26;padding-bottom:22px}.case-code{color:#AEBFDC}.case-title{color:#F3F0E8;margin-top:8px}.nav{gap:6px}.nav-btn{color:#AEBFDC;min-height:46px}.nav-icon,.nav-status{color:#AEBFDC}.nav-btn:hover{background:#ffffff0d;color:#fff}.nav-btn.active{background:#315DDF;color:#fff}.nav-btn.active .nav-icon,.nav-btn.active .nav-status{color:#fff}.side-progress{background:#ffffff08;border:1px solid #aebfdc26;color:#F3F0E8;padding:16px}.side-progress .micro{color:#AEBFDC}.side-progress .progress-track{background:#ffffff14}.side-progress .progress-fill{background:#AEBFDC}
+.main{padding-top:44px}.page-title{font-size:30px;font-weight:650;letter-spacing:-.045em}.page-head{margin-bottom:30px}.page-desc{line-height:1.7}.card{border-color:transparent;box-shadow:0 3px 16px #10182703}.control{min-height:44px;border-color:#D8DDE5;border-radius:10px}.control:hover{border-color:#AEBFDC}.form-card,.track-detail,.artist-detail,.contract-card{padding:26px}.section-title{font-weight:650}.section-row:hover{background:#EDF2FC}.round-icon,.avatar{background:#DCE5F2;color:#315DDF}.next-card{background:#DCE5F2}.completion-card{background:#0C1728;color:#F3F0E8;gap:16px}.completion-card .caption,.completion-card .micro,.completion-card .muted{color:#AEBFDC}.completion-card .donut{background:conic-gradient(#AEBFDC calc(var(--p)*1%),#24324A 0)}.completion-card .donut:after{background:#0C1728}.donut-num{font-size:34px}.cover{background:radial-gradient(circle at 38% 38%,#ffffff88,transparent 24%),linear-gradient(145deg,#DCE5F2,#AEBFDC 45%,#5276DF);color:#315DDF}.upload-box{background:#F7F9FE;border-color:#AEBFDC}.prototype-badge{display:none}body:has(#entryView:not([hidden])) .workspace-footer{display:none}.workspace-footer{text-align:center;padding:20px;color:var(--text-2);font-size:11px}.toast{background:#101827}.mobile-nav{background:rgba(243,240,232,.97)}
+@media(max-width:1100px){.entry-wrap{gap:40px}.track-layout,.artist-layout{grid-template-columns:1fr}.dsp-row{grid-template-columns:110px 140px minmax(0,1fr)}}
+@media(max-width:760px){.topbar{padding:0 18px}.brand-home{font-size:23px}.header-tools{gap:14px}.product-label{display:none}.entry-stage{padding:38px 20px 24px;gap:36px}.entry-wrap{grid-template-columns:1fr;gap:28px;max-width:520px}.entry-head{padding:0}.entry-head .page-title{font-size:40px}.entry-intro{margin-top:16px}.sound-sculpture{display:none}.eyebrow{margin-bottom:16px}.entry-choice{min-height:98px;padding:18px}.entry-title{font-size:18px}.entry-panel{padding:20px}.entry-footer{flex-direction:column;gap:10px;text-align:center}.page-title{font-size:27px}.form-card,.track-detail,.artist-detail,.contract-card{padding:20px}.dsp-row{grid-template-columns:1fr}.next-card,.upload-inline{align-items:flex-start;flex-wrap:wrap}.page-actions{width:100%}.toast{left:16px;right:16px;min-width:0;max-width:none}.entry-note{font-size:11px}.page-progress{min-width:0}.code{font-size:26px}.resume-found{flex-wrap:wrap}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.btn:hover,.entry-choice:hover{transform:none}}
+
 </style>
 </head>
 <body>
@@ -504,14 +532,17 @@ select.control{appearance:none;padding-right:34px}
 
 <header class="topbar">
   <button class="brand-home" type="button" onclick="goHome()">SEORO</button>
-  <span class="product-label">DISTRIBUTION</span>
+  <div class="header-tools"><span class="product-label">RELEASE PORTAL</span><a class="header-back" href="./index.html">메인 사이트 ↗</a></div>
 </header>
 
 <!-- ENTRY -->
 <main id="entryView" class="entry-stage">
   <section class="entry-wrap">
     <div class="entry-head">
-      <h1 class="page-title">어떻게 시작할까요?</h1>
+      <p class="eyebrow">YOUR MUSIC, FURTHER.</p>
+      <h1 class="page-title">음악의 다음 여정.<br><span>발매를 시작합니다.</span></h1>
+      <p class="entry-intro">앨범 정보부터 음원, 아티스트, 계약까지.<br>당신의 음악을 세상에 전할 준비를 함께합니다.</p>
+      <div class="sound-sculpture" aria-hidden="true"><i style="--angle:0deg"></i><i style="--angle:30deg"></i><i style="--angle:60deg"></i><i style="--angle:90deg"></i><i style="--angle:120deg"></i><i style="--angle:150deg"></i></div>
     </div>
 
     <div class="entry-list">
@@ -598,8 +629,10 @@ select.control{appearance:none;padding-right:34px}
         </div>
         <div id="verifyError" class="field-error" style="margin-top:10px" hidden>발매 코드를 찾을 수 없어요. 코드를 다시 확인해 주세요.</div>
       </section>
+      <p class="entry-note">체험용 프로토타입입니다. 입력 정보는 서버에 저장되지 않으며 실제 접수·메일 발송은 진행되지 않습니다.</p>
     </div>
   </section>
+  <footer class="entry-footer"><a href="https://sovo360.com/login">SOVO360 로그인 ↗</a><span>© 2026 AUDIOGUY Co., Ltd.</span></footer>
 </main>
 
 <!-- WORKSPACE -->
@@ -1138,6 +1171,7 @@ select.control{appearance:none;padding-right:34px}
   </div>
 </div>
 
+<footer class="workspace-footer">© 2026 AUDIOGUY Co., Ltd. · 체험용 프로토타입</footer>
 <div class="prototype-badge">INTERACTIVE PROTOTYPE · NO SERVER SAVE</div>
 
 <div class="modal-backdrop" id="unsavedModal" hidden>
@@ -1151,7 +1185,7 @@ select.control{appearance:none;padding-right:34px}
   </div>
 </div>
 
-<div class="toast" id="toast" hidden>
+<div class="toast" id="toast" role="status" aria-live="polite" hidden>
   <svg class="icon sm" style="color:#BCE7CE"><use href="#i-check"/></svg>
   <span id="toastText">저장했어요.</span>
 </div>
@@ -1189,6 +1223,7 @@ function toggleEntry(which){
     const panel=document.getElementById(key+'Panel');
     const open=state.entryOpen===key;
     choice.setAttribute('aria-expanded',String(open));
+    choice.setAttribute('aria-controls',key+'Panel');
     panel.hidden=!open;
   });
   if(state.entryOpen==='resume') setTimeout(()=>document.getElementById('resumeCode').focus(),30);
@@ -1278,8 +1313,9 @@ function showPage(page){
 
   document.querySelectorAll('[data-page]').forEach(btn=>{
     btn.classList.toggle('active',btn.dataset.page===page);
+    if(btn.dataset.page===page) btn.setAttribute('aria-current','step'); else btn.removeAttribute('aria-current');
   });
-  window.scrollTo({top:0,behavior:'smooth'});
+  window.scrollTo({top:0,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});
 }
 
 function markDirty(){state.dirty=true}
