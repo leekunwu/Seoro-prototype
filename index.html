@@ -142,6 +142,100 @@
 @media(hover:none),(pointer:coarse){.focus-card,.focus-card.is-active{transform:none}.hero .wrap{transform:none;scale:1!important}}
 @media(prefers-reduced-motion:reduce){.hero-bg i{animation:none!important;translate:none!important}#warp,#reflection{display:none}.hero .wrap{scale:1!important}.hero .wrap,#hero-button,.focus-card,.focus-card.is-active,.card-title{transform:none!important}.hero h1,.hero h1 span{background-position:50% 0!important}}
 </style>
+
+<style>
+/* Spatial / clay / inquiry edition */
+.nav-indicator{top:2px}
+.hero h1{font-weight:500}
+.hero h1 span{font-weight:700}
+#hero-button:before{background-image:linear-gradient(115deg,transparent 30%,rgba(255,255,255,.35) 48%,transparent 65%)}
+.header .actions{gap:0}
+.header .actions>[data-action="apply"]{max-width:0;padding-left:0;padding-right:0;margin-left:0;white-space:nowrap;overflow:hidden;transition:max-width .6s ease,padding .6s ease,margin .6s ease,opacity .5s,transform .5s,visibility .5s}
+.header.cta-visible .actions>[data-action="apply"]{max-width:180px;padding-left:22px;padding-right:22px;margin-left:22px}
+.header:not(.scrolled) .menu-toggle{display:none}
+.header.scrolled .menu-toggle{margin-left:16px}
+.clay-visual{position:absolute;right:20px;bottom:18px;width:180px;height:138px;pointer-events:none;opacity:1;transition:opacity .4s,filter .4s,transform .5s}
+.clay-visual svg{width:100%;height:100%;overflow:visible}
+.clay-motion{transform-origin:center;animation:clayBreathe var(--clay-cycle,9s) ease-in-out infinite;animation-delay:var(--clay-delay,0s);animation-play-state:paused}
+.clay-running .clay-motion{animation-play-state:running}
+@keyframes clayBreathe{0%,62%,100%{transform:translateY(0) rotate(0) scale(1)}72%{transform:translateY(-5px) rotate(-3deg) scale(1.035,.98)}84%{transform:translateY(1px) rotate(2deg) scale(.99,1.02)}}
+.focus-card.is-active .clay-visual{opacity:.055;transform:scale(1.05)}
+.focus-group.has-active .focus-card:not(.is-active) .clay-visual{opacity:.3;filter:blur(1px)}
+.spatial-grid .clay-visual{width:84%;height:160px;left:8%;right:auto;bottom:26px}
+.infrastructure-type{font-size:14px;bottom:17px;left:24px;letter-spacing:0}
+.infrastructure-type br{display:none}
+.spatial-grid .infrastructure-type + .clay-visual{bottom:42px;height:130px}
+@media(min-width:1001px){
+ .bento{grid-template-columns:repeat(6,minmax(0,1fr));gap:20px;align-items:start}
+ .bento .focus-card{grid-column:span 2;min-height:280px}
+ .bento .large{grid-column:span 3;min-height:300px}
+ .bento .focus-card:nth-child(3){grid-column:2 / span 3;grid-row:2}
+ .bento .focus-card:nth-child(4){grid-column:5 / span 2;grid-row:2}
+ .bento .focus-card:nth-child(5){grid-column:1 / span 3;grid-row:3}
+ .bento .focus-card:nth-child(6){grid-column:4 / span 2;grid-row:3}
+ .bento .focus-card:nth-child(7){grid-column:1 / span 2;grid-row:4}
+ .bento .focus-card:nth-child(8){grid-column:3 / span 2;grid-row:4}
+ .bento .focus-card:nth-child(9){grid-column:2 / span 2;grid-row:5}
+ .bento .focus-card:nth-child(10){grid-column:4 / span 3;grid-row:5}
+ .bento .focus-card:nth-child(3) .card-title,.bento .focus-card:nth-child(5) .card-title{font-size:29px}
+}
+@media(min-width:681px) and (max-width:1000px){.bento{grid-template-columns:repeat(2,minmax(0,1fr))}.bento .large{grid-column:span 1}.bento .card-title{font-size:24px}}
+@media(max-width:680px){
+ .header:not(.cta-visible) .actions>[data-action="apply"]{display:inline-flex}
+ .header.cta-visible .actions>[data-action="apply"]{padding-left:12px;padding-right:12px;margin-left:10px}
+ .header.scrolled .menu-toggle{margin-left:10px}
+ .bento .focus-card,.bento .large{min-height:168px;align-self:start}
+ .bento .card-trigger{min-height:168px}
+ .bento .is-active .card-trigger{min-height:92px}
+ .bento .clay-visual{width:95px;height:65px;right:12px;bottom:8px}
+ .bento .is-active .clay-visual{opacity:0}
+ .bento .card-title,.bento .large .card-title{font-size:17px}
+ .spatial-grid{grid-template-columns:1fr;gap:10px}
+ .spatial-grid .focus-card{min-height:160px}
+ .spatial-grid .card-trigger{min-height:160px;padding:22px}
+ .spatial-grid .card-title{max-width:58%;font-size:21px}
+ .spatial-grid .clay-visual,.spatial-grid .infrastructure-type + .clay-visual{width:120px;height:110px;left:auto;right:15px;bottom:12px}
+ .spatial-grid .infrastructure-type{left:22px;bottom:22px;font-size:12px;max-width:50%}
+ .spatial-grid .card-detail{position:relative;display:none;left:auto;right:auto;bottom:auto;padding:0 22px 23px}
+ .spatial-grid .is-active .card-trigger{min-height:78px;height:auto}
+ .spatial-grid .is-active .card-detail{display:block}
+ .spatial-grid .is-active .clay-visual,.spatial-grid .is-active .visual-type{opacity:0}
+}
+.inquiry{border:0;padding:0;width:min(600px,calc(100% - 28px));max-width:600px;max-height:min(88svh,850px);overflow:auto;border-radius:20px;background:var(--paper);color:var(--ink);box-shadow:0 35px 100px #07132255;transform-origin:50% 0}
+.inquiry::backdrop{background:rgba(12,23,40,.55);backdrop-filter:blur(9px)}
+.inquiry-inner{position:relative;padding:32px;overflow:hidden}
+.inquiry-inner:before{content:'';position:absolute;inset:-100px;pointer-events:none;background:radial-gradient(ellipse at var(--light-x,85%) var(--light-y,0%),#b4c9f544,transparent 45%);z-index:0}
+.inquiry-inner>*{position:relative}
+.inquiry-head{display:flex;align-items:flex-start;justify-content:space-between;gap:15px;margin-bottom:22px}
+.inquiry h2{font-size:29px;margin:0 0 7px}
+.inquiry .recipient{font-size:12px;line-height:1.7;color:var(--muted);margin:0}
+.close-inquiry{background:transparent;border:0;font-size:25px;color:var(--muted);padding:0 5px;min-width:32px;min-height:32px}
+.inquiry label{display:block;font-size:12px;font-weight:600;margin-bottom:8px}
+.form-pair{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.form-field{margin-bottom:18px;min-width:0}
+.inquiry input:not([type=file]),.inquiry select,.inquiry textarea{display:block;width:100%;font:inherit;font-size:14px;color:var(--ink);border:1px solid #c9ced5;background:#ffffff85;padding:12px 13px;border-radius:8px;min-height:44px;outline:none}
+.inquiry textarea{min-height:126px;resize:vertical;line-height:1.7}
+.inquiry input:focus,.inquiry textarea:focus,.inquiry select:focus{border-color:var(--blue);box-shadow:0 0 0 2px #315ddf18}
+.inquiry .hint{font-size:11px;line-height:1.6;color:var(--muted);margin:7px 0 0}
+.inquiry-actions{display:flex;justify-content:flex-end;gap:12px;margin-top:22px;align-items:center}
+.inquiry-actions .btn{margin:0}
+.attachment-label{display:inline-flex!important;align-items:center;padding:9px 13px;background:var(--pale);border-radius:8px;cursor:pointer;font-weight:500!important}
+.file-input{position:absolute;width:1px;height:1px;opacity:0;overflow:hidden}
+.file-input:focus-visible+.attachment-label{outline:2px solid var(--blue);outline-offset:3px}
+.file-list{list-style:none;padding:0;margin:5px 0 0}
+.file-list li{display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:12px;padding:7px 0;overflow-wrap:anywhere}
+.file-list button{flex-shrink:0;border:0;background:none;color:var(--muted);font-size:12px;padding:5px}
+.mock-note{font-size:11px!important;color:var(--muted);margin:0!important;line-height:1.5!important;margin-right:auto!important}
+.mail-meta{margin:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:12px 0;font-size:13px}
+.mail-meta div{display:grid;grid-template-columns:68px 1fr;gap:10px;padding:6px 0}
+.mail-meta dt{color:var(--muted)}.mail-meta dd{margin:0;overflow-wrap:anywhere}
+.mail-body{white-space:pre-wrap;overflow-wrap:anywhere;min-height:110px;padding-top:22px;font-size:14px!important;line-height:1.8!important;color:var(--ink)!important}
+.inquiry [hidden]{display:none!important}
+.prototype-toast{position:fixed;top:100px;left:50%;transform:translateX(-50%) translateY(-12px);opacity:0;visibility:hidden;background:var(--night);color:var(--paper);padding:13px 20px;border-radius:99px;z-index:60;font-size:12px;text-align:center;transition:opacity .35s,transform .35s;max-width:90%;pointer-events:none}
+.prototype-toast.show{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}
+@media(max-width:540px){.inquiry-inner{padding:24px}.form-pair{grid-template-columns:1fr;gap:0}.inquiry h2{font-size:26px}.inquiry-actions{flex-wrap:wrap}.mock-note{width:100%}.inquiry{max-height:90svh}}
+@media(prefers-reduced-motion:reduce){.clay-motion{animation:none!important}}
+</style>
 </head>
 <body>
 <a class="skip" href="#services">본문으로 이동</a>
@@ -152,26 +246,40 @@
 </div></header>
 <main>
 <section class="hero" id="hero" aria-labelledby="hero-title"><div class="hero-bg" aria-hidden="true"><i></i><i></i></div><canvas id="warp" aria-hidden="true"></canvas><canvas id="reflection" aria-hidden="true"></canvas><div class="wrap" id="hero-wrap"><h1 id="hero-title">음악을 더 입체적으로 만들고,<br><span>더 멀리 보냅니다.</span></h1><span id="hero-button-anchor"><button class="btn" id="hero-button" data-action="apply">음원 발매 접수</button></span></div></section>
-<section class="section services-section" id="services" data-nav="services" data-accent="#315ddf" aria-labelledby="services-title"><div class="wrap"><p class="section-kicker">What We Do</p><h2 class="section-heading" id="services-title">SEORO가 하는 일.</h2><div class="bento focus-group"><article class="focus-card large dark"><button type="button" class="card-trigger" aria-expanded="false" aria-controls="service-0" aria-labelledby="service-0-title"><span class="card-title" id="service-0-title">공간음향 제작</span><svg class="service-graphic" viewBox="0 0 220 120" aria-hidden="true"><g fill="none" stroke="currentColor"><ellipse cx="110" cy="63" rx="78" ry="39"/><ellipse cx="110" cy="63" rx="78" ry="14"/><path d="M32 63h156M110 24v78"/></g><g fill="currentColor"><circle cx="110" cy="63" r="4"/><circle cx="50" cy="44" r="3"/><circle cx="174" cy="81" r="3"/></g></svg></button><div class="card-detail" id="service-0" aria-hidden="true"><p><strong class="production-stat">3,000+ Spatial Audio IP</strong>3,000건 이상의 공간음향 IP를 제작했습니다.<br>Dolby Atmos 기반 공간음향 믹싱부터 플랫폼별 기술 QC까지.</p></div></article>
-<article class="focus-card large blue"><button type="button" class="card-trigger" aria-expanded="false" aria-controls="service-1" aria-labelledby="service-1-title"><span class="card-title" id="service-1-title">국내·글로벌<br>유통 & 발매</span><svg class="service-graphic" viewBox="0 0 220 120" aria-hidden="true"><g fill="none" stroke="currentColor"><path d="M32 60h55M87 60c27 0 22-30 50-30h49M87 60c27 0 22 30 50 30h49"/><circle cx="32" cy="60" r="7"/><circle cx="188" cy="30" r="7"/><circle cx="188" cy="90" r="7"/></g></svg></button><div class="card-detail" id="service-1" aria-hidden="true"><p>국내 주요 플랫폼 직접 공급과 Naxos를 통한 FUGA 글로벌 네트워크. 발매 일정과 권리 범위에 맞춰 공급합니다.</p></div></article>
-<article class="focus-card "><button type="button" class="card-trigger" aria-expanded="false" aria-controls="service-2" aria-labelledby="service-2-title"><span class="card-title" id="service-2-title">글로벌 플레이리스트 피칭</span><svg class="service-graphic compact" viewBox="0 0 160 100" aria-hidden="true"><g fill="none" stroke="currentColor"><path d="M30 24h69M30 48h52M30 72h38M111 78V36m0 0-14 14m14-14 14 14"/></g></svg></button><div class="card-detail" id="service-2" aria-hidden="true"><p>Spotify·Apple Music 등 주요 플랫폼의 플레이리스트 피칭을 지원합니다. 편성은 플랫폼의 편집 기준에 따라 결정됩니다.</p></div></article>
-<article class="focus-card mist"><button type="button" class="card-trigger" aria-expanded="false" aria-controls="service-3" aria-labelledby="service-3-title"><span class="card-title" id="service-3-title">정산시스템<br>SOVO360</span><svg class="service-graphic compact" viewBox="0 0 160 100" aria-hidden="true"><g fill="none" stroke="currentColor"><path d="M27 20h106v62H27zM45 64V51m22 13V35m22 29V43m22 21V28"/></g></svg></button><div class="card-detail" id="service-3" aria-hidden="true"><p>발매·플랫폼별 정산과 카탈로그 정보를 확인합니다. 국내 직배 및 공간음향 조건을 반영한 수수료·권리자 배분 구조를 안내합니다.</p></div></article>
-<article class="focus-card "><button type="button" class="card-trigger" aria-expanded="false" aria-controls="service-4" aria-labelledby="service-4-title"><span class="card-title" id="service-4-title">프리세이브 & 스마트링크</span><svg class="service-graphic compact" viewBox="0 0 160 100" aria-hidden="true"><g fill="none" stroke="currentColor"><path d="M67 62 56 73a20 20 0 0 1-28-28l18-18a20 20 0 0 1 28 0M93 38l11-11a20 20 0 1 1 28 28l-18 18a20 20 0 0 1-28 0M57 50h46"/></g></svg></button><div class="card-detail" id="service-4" aria-hidden="true"><p>발매 전 사전 저장부터 발매 후 주요 플랫폼을 한곳에 모은 청취 링크까지.</p></div></article>
-<article class="focus-card mist"><button type="button" class="card-trigger" aria-expanded="false" aria-controls="service-5" aria-labelledby="service-5-title"><span class="card-title" id="service-5-title">글로벌 시장 진출</span><svg class="service-graphic compact" viewBox="0 0 160 100" aria-hidden="true"><g fill="none" stroke="currentColor"><circle cx="80" cy="50" r="35"/><ellipse cx="80" cy="50" rx="15" ry="35"/><path d="M45 50h70M50 34h60M50 66h60"/></g></svg></button><div class="card-detail" id="service-5" aria-hidden="true"><p>국가별 권리 조건과 현지 파트너를 검토해 발매·프로모션 협력을 논의합니다.</p></div></article>
-<article class="focus-card "><button type="button" class="card-trigger" aria-expanded="false" aria-controls="service-6" aria-labelledby="service-6-title"><span class="card-title" id="service-6-title">YouTube Content ID</span><svg class="service-graphic compact" viewBox="0 0 160 100" aria-hidden="true"><g fill="none" stroke="currentColor"><rect x="27" y="24" width="106" height="58" rx="16"/><path d="m70 41 28 12-28 13Z"/></g></svg></button><div class="card-detail" id="service-6" aria-hidden="true"><p>음원 등록을 통해 YouTube 영상 내 사용을 식별하고 수익 관리를 지원합니다. 권리 및 플랫폼 정책에 따라 적용됩니다.</p></div></article>
-<article class="focus-card "><button type="button" class="card-trigger" aria-expanded="false" aria-controls="service-7" aria-labelledby="service-7-title"><span class="card-title" id="service-7-title">카탈로그 이전</span><svg class="service-graphic compact" viewBox="0 0 160 100" aria-hidden="true"><g fill="none" stroke="currentColor"><path d="M36 54v27h88V54M27 22h106l-9 24H36Z"/><path d="M80 65V30m0 35L65 50m15 15 15-15"/></g></svg></button><div class="card-detail" id="service-7" aria-hidden="true"><p>기존 계약과 권리 상태를 확인하고 음원·메타데이터 이전과 발매 운영을 지원합니다.</p></div></article>
-<article class="focus-card mist"><button type="button" class="card-trigger" aria-expanded="false" aria-controls="service-8" aria-labelledby="service-8-title"><span class="card-title" id="service-8-title">피지컬 제작</span><svg class="service-graphic compact" viewBox="0 0 160 100" aria-hidden="true"><g fill="none" stroke="currentColor"><circle cx="80" cy="51" r="36"/><circle cx="80" cy="51" r="10"/><circle cx="80" cy="51" r="2"/></g></svg></button><div class="card-detail" id="service-8" aria-hidden="true"><p>CD·바이닐·키트 등 작품과 프로젝트에 맞는 피지컬 제작을 협의합니다.</p></div></article>
-<article class="focus-card "><button type="button" class="card-trigger" aria-expanded="false" aria-controls="service-9" aria-labelledby="service-9-title"><span class="card-title" id="service-9-title">레이블·아티스트 서비스</span><svg class="service-graphic compact" viewBox="0 0 160 100" aria-hidden="true"><g fill="none" stroke="currentColor"><rect x="66" y="17" width="28" height="48" rx="14"/><path d="M52 50v2a28 28 0 0 0 56 0v-2M80 80v-15M62 82h36"/></g></svg></button><div class="card-detail" id="service-9" aria-hidden="true"><p>선정된 아티스트와 레이블은 전문팀과 제작·발매·콘텐츠 협업을 진행할 수 있습니다.</p></div></article></div></div></section>
-<section class="section spatial-section" id="spatial" data-nav="spatial" data-accent="#5276df" aria-labelledby="spatial-title"><div class="wrap"><p class="section-kicker">Why Spatial Audio</p><h2 class="section-heading" id="spatial-title">공간음향을 선택하는 이유.</h2><div class="spatial-grid focus-group"><article class="focus-card "><button type="button" class="card-trigger" aria-expanded="false" aria-controls="spatial-0" aria-labelledby="spatial-0-title"><span class="card-title" id="spatial-0-title">청취 경험의 확장</span><svg class="spatial-diagram" viewBox="0 0 340 180" aria-hidden="true"><g fill="none" stroke="currentColor" opacity=".3"><ellipse cx="170" cy="90" rx="125" ry="67"/><ellipse cx="170" cy="90" rx="125" ry="23"/><ellipse cx="170" cy="90" rx="48" ry="67"/><path d="M45 90h250M170 23v134"/></g><g fill="currentColor"><circle cx="170" cy="90" r="5"/><circle cx="68" cy="52" r="4"/><circle cx="280" cy="121" r="4"/></g><circle cx="170" cy="23" r="3" fill="#aebfdc"/></svg></button><div class="card-detail" id="spatial-0" aria-hidden="true"><p>높이 정보를 포함한 3차원 공간에 소리를 배치해 보컬과 악기의 위치·움직임을 더 선명하게 전달합니다.</p></div></article>
-<article class="focus-card "><button type="button" class="card-trigger" aria-expanded="false" aria-controls="spatial-1" aria-labelledby="spatial-1-title"><span class="card-title" id="spatial-1-title">제작 인프라</span><span class="visual-type infrastructure-type" aria-hidden="true">AUDIOGUY<br><em>&amp;</em> SOUND360</span></button><div class="card-detail" id="spatial-1" aria-hidden="true"><p>AUDIOGUY의 제작 경험과 SOUND360의 스튜디오 인프라, 다양한 공간음향 작업 경험을 바탕으로 제작부터 발매·공급까지 연결합니다.</p></div></article>
-<article class="focus-card "><button type="button" class="card-trigger" aria-expanded="false" aria-controls="spatial-2" aria-labelledby="spatial-2-title"><span class="card-title" id="spatial-2-title">정산 구조</span><svg class="spatial-visual" viewBox="0 0 220 150" aria-hidden="true"><g fill="none" stroke="currentColor"><path d="M25 119h170M42 105V77m39 28V55m39 50V35m39 70V20"/><path d="m151 28 8-8 8 8"/></g><circle cx="42" cy="77" r="4" fill="currentColor"/><circle cx="81" cy="55" r="4" fill="currentColor"/><circle cx="120" cy="35" r="4" fill="currentColor"/><circle cx="159" cy="20" r="4" fill="#aebfdc"/></svg></button><div class="card-detail" id="spatial-2" aria-hidden="true"><p>플랫폼별 공간음향 정산 조건과 국내 직배 구조를 함께 검토해 권리자에게 적용되는 배분 조건을 안내합니다.</p></div></article>
-<article class="focus-card "><button type="button" class="card-trigger" aria-expanded="false" aria-controls="spatial-3" aria-labelledby="spatial-3-title"><span class="card-title" id="spatial-3-title">피칭 자료의 완성도</span><svg class="spatial-visual" viewBox="0 0 220 150" aria-hidden="true"><g fill="none" stroke="currentColor"><rect x="29" y="34" width="96" height="84" rx="4"/><rect x="92" y="17" width="99" height="84" rx="4"/><path d="m128 45 28 14-28 14ZM48 55h45M48 75h32M48 95h38"/></g></svg></button><div class="card-detail" id="spatial-3" aria-hidden="true"><p>공간음향 버전과 모션아트를 포함해 작품의 특성이 드러나는 발매 자료를 준비합니다.</p></div></article></div><div class="conditions"><p>공간음향 지원 여부는 기기, 스트리밍 플랫폼, 발매 포맷에 따라 달라질 수 있습니다.</p><p>추가 로열티의 적용 여부·비율은 플랫폼 정책 및 계약 조건에 따르며, 플레이리스트 편성은 보장되지 않습니다.</p></div></div></section>
+<section class="section services-section" id="services" data-nav="services" data-accent="#315ddf" aria-labelledby="services-title"><div class="wrap"><p class="section-kicker">What We Do</p><h2 class="section-heading" id="services-title">SEORO가 하는 일.</h2><div class="bento focus-group"><article class="focus-card large dark"><button type="button" class="card-trigger" aria-expanded="false" aria-controls="service-0" aria-labelledby="service-0-title"><span class="card-title" id="service-0-title">공간음향 제작</span><span class="clay-visual" aria-hidden="true" style="--clay-cycle:8s;--clay-delay:-0s"><svg viewBox="0 0 220 180"><defs><linearGradient id="clayG0" x1="0" y1="0" x2=".8" y2="1"><stop stop-color="#ffffff"/><stop offset=".42" stop-color="#dce6f6"/><stop offset="1" stop-color="#8ca5ca"/></linearGradient><linearGradient id="clayB0" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#b2cafa"/><stop offset=".4" stop-color="#688be4"/><stop offset="1" stop-color="#294bae"/></linearGradient><filter id="clayF0" x="-40%" y="-40%" width="180%" height="190%"><feDropShadow dx="0" dy="7" stdDeviation="5" flood-color="#10274f" flood-opacity=".2"/></filter></defs><g class="clay-motion" stroke-linecap="round" stroke-linejoin="round"><g filter="url(#clayF0)"><ellipse cx="105" cy="86" rx="63" ry="34" fill="none" stroke="url(#clayG0)" stroke-width="14"/><ellipse cx="105" cy="86" rx="30" ry="61" fill="none" stroke="url(#clayG0)" stroke-width="12" transform="rotate(24 105 86)"/><circle cx="105" cy="86" r="21" fill="url(#clayB0)"/><circle cx="159" cy="63" r="12" fill="url(#clayB0)"/></g></g></svg></span></button><div class="card-detail" id="service-0" aria-hidden="true"><p><strong class="production-stat">3,000+ Spatial Audio IP</strong>3,000건 이상의 공간음향 IP를 제작했습니다.<br>Dolby Atmos 기반 공간음향 믹싱부터 플랫폼별 기술 QC까지.</p></div></article>
+<article class="focus-card large blue"><button type="button" class="card-trigger" aria-expanded="false" aria-controls="service-1" aria-labelledby="service-1-title"><span class="card-title" id="service-1-title">국내·글로벌<br>유통 & 발매</span><span class="clay-visual" aria-hidden="true" style="--clay-cycle:8.73s;--clay-delay:-1.31s"><svg viewBox="0 0 220 180"><defs><linearGradient id="clayG1" x1="0" y1="0" x2=".8" y2="1"><stop stop-color="#ffffff"/><stop offset=".42" stop-color="#dce6f6"/><stop offset="1" stop-color="#8ca5ca"/></linearGradient><linearGradient id="clayB1" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#b2cafa"/><stop offset=".4" stop-color="#688be4"/><stop offset="1" stop-color="#294bae"/></linearGradient><filter id="clayF1" x="-40%" y="-40%" width="180%" height="190%"><feDropShadow dx="0" dy="7" stdDeviation="5" flood-color="#10274f" flood-opacity=".2"/></filter></defs><g class="clay-motion" stroke-linecap="round" stroke-linejoin="round"><g filter="url(#clayF1)"><path d="M56 91H99Q119 91 119 53H164M99 91Q119 91 119 130H164" fill="none" stroke="url(#clayG1)" stroke-width="15"/><circle cx="48" cy="91" r="22" fill="url(#clayB1)"/><circle cx="169" cy="53" r="18" fill="url(#clayG1)"/><circle cx="169" cy="130" r="18" fill="url(#clayG1)"/></g></g></svg></span></button><div class="card-detail" id="service-1" aria-hidden="true"><p>국내 주요 플랫폼 직접 공급과 Naxos를 통한 FUGA 글로벌 네트워크. 발매 일정과 권리 범위에 맞춰 공급합니다.</p></div></article>
+<article class="focus-card "><button type="button" class="card-trigger" aria-expanded="false" aria-controls="service-2" aria-labelledby="service-2-title"><span class="card-title" id="service-2-title">글로벌 플레이리스트 피칭</span><span class="clay-visual" aria-hidden="true" style="--clay-cycle:9.46s;--clay-delay:-2.62s"><svg viewBox="0 0 220 180"><defs><linearGradient id="clayG2" x1="0" y1="0" x2=".8" y2="1"><stop stop-color="#ffffff"/><stop offset=".42" stop-color="#dce6f6"/><stop offset="1" stop-color="#8ca5ca"/></linearGradient><linearGradient id="clayB2" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#b2cafa"/><stop offset=".4" stop-color="#688be4"/><stop offset="1" stop-color="#294bae"/></linearGradient><filter id="clayF2" x="-40%" y="-40%" width="180%" height="190%"><feDropShadow dx="0" dy="7" stdDeviation="5" flood-color="#10274f" flood-opacity=".2"/></filter></defs><g class="clay-motion" stroke-linecap="round" stroke-linejoin="round"><g filter="url(#clayF2)"><rect x="37" y="30" width="116" height="121" rx="22" fill="url(#clayG2)" transform="rotate(-8 95 90)"/><path d="M61 61H118M61 85H104M61 109H89" stroke="#839aca" stroke-width="9"/><path d="M161 133V66M143 85L161 66L180 85" stroke="url(#clayB2)" stroke-width="16" fill="none"/></g></g></svg></span></button><div class="card-detail" id="service-2" aria-hidden="true"><p>Spotify·Apple Music 등 주요 플랫폼의 플레이리스트 피칭을 지원합니다. 편성은 플랫폼의 편집 기준에 따라 결정됩니다.</p></div></article>
+<article class="focus-card mist"><button type="button" class="card-trigger" aria-expanded="false" aria-controls="service-3" aria-labelledby="service-3-title"><span class="card-title" id="service-3-title">정산시스템<br>SOVO360</span><span class="clay-visual" aria-hidden="true" style="--clay-cycle:10.19s;--clay-delay:-3.93s"><svg viewBox="0 0 220 180"><defs><linearGradient id="clayG3" x1="0" y1="0" x2=".8" y2="1"><stop stop-color="#ffffff"/><stop offset=".42" stop-color="#dce6f6"/><stop offset="1" stop-color="#8ca5ca"/></linearGradient><linearGradient id="clayB3" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#b2cafa"/><stop offset=".4" stop-color="#688be4"/><stop offset="1" stop-color="#294bae"/></linearGradient><filter id="clayF3" x="-40%" y="-40%" width="180%" height="190%"><feDropShadow dx="0" dy="7" stdDeviation="5" flood-color="#10274f" flood-opacity=".2"/></filter></defs><g class="clay-motion" stroke-linecap="round" stroke-linejoin="round"><g filter="url(#clayF3)"><rect x="34" y="32" width="151" height="111" rx="24" fill="url(#clayG3)"/><path d="M64 116V90M95 116V66M126 116V79M157 116V55" stroke="url(#clayB3)" stroke-width="15"/></g></g></svg></span></button><div class="card-detail" id="service-3" aria-hidden="true"><p>발매·플랫폼별 정산과 카탈로그 정보를 확인합니다. 국내 직배 및 공간음향 조건을 반영한 수수료·권리자 배분 구조를 안내합니다.</p></div></article>
+<article class="focus-card "><button type="button" class="card-trigger" aria-expanded="false" aria-controls="service-4" aria-labelledby="service-4-title"><span class="card-title" id="service-4-title">프리세이브 & 스마트링크</span><span class="clay-visual" aria-hidden="true" style="--clay-cycle:10.92s;--clay-delay:-5.24s"><svg viewBox="0 0 220 180"><defs><linearGradient id="clayG4" x1="0" y1="0" x2=".8" y2="1"><stop stop-color="#ffffff"/><stop offset=".42" stop-color="#dce6f6"/><stop offset="1" stop-color="#8ca5ca"/></linearGradient><linearGradient id="clayB4" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#b2cafa"/><stop offset=".4" stop-color="#688be4"/><stop offset="1" stop-color="#294bae"/></linearGradient><filter id="clayF4" x="-40%" y="-40%" width="180%" height="190%"><feDropShadow dx="0" dy="7" stdDeviation="5" flood-color="#10274f" flood-opacity=".2"/></filter></defs><g class="clay-motion" stroke-linecap="round" stroke-linejoin="round"><g filter="url(#clayF4)"><g transform="rotate(-28 110 90)"><rect x="29" y="62" width="100" height="57" rx="28" fill="none" stroke="url(#clayG4)" stroke-width="19"/><rect x="93" y="62" width="100" height="57" rx="28" fill="none" stroke="url(#clayB4)" stroke-width="19"/></g></g></g></svg></span></button><div class="card-detail" id="service-4" aria-hidden="true"><p>발매 전 사전 저장부터 발매 후 주요 플랫폼을 한곳에 모은 청취 링크까지.</p></div></article>
+<article class="focus-card mist"><button type="button" class="card-trigger" aria-expanded="false" aria-controls="service-5" aria-labelledby="service-5-title"><span class="card-title" id="service-5-title">글로벌 시장 진출</span><span class="clay-visual" aria-hidden="true" style="--clay-cycle:11.65s;--clay-delay:-6.550000000000001s"><svg viewBox="0 0 220 180"><defs><linearGradient id="clayG5" x1="0" y1="0" x2=".8" y2="1"><stop stop-color="#ffffff"/><stop offset=".42" stop-color="#dce6f6"/><stop offset="1" stop-color="#8ca5ca"/></linearGradient><linearGradient id="clayB5" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#b2cafa"/><stop offset=".4" stop-color="#688be4"/><stop offset="1" stop-color="#294bae"/></linearGradient><filter id="clayF5" x="-40%" y="-40%" width="180%" height="190%"><feDropShadow dx="0" dy="7" stdDeviation="5" flood-color="#10274f" flood-opacity=".2"/></filter></defs><g class="clay-motion" stroke-linecap="round" stroke-linejoin="round"><g filter="url(#clayF5)"><circle cx="110" cy="88" r="62" fill="url(#clayB5)"/><ellipse cx="110" cy="88" rx="27" ry="60" fill="none" stroke="#c8d8f4" stroke-width="8"/><path d="M51 88H169M61 59H158M61 118H158" stroke="#c8d8f4" stroke-width="8"/></g></g></svg></span></button><div class="card-detail" id="service-5" aria-hidden="true"><p>국가별 권리 조건과 현지 파트너를 검토해 발매·프로모션 협력을 논의합니다.</p></div></article>
+<article class="focus-card "><button type="button" class="card-trigger" aria-expanded="false" aria-controls="service-6" aria-labelledby="service-6-title"><span class="card-title" id="service-6-title">YouTube Content ID</span><span class="clay-visual" aria-hidden="true" style="--clay-cycle:12.379999999999999s;--clay-delay:-7.86s"><svg viewBox="0 0 220 180"><defs><linearGradient id="clayG6" x1="0" y1="0" x2=".8" y2="1"><stop stop-color="#ffffff"/><stop offset=".42" stop-color="#dce6f6"/><stop offset="1" stop-color="#8ca5ca"/></linearGradient><linearGradient id="clayB6" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#b2cafa"/><stop offset=".4" stop-color="#688be4"/><stop offset="1" stop-color="#294bae"/></linearGradient><filter id="clayF6" x="-40%" y="-40%" width="180%" height="190%"><feDropShadow dx="0" dy="7" stdDeviation="5" flood-color="#10274f" flood-opacity=".2"/></filter></defs><g class="clay-motion" stroke-linecap="round" stroke-linejoin="round"><g filter="url(#clayF6)"><rect x="29" y="43" width="163" height="102" rx="31" fill="url(#clayB6)"/><path d="M96 69L140 94L96 120Z" fill="url(#clayG6)" stroke="url(#clayG6)" stroke-width="7"/></g></g></svg></span></button><div class="card-detail" id="service-6" aria-hidden="true"><p>음원 등록을 통해 YouTube 영상 내 사용을 식별하고 수익 관리를 지원합니다. 권리 및 플랫폼 정책에 따라 적용됩니다.</p></div></article>
+<article class="focus-card "><button type="button" class="card-trigger" aria-expanded="false" aria-controls="service-7" aria-labelledby="service-7-title"><span class="card-title" id="service-7-title">카탈로그 이전</span><span class="clay-visual" aria-hidden="true" style="--clay-cycle:13.11s;--clay-delay:-9.17s"><svg viewBox="0 0 220 180"><defs><linearGradient id="clayG7" x1="0" y1="0" x2=".8" y2="1"><stop stop-color="#ffffff"/><stop offset=".42" stop-color="#dce6f6"/><stop offset="1" stop-color="#8ca5ca"/></linearGradient><linearGradient id="clayB7" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#b2cafa"/><stop offset=".4" stop-color="#688be4"/><stop offset="1" stop-color="#294bae"/></linearGradient><filter id="clayF7" x="-40%" y="-40%" width="180%" height="190%"><feDropShadow dx="0" dy="7" stdDeviation="5" flood-color="#10274f" flood-opacity=".2"/></filter></defs><g class="clay-motion" stroke-linecap="round" stroke-linejoin="round"><g filter="url(#clayF7)"><path d="M45 70H174V137Q174 148 161 148H58Q45 148 45 135Z" fill="url(#clayG7)"/><path d="M37 64H182L174 85H45Z" fill="url(#clayB7)"/><path d="M110 28V105M88 83L110 106L133 83" fill="none" stroke="url(#clayB7)" stroke-width="15"/></g></g></svg></span></button><div class="card-detail" id="service-7" aria-hidden="true"><p>기존 계약과 권리 상태를 확인하고 음원·메타데이터 이전과 발매 운영을 지원합니다.</p></div></article>
+<article class="focus-card mist"><button type="button" class="card-trigger" aria-expanded="false" aria-controls="service-8" aria-labelledby="service-8-title"><span class="card-title" id="service-8-title">피지컬 제작</span><span class="clay-visual" aria-hidden="true" style="--clay-cycle:13.84s;--clay-delay:-10.48s"><svg viewBox="0 0 220 180"><defs><linearGradient id="clayG8" x1="0" y1="0" x2=".8" y2="1"><stop stop-color="#ffffff"/><stop offset=".42" stop-color="#dce6f6"/><stop offset="1" stop-color="#8ca5ca"/></linearGradient><linearGradient id="clayB8" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#b2cafa"/><stop offset=".4" stop-color="#688be4"/><stop offset="1" stop-color="#294bae"/></linearGradient><filter id="clayF8" x="-40%" y="-40%" width="180%" height="190%"><feDropShadow dx="0" dy="7" stdDeviation="5" flood-color="#10274f" flood-opacity=".2"/></filter></defs><g class="clay-motion" stroke-linecap="round" stroke-linejoin="round"><g filter="url(#clayF8)"><circle cx="110" cy="88" r="65" fill="url(#clayG8)"/><circle cx="110" cy="88" r="48" fill="none" stroke="#b7c9e5" stroke-width="3"/><circle cx="110" cy="88" r="30" fill="url(#clayB8)"/><circle cx="110" cy="88" r="11" fill="#dce5f2"/></g></g></svg></span></button><div class="card-detail" id="service-8" aria-hidden="true"><p>CD·바이닐·키트 등 작품과 프로젝트에 맞는 피지컬 제작을 협의합니다.</p></div></article>
+<article class="focus-card "><button type="button" class="card-trigger" aria-expanded="false" aria-controls="service-9" aria-labelledby="service-9-title"><span class="card-title" id="service-9-title">레이블·아티스트 서비스</span><span class="clay-visual" aria-hidden="true" style="--clay-cycle:14.57s;--clay-delay:-11.790000000000001s"><svg viewBox="0 0 220 180"><defs><linearGradient id="clayG9" x1="0" y1="0" x2=".8" y2="1"><stop stop-color="#ffffff"/><stop offset=".42" stop-color="#dce6f6"/><stop offset="1" stop-color="#8ca5ca"/></linearGradient><linearGradient id="clayB9" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#b2cafa"/><stop offset=".4" stop-color="#688be4"/><stop offset="1" stop-color="#294bae"/></linearGradient><filter id="clayF9" x="-40%" y="-40%" width="180%" height="190%"><feDropShadow dx="0" dy="7" stdDeviation="5" flood-color="#10274f" flood-opacity=".2"/></filter></defs><g class="clay-motion" stroke-linecap="round" stroke-linejoin="round"><g filter="url(#clayF9)"><rect x="85" y="22" width="48" height="85" rx="24" fill="url(#clayG9)"/><path d="M68 78V83A41 41 0 0 0 150 83V78M109 125V150M86 150H132" fill="none" stroke="url(#clayB9)" stroke-width="12"/></g></g></svg></span></button><div class="card-detail" id="service-9" aria-hidden="true"><p>선정된 아티스트와 레이블은 전문팀과 제작·발매·콘텐츠 협업을 진행할 수 있습니다.</p></div></article></div></div></section>
+<section class="section spatial-section" id="spatial" data-nav="spatial" data-accent="#5276df" aria-labelledby="spatial-title"><div class="wrap"><p class="section-kicker">Why Spatial Audio</p><h2 class="section-heading" id="spatial-title">공간음향을 선택하는 이유.</h2><div class="spatial-grid focus-group"><article class="focus-card "><button type="button" class="card-trigger" aria-expanded="false" aria-controls="spatial-0" aria-labelledby="spatial-0-title"><span class="card-title" id="spatial-0-title">청취 경험의 확장</span><span class="clay-visual" aria-hidden="true" style="--clay-cycle:15.3s;--clay-delay:-13.100000000000001s"><svg viewBox="0 0 220 180"><defs><linearGradient id="clayG10" x1="0" y1="0" x2=".8" y2="1"><stop stop-color="#ffffff"/><stop offset=".42" stop-color="#dce6f6"/><stop offset="1" stop-color="#8ca5ca"/></linearGradient><linearGradient id="clayB10" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#b2cafa"/><stop offset=".4" stop-color="#688be4"/><stop offset="1" stop-color="#294bae"/></linearGradient><filter id="clayF10" x="-40%" y="-40%" width="180%" height="190%"><feDropShadow dx="0" dy="7" stdDeviation="5" flood-color="#10274f" flood-opacity=".2"/></filter></defs><g class="clay-motion" stroke-linecap="round" stroke-linejoin="round"><g filter="url(#clayF10)"><ellipse cx="110" cy="91" rx="76" ry="39" fill="none" stroke="url(#clayG10)" stroke-width="12"/><ellipse cx="110" cy="91" rx="34" ry="68" fill="none" stroke="url(#clayG10)" stroke-width="10" transform="rotate(-25 110 91)"/><circle cx="110" cy="91" r="24" fill="url(#clayB10)"/><circle cx="173" cy="64" r="13" fill="url(#clayB10)"/></g></g></svg></span></button><div class="card-detail" id="spatial-0" aria-hidden="true"><p>높이 정보를 포함한 3차원 공간에 소리를 배치해 보컬과 악기의 위치·움직임을 더 선명하게 전달합니다.</p></div></article>
+<article class="focus-card "><button type="button" class="card-trigger" aria-expanded="false" aria-controls="spatial-1" aria-labelledby="spatial-1-title"><span class="card-title" id="spatial-1-title">제작 인프라</span><span class="visual-type infrastructure-type" aria-hidden="true">AUDIOGUY &amp; SOUND360</span><span class="clay-visual" aria-hidden="true" style="--clay-cycle:16.03s;--clay-delay:-14.41s"><svg viewBox="0 0 220 180"><defs><linearGradient id="clayG11" x1="0" y1="0" x2=".8" y2="1"><stop stop-color="#ffffff"/><stop offset=".42" stop-color="#dce6f6"/><stop offset="1" stop-color="#8ca5ca"/></linearGradient><linearGradient id="clayB11" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#b2cafa"/><stop offset=".4" stop-color="#688be4"/><stop offset="1" stop-color="#294bae"/></linearGradient><filter id="clayF11" x="-40%" y="-40%" width="180%" height="190%"><feDropShadow dx="0" dy="7" stdDeviation="5" flood-color="#10274f" flood-opacity=".2"/></filter></defs><g class="clay-motion" stroke-linecap="round" stroke-linejoin="round"><g filter="url(#clayF11)"><rect x="34" y="33" width="152" height="111" rx="25" fill="url(#clayG11)"/><path d="M69 57V119M110 57V119M151 57V119" stroke="#91a7cc" stroke-width="7"/><rect x="58" y="73" width="22" height="26" rx="9" fill="url(#clayB11)"/><rect x="99" y="95" width="22" height="26" rx="9" fill="url(#clayB11)"/><rect x="140" y="57" width="22" height="26" rx="9" fill="url(#clayB11)"/></g></g></svg></span></button><div class="card-detail" id="spatial-1" aria-hidden="true"><p>AUDIOGUY의 제작 경험과 SOUND360의 스튜디오 인프라, 다양한 공간음향 작업 경험을 바탕으로 제작부터 발매·공급까지 연결합니다.</p></div></article>
+<article class="focus-card "><button type="button" class="card-trigger" aria-expanded="false" aria-controls="spatial-2" aria-labelledby="spatial-2-title"><span class="card-title" id="spatial-2-title">정산 구조</span><span class="clay-visual" aria-hidden="true" style="--clay-cycle:16.759999999999998s;--clay-delay:-15.72s"><svg viewBox="0 0 220 180"><defs><linearGradient id="clayG12" x1="0" y1="0" x2=".8" y2="1"><stop stop-color="#ffffff"/><stop offset=".42" stop-color="#dce6f6"/><stop offset="1" stop-color="#8ca5ca"/></linearGradient><linearGradient id="clayB12" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#b2cafa"/><stop offset=".4" stop-color="#688be4"/><stop offset="1" stop-color="#294bae"/></linearGradient><filter id="clayF12" x="-40%" y="-40%" width="180%" height="190%"><feDropShadow dx="0" dy="7" stdDeviation="5" flood-color="#10274f" flood-opacity=".2"/></filter></defs><g class="clay-motion" stroke-linecap="round" stroke-linejoin="round"><g filter="url(#clayF12)"><rect x="41" y="100" width="33" height="45" rx="12" fill="url(#clayG12)"/><rect x="92" y="73" width="33" height="72" rx="12" fill="url(#clayG12)"/><rect x="143" y="39" width="33" height="106" rx="12" fill="url(#clayB12)"/><path d="M47 76L112 39M91 37L115 37L110 58" fill="none" stroke="url(#clayB12)" stroke-width="10"/></g></g></svg></span></button><div class="card-detail" id="spatial-2" aria-hidden="true"><p>플랫폼별 공간음향 정산 조건과 국내 직배 구조를 함께 검토해 권리자에게 적용되는 배분 조건을 안내합니다.</p></div></article>
+<article class="focus-card "><button type="button" class="card-trigger" aria-expanded="false" aria-controls="spatial-3" aria-labelledby="spatial-3-title"><span class="card-title" id="spatial-3-title">피칭 자료의 완성도</span><span class="clay-visual" aria-hidden="true" style="--clay-cycle:17.490000000000002s;--clay-delay:-17.03s"><svg viewBox="0 0 220 180"><defs><linearGradient id="clayG13" x1="0" y1="0" x2=".8" y2="1"><stop stop-color="#ffffff"/><stop offset=".42" stop-color="#dce6f6"/><stop offset="1" stop-color="#8ca5ca"/></linearGradient><linearGradient id="clayB13" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#b2cafa"/><stop offset=".4" stop-color="#688be4"/><stop offset="1" stop-color="#294bae"/></linearGradient><filter id="clayF13" x="-40%" y="-40%" width="180%" height="190%"><feDropShadow dx="0" dy="7" stdDeviation="5" flood-color="#10274f" flood-opacity=".2"/></filter></defs><g class="clay-motion" stroke-linecap="round" stroke-linejoin="round"><g filter="url(#clayF13)"><rect x="36" y="57" width="116" height="100" rx="19" fill="url(#clayG13)" transform="rotate(-8 95 107)"/><rect x="84" y="25" width="108" height="98" rx="20" fill="url(#clayB13)" transform="rotate(7 135 75)"/><path d="M124 49L160 76L124 95Z" fill="url(#clayG13)"/><path d="M57 115H108M57 134H89" stroke="#8da5cf" stroke-width="7"/></g></g></svg></span></button><div class="card-detail" id="spatial-3" aria-hidden="true"><p>공간음향 버전과 모션아트를 포함해 작품의 특성이 드러나는 발매 자료를 준비합니다.</p></div></article></div><div class="conditions"><p>공간음향 지원 여부는 기기, 스트리밍 플랫폼, 발매 포맷에 따라 달라질 수 있습니다.</p><p>추가 로열티의 적용 여부·비율은 플랫폼 정책 및 계약 조건에 따르며, 플레이리스트 편성은 보장되지 않습니다.</p></div></div></section>
 <section class="section" id="process" data-nav="process" data-accent="#315ddf" aria-labelledby="process-title"><div class="wrap"><p class="label">Process</p><h2 id="process-title">발매의 순서.</h2><ol class="steps"><li><small>01</small><h3>검토</h3><p>음악과 권리, 필요한 제작 범위를 확인합니다.</p></li><li><small>02</small><h3>준비</h3><p>조건과 일정을 협의하고 음원·아트워크·크레딧을 준비합니다.</p></li><li><small>03</small><h3>발매</h3><p>플랫폼 요건을 검수하고 국내외 발매를 진행합니다.</p></li><li><small>04</small><h3>정산</h3><p>정산 내역을 확인하고 카탈로그를 관리합니다.</p></li></ol></div></section>
 <section class="section partnership" id="partnership" data-nav="partnership" data-accent="#315ddf" aria-labelledby="partner-title"><div class="wrap"><div class="partner-head"><div><p class="label">Partnership</p><h2 id="partner-title">다음 작업을<br>함께.</h2><p class="lead">발매, 공동 제작, 새로운 시장.<br>프로젝트에 필요한 협력을 논의합니다.</p><div class="contact"><button class="btn" data-action="apply">음원 발매 접수</button><button class="inline-link" data-action="contact">파트너십 문의</button></div></div><div class="accordion-list partnership-list"><details><summary>IP 공동 제작·투자</summary><p>음악의 완성도, 권리 구조, 제작 범위와 시장성을 검토해 적합한 프로젝트의 제작비·발매 비용 투자와 IP 공동 개발을 협의합니다.</p></details><details><summary>공간음향 제작</summary><p>신규 발매와 기존 카탈로그의 원본 소스, 권리 상태, 목표 플랫폼을 확인하고 프로젝트에 맞는 공간음향 제작 방식을 제안합니다.</p></details><details><summary>피지컬·콘텐츠 협업</summary><p>CD·바이닐·키트 등 피지컬 제작과 모션아트, 인터뷰, 라이브 콘텐츠를 작품의 방향과 예산에 맞춰 협의합니다.</p></details><details><summary>한국·아시아 프로젝트</summary><p>해외 아티스트의 한국 활동과 국내 아티스트의 아시아 진출을 위해 로컬 발매, 공연·쇼케이스, 파트너 협력을 검토합니다.</p></details><p class="note">투자, 채널 노출, 공연 연계는 프로젝트별 검토와 별도 협의로 진행됩니다.</p></div></div></div></section>
 <section class="section faq-section" id="faq" data-nav="partnership" data-accent="#315ddf" aria-labelledby="faq-title"><div class="wrap"><p class="label">FAQ</p><h2 id="faq-title">자주 묻는 질문.</h2><div class="accordion-list faq-list"><details><summary>기존에 발매한 음원도 이전할 수 있나요?</summary><p>가능합니다. 기존 계약, 권리 상태, 음원과 메타데이터를 확인한 뒤 이전 범위와 일정을 안내합니다.</p></details><details><summary>공간음향 제작에는 어떤 자료가 필요한가요?</summary><p>보유한 멀티트랙 또는 스테레오 파일과 권리 정보를 확인합니다. 소스 상태, 일정, 플랫폼 요건에 따라 제작 방식과 가능 여부가 달라집니다.</p></details><details><summary>플레이리스트 피칭은 편성을 보장하나요?</summary><p>편성을 보장하지 않습니다. 발매 정보와 작품의 특성을 반영한 피칭 자료를 준비하며, 최종 편성은 각 플랫폼의 편집 기준에 따라 결정됩니다.</p></details><details><summary>YouTube Content ID는 모든 음원에 적용되나요?</summary><p>권리 관계와 YouTube 정책에 따라 등록 가능 여부가 달라집니다. 제3자 권리나 중복 등록 여부를 검토한 뒤 진행합니다.</p></details><details><summary>투자 또는 아티스트 서비스는 누구에게 제공되나요?</summary><p>모든 유통 신청에 자동으로 포함되지 않습니다. 음악, 권리 구조, 제작 범위, 프로젝트 방향을 검토해 적합한 프로젝트에 별도로 제안합니다.</p></details></div></div></section>
 </main>
 <footer class="footer"><div class="wrap"><p>© 2026 AUDIOGUY Co., Ltd.</p></div></footer>
-<dialog class="dialog" id="linkDialog" aria-labelledby="dialogTitle"><h2 id="dialogTitle">연결 준비 중</h2><p id="dialogDescription"></p><form method="dialog"><button class="btn">닫기</button></form></dialog>
+<dialog class="inquiry" id="linkDialog" aria-labelledby="dialogTitle">
+<div class="inquiry-inner">
+<header class="inquiry-head"><div><h2 id="dialogTitle">프로젝트 문의</h2><p class="recipient">오디오가이 뮤직IP팀<br>ip@audioguyrecords.com</p></div><button type="button" class="close-inquiry" aria-label="문의 닫기">×</button></header>
+<form id="inquiryForm">
+<div class="form-pair"><div class="form-field"><label for="senderName">이름</label><input id="senderName" name="name" autocomplete="name" maxlength="80" required></div><div class="form-field"><label for="senderEmail">발신 이메일</label><input id="senderEmail" name="email" type="email" autocomplete="email" maxlength="254" required></div></div>
+<div class="form-pair"><div class="form-field"><label for="inquiryType">문의 유형</label><select id="inquiryType" name="type" required><option value="">선택해 주세요</option><option>발매·음원 공급</option><option>공간음향 제작</option><option>IP 공동 제작·투자</option><option>피지컬·콘텐츠 협업</option><option>한국·아시아 프로젝트</option><option>기타</option></select></div><div class="form-field" id="otherField" hidden><label for="otherType">문의 유형 직접 입력</label><input id="otherType" name="other" maxlength="100" disabled></div></div>
+<div class="form-field"><label for="inquiryMessage">문의 내용</label><textarea id="inquiryMessage" name="message" maxlength="12000" placeholder="프로젝트 개요, 필요한 협업과 희망 일정을 알려주세요." aria-describedby="messageHint" required></textarea><p class="hint" id="messageHint">포트폴리오, 음원 청취 링크, 소셜 미디어 링크도 함께 남겨주세요.</p></div>
+<div class="form-field"><input type="file" id="inquiryFiles" class="file-input" multiple><label for="inquiryFiles" class="attachment-label">파일 첨부</label><ul id="fileList" class="file-list" aria-live="polite"></ul></div>
+<div class="inquiry-actions"><p class="mock-note">미리보기용 목업 · 실제 메일은 발송되지 않습니다.</p><button type="submit" class="btn">미리보기</button></div>
+</form>
+<section id="mailPreview" hidden aria-label="메일 미리보기">
+<dl class="mail-meta"><div><dt>받는 사람</dt><dd>오디오가이 뮤직IP팀<br>ip@audioguyrecords.com</dd></div><div><dt>발신인</dt><dd id="previewSender"></dd></div><div><dt>제목</dt><dd id="previewSubject"></dd></div></dl>
+<p id="previewBody" class="mail-body"></p><ul id="previewFiles" class="file-list"></ul>
+<div class="inquiry-actions"><p class="mock-note">미리보기용 목업 · 실제 메일은 발송되지 않습니다.</p><button type="button" id="editInquiry" class="text-btn">수정하기</button><button type="button" id="sendInquiry" class="btn">발송하기</button></div>
+</section></div></dialog><div class="prototype-toast" id="prototypeToast" role="status" aria-live="polite"></div>
 <script>
 /* 실제 운영 URL을 아래 세 항목에 넣으면 모든 동일 CTA에 적용됩니다.
    빈 값은 프로토타입 안내를 표시합니다. 임의 URL이나 접수 성공 화면은 사용하지 않습니다. */
@@ -242,76 +350,94 @@ document.querySelectorAll('.focus-group').forEach(group=>{
 /* Hero animation is managed by the isolated controller below. */
 document.querySelectorAll('.accordion-list').forEach(list=>list.querySelectorAll('details').forEach(item=>item.addEventListener('toggle',()=>{if(item.open)list.querySelectorAll('details[open]').forEach(openItem=>{if(openItem!==item)openItem.open=false})})));
 document.fonts?.ready.then(updateScroll);updateScroll();
-const dialog=document.getElementById('linkDialog');
-const names={apply:'음원 발매 접수',login:'SOVO360 로그인',contact:'파트너십 문의'};
-document.querySelectorAll('[data-action]').forEach(button=>button.addEventListener('click',()=>{const action=button.dataset.action;const url=LINKS[action];if(url){window.location.assign(url);return}closeMenu();document.getElementById('dialogTitle').textContent=names[action];document.getElementById('dialogDescription').textContent='현재는 디자인 프로토타입입니다. '+names[action]+' 주소가 연결되면 해당 페이지로 이동합니다. 입력이나 접수는 진행되지 않습니다.';dialog.showModal()}));
-dialog.addEventListener('click',e=>{if(e.target===dialog){const r=dialog.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)dialog.close()}});
+
+document.querySelectorAll('[data-action]').forEach(button=>button.addEventListener('click',()=>{
+ const action=button.dataset.action;
+ if(action==='contact'){closeMenu();window.openInquiry(button);return}
+ if(LINKS[action])window.location.assign(LINKS[action]);
+}));
 </script>
 
 <script>
 (()=>{
+
  const hero=document.getElementById('hero'),wrap=document.getElementById('hero-wrap'),title=document.getElementById('hero-title'),anchor=document.getElementById('hero-button-anchor'),btn=document.getElementById('hero-button');
  const canvas=document.getElementById('warp'),reflect=document.getElementById('reflection'),ctx=canvas.getContext('2d'),rc=reflect.getContext('2d');
  const motion=matchMedia('(prefers-reduced-motion: reduce)'),fine=matchMedia('(hover:hover) and (pointer:fine)');
- let W=1,H=1,frame=0,last=0,visible=false,active=false,tx=0,ty=0,x=0,y=0,m=0,bx=0,by=0,mx=0,my=0,box=null;
- const palette=['220,229,242','174,191,220','82,118,223'];
- const particles=[];
+ let W=1,H=1,frame=0,last=0,visible=false,active=false,hover=false,tx=0,ty=0,x=0,y=0,m=0,bx=0,by=0,mx=0,my=0,boost=0,box=null;
+ const palette=['220,229,242','174,191,220','82,118,223'],particles=[];
+ const smooth=t=>{t=Math.min(1,Math.max(0,t));return t*t*(3-2*t)};
  function spawn(p,initial=false){
-  Object.assign(p,{z:initial?Math.random()*.35:.02,angle:Math.random()*Math.PI*2,drift:(Math.random()-.5)*.048,radius:.08+Math.random()*.9,alpha:.15+Math.random()*.5,size:.5+Math.random()*1.6,speed:(.12+Math.random()*.15)*.21*(Math.random()<.35?.82+Math.random()*.4:1),power:1.9+Math.random()*1.1,aspect:.55+Math.random()*.15,fadeIn:.08+Math.random()*.1,fadeOut:.8+Math.random()*.12,delay:initial?Math.random()*1.8:0,age:0,depth:Math.random(),color:Math.random()<.08?(Math.random()<.5?1:2):0,pull:Math.random()<.4?.6+Math.random()*.7:Math.random()*.15,ox:(Math.random()-.5)*W*.12,oy:(Math.random()-.5)*H*.08,trail:[]});
-  p.glow=p.size>1.4&&p.alpha>.4&&Math.random()<.4?1+Math.random()*3.5:0;p.tail=p.speed>.033&&p.alpha>.45&&Math.random()<.5;return p;
+  const outer=Math.random()<.18,angle=Math.random()*Math.PI*2,start=outer?.35+Math.random()*.2:Math.sqrt(Math.random())*.32;
+  Object.assign(p,{angle,drift:(Math.random()-.5)*.025,start,progress:0,age:0,delay:initial?Math.random()*2:Math.random()*.35,fade:1+Math.random()*1.5,speed:.075+Math.random()*.045,alpha:.3+Math.random()*.42,size:.8+Math.random()*1.6,depth:Math.random(),color:Math.random()<.08?(Math.random()<.5?1:2):0,pull:Math.random()<.4?.6+Math.random()*.7:Math.random()*.15,trail:[],phase:Math.random()*Math.PI*2,px:null,py:null});
+  p.glow=p.size>1.4&&p.alpha>.4&&Math.random()<.4?1+Math.random()*3.5:0;p.tail=p.speed>.095&&p.alpha>.45&&Math.random()<.5;return p;
  }
  function measure(){
   W=hero.clientWidth;H=hero.clientHeight;const d=Math.min(devicePixelRatio||1,2);
   [canvas,reflect].forEach(c=>{c.width=Math.round(W*d);c.height=Math.round(H*d)});ctx.setTransform(d,0,0,d,0,0);rc.setTransform(d,0,0,d,0,0);
-  const wr=wrap.getBoundingClientRect(),ar=anchor.getBoundingClientRect(),tr=title.getBoundingClientRect();
-  box={ax:anchor.offsetLeft+anchor.offsetWidth/2,ay:anchor.offsetTop+anchor.offsetHeight/2,aw:anchor.offsetWidth,ah:anchor.offsetHeight,tw:tr.width,th:tr.height};
+  box={ax:anchor.offsetLeft+anchor.offsetWidth/2,ay:anchor.offsetTop+anchor.offsetHeight/2,aw:anchor.offsetWidth,ah:anchor.offsetHeight};
  }
- function reset(){active=false;tx=ty=0}
+ function reset(){active=false;hover=false;tx=ty=0}
  hero.addEventListener('pointermove',e=>{if(!fine.matches||motion.matches||e.pointerType!=='mouse')return;const r=hero.getBoundingClientRect();active=true;mx=e.clientX-r.left;my=e.clientY-r.top;tx=mx/W-.5;ty=my/H-.5});
  hero.addEventListener('pointerleave',reset);
+ btn.addEventListener('pointerenter',e=>{if(e.pointerType==='mouse'&&fine.matches&&!motion.matches)hover=true});
+ btn.addEventListener('pointerleave',()=>hover=false);
  function glow(px,py,size,a,color){const g=rc.createRadialGradient(px,py,0,px,py,size);g.addColorStop(0,'rgba('+color+','+a+')');g.addColorStop(1,'rgba('+color+',0)');rc.fillStyle=g;rc.beginPath();rc.arc(px,py,size,0,Math.PI*2);rc.fill()}
  function draw(now){
   frame=0;if(!visible||document.hidden||motion.matches)return;
   const dt=Math.min((now-(last||now))/1000,.05);last=now;const ease=1-Math.exp(-10.5*dt);
-  x+=(tx-x)*ease;y+=(ty-y)*ease;
-  const cx=wrap.offsetLeft+box.ax+x*26,cy=wrap.offsetTop+box.ay+y*20;
-  let target=active?Math.max(0,1-Math.hypot(mx-cx,my-cy)/170):0;target=target*target*(3-2*target);
+  x+=(tx-x)*ease;y+=(ty-y)*ease;boost+=((hover?1:0)-boost)*(1-Math.exp(-3*dt));
+  const cx=wrap.offsetLeft+box.ax+x*31.2,cy=wrap.offsetTop+box.ay+y*24;
+  const proximity=active?Math.max(0,1-Math.hypot(mx-cx,my-cy)/170):0;
+  const target=Math.pow(smooth(proximity),1.35);
   m+=(target-m)*(1-Math.exp(-(target>m?15:6.3)*dt));
-  bx+=((active?(mx-cx)*m*.5:0)-bx)*ease;by+=((active?(my-cy)*m*.5:0)-by)*ease;
-  wrap.style.setProperty('--hx',x*26+'px');wrap.style.setProperty('--hy',y*20+'px');wrap.style.setProperty('--hrx',-y*5.5+'deg');wrap.style.setProperty('--hry',x*5.5+'deg');
-  wrap.style.scale=String(1+Math.hypot(x,y)*.04);
-  title.style.setProperty('--chrome',50+x*70+'%');
-  hero.style.setProperty('--bg-x',-x*14+'px');hero.style.setProperty('--bg-y',-y*10+'px');hero.style.setProperty('--bg-x2',-x*9+'px');hero.style.setProperty('--bg-y2',-y*7+'px');
-  btn.style.setProperty('--bx',bx+'px');btn.style.setProperty('--by',by+'px');btn.style.setProperty('--bs',1+m*.22);btn.style.setProperty('--magnet',m);btn.style.setProperty('--shine',m*140-40+'%');
+  bx+=((active?(mx-cx)*m*.4:0)-bx)*ease;by+=((active?(my-cy)*m*.4:0)-by)*ease;
+  wrap.style.setProperty('--hx',x*31.2+'px');wrap.style.setProperty('--hy',y*24+'px');wrap.style.setProperty('--hrx',-y*6.6+'deg');wrap.style.setProperty('--hry',x*6.6+'deg');wrap.style.scale=String(1+Math.hypot(x,y)*.048);
+  title.style.setProperty('--chrome',50+x*84+'%');
+  hero.style.setProperty('--bg-x',-x*16.8+'px');hero.style.setProperty('--bg-y',-y*12+'px');hero.style.setProperty('--bg-x2',-x*10.8+'px');hero.style.setProperty('--bg-y2',-y*8.4+'px');
+  const emphasis=hover?1:m;
+  btn.style.setProperty('--bx',bx+'px');btn.style.setProperty('--by',by+'px');btn.style.setProperty('--bs',1+Math.max(m,boost)*.26);btn.style.setProperty('--magnet',Math.max(m,boost));btn.style.setProperty('--shine',Math.max(m,boost)*140-40+'%');
   ctx.clearRect(0,0,W,H);rc.clearRect(0,0,W,H);
-  const buttonX=cx+bx,buttonY=cy+by,radius=Math.max(260,box.aw*.5*6.5);
-  // One geometry read per frame after motion, only for the local reflection bounds.
-  const hr=hero.getBoundingClientRect(),tr=title.getBoundingClientRect();
-  for(const p of particles){
-   p.age+=dt;if(p.age<p.delay)continue;p.z+=p.speed*dt;p.angle+=p.drift*dt;if(p.z>1){spawn(p);continue}
-   const z=Math.pow(p.z,p.power),dist=z*Math.max(W,H)*.75*p.radius;
-   let px=W/2+p.ox*(1-z)+Math.cos(p.angle)*dist+x*34*(.3+p.depth*1.1),py=H/2+p.oy*(1-z)+Math.sin(p.angle)*dist*p.aspect+y*34*(.3+p.depth*1.1);
-   const d=Math.hypot(px-buttonX,py-buttonY),pull=d<radius?Math.pow(1-d/radius,1.6)*m*p.pull*.85:0;
-   px+=(buttonX-px)*pull;py+=(buttonY-py)*pull;
-   let a=p.alpha*Math.min(1,p.z/p.fadeIn)*Math.max(0,Math.min(1,(1-p.z)/(1-p.fadeOut)))*Math.min(1,.15+p.z/.22*.85);
-   const close=Math.hypot(px-buttonX,py-buttonY);if(m>.5&&close<box.ah*.5+8)a*=Math.max(0,(close-box.ah*.25)/(box.ah*.25+8));
-   if(m>.5&&close<box.ah*.25){spawn(p);continue}
-   const size=Math.max(.3,p.size*(.4+z*1.1)),color=palette[p.color];
-   if(p.tail){p.trail.push({x:px,y:py});if(p.trail.length>5)p.trail.shift();p.trail.forEach((v,i)=>{ctx.fillStyle='rgba('+color+','+(a*i/5*.25)+')';ctx.beginPath();ctx.arc(v.x,v.y,Math.max(.25,size*.6),0,Math.PI*2);ctx.fill()})}
-   ctx.save();if(p.glow){ctx.shadowColor='rgba('+color+',.9)';ctx.shadowBlur=p.glow}ctx.fillStyle='rgba('+color+','+a+')';ctx.beginPath();ctx.arc(px,py,size,0,Math.PI*2);ctx.fill();ctx.restore();
-   const lx=tr.left-hr.left,ly=tr.top-hr.top;
-   if(px>lx&&px<lx+tr.width&&py>ly&&py<ly+tr.height){rc.save();rc.beginPath();rc.rect(lx,ly,tr.width,tr.height);rc.clip();glow(px,py,size*6,Math.min(.1,a*.22),color);rc.restore()}
-   if(Math.abs(px-buttonX)<box.aw*.5&&Math.abs(py-buttonY)<box.ah*.5){rc.save();rc.beginPath();rc.roundRect(buttonX-box.aw/2,buttonY-box.ah/2,box.aw,box.ah,box.ah/2);rc.clip();glow(px,py,size*5,Math.min(.13,a*.25),color);rc.restore()}
-  }
+  const hr=hero.getBoundingClientRect(),tr=title.getBoundingClientRect(),br=btn.getBoundingClientRect();
+  const buttonX=br.left-hr.left+br.width/2,buttonY=br.top-hr.top+br.height/2;
+  const radius=Math.max(260,box.aw*.5*6.5)*(1+boost*.85),strength=Math.max(m,boost)*(1+boost);
+  const lx=tr.left-hr.left,ly=tr.top-hr.top;
+  particles.forEach((p,i)=>{
+   if(i>=58&&boost<.002){p.age=0;p.progress=0;p.px=p.py=null;p.trail=[];return}
+   p.age+=dt;if(p.age<p.delay)return;p.progress+=p.speed*dt;p.angle+=p.drift*dt;
+   const radial=p.start+(1-p.start)*p.progress;
+   if(radial>=1.04){spawn(p);return}
+   const ux=Math.cos(p.angle),uy=Math.sin(p.angle),edge=Math.min((W*.5)/Math.max(.0001,Math.abs(ux)),(H*.5)/Math.max(.0001,Math.abs(uy)));
+   const baseX=W/2+ux*edge*radial+x*40.8*(.3+p.depth),baseY=H/2+uy*edge*radial+y*40.8*(.3+p.depth);
+   if(p.px===null){p.px=baseX;p.py=baseY}
+   const dist=Math.hypot(buttonX-p.px,buttonY-p.py),attraction=dist<radius?Math.pow(1-dist/radius,1.6)*strength*p.pull:0;
+   if(attraction>.025){const pull=1-Math.exp(-attraction*3.2*dt);p.px+=(buttonX-p.px)*pull;p.py+=(buttonY-p.py)*pull}
+   else{p.px+=(baseX-p.px)*(1-Math.exp(-4*dt));p.py+=(baseY-p.py)*(1-Math.exp(-4*dt))}
+   const px=p.px,py=p.py,close=Math.hypot(buttonX-px,buttonY-py);
+   if(strength>.4&&close<12){spawn(p);return}
+   const edgeFade=1-smooth((radial-.75)/.25),depthDim=p.depth<.35?.6:1;
+   let a=p.alpha*smooth((p.age-p.delay)/p.fade)*edgeFade*depthDim*(i>=58?boost:1);
+   a*=strength>.4?smooth((close-10)/26):1;
+   const sparkle=attraction>.05?Math.pow(Math.max(0,Math.sin(now*.009+p.phase)),8)*Math.min(attraction,1):0;
+   a=Math.min(.9,a*(1+sparkle*1.8));
+   const blur=(p.depth<.35?1.2:0)+smooth((radial-.7)/.3)*2.2,size=p.size*(.7+radial*.75);
+   const color=palette[p.color];
+   if(p.tail){p.trail.push({x:px,y:py});if(p.trail.length>5)p.trail.shift();p.trail.forEach((v,j)=>{ctx.fillStyle='rgba('+color+','+(a*j/5*.25)+')';ctx.beginPath();ctx.arc(v.x,v.y,size*.6,0,Math.PI*2);ctx.fill()})}
+   ctx.save();if(blur>.1)ctx.filter='blur('+blur.toFixed(1)+'px)';
+   ctx.shadowColor='rgba('+color+',.9)';ctx.shadowBlur=p.glow+sparkle*7;
+   ctx.fillStyle='rgba('+color+','+a+')';ctx.beginPath();ctx.arc(px,py,size+sparkle*.6,0,Math.PI*2);ctx.fill();ctx.restore();
+   if(px>lx&&px<lx+tr.width&&py>ly&&py<ly+tr.height)glow(px,py,size*5,Math.min(.07,a*.15),color);
+   if(Math.abs(px-buttonX)<br.width/2&&Math.abs(py-buttonY)<br.height/2){rc.save();rc.beginPath();rc.roundRect(br.left-hr.left,br.top-hr.top,br.width,br.height,br.height/2);rc.clip();glow(px,py,size*6,Math.min(.18,a*.35),color);rc.restore()}
+  });
   frame=requestAnimationFrame(draw);
  }
  function sync(){
   cancelAnimationFrame(frame);frame=0;last=0;
   hero.querySelectorAll('.hero-bg i').forEach(el=>el.style.animationPlayState=visible&&!document.hidden&&!motion.matches?'running':'paused');
-  if(motion.matches){reset();x=y=m=bx=by=0;wrap.style.scale='1';ctx.clearRect(0,0,W,H);rc.clearRect(0,0,W,H)}
+  if(motion.matches){reset();x=y=m=bx=by=boost=0;wrap.style.scale='1';ctx.clearRect(0,0,W,H);rc.clearRect(0,0,W,H)}
   if(visible&&!document.hidden&&!motion.matches)frame=requestAnimationFrame(draw);
  }
- measure();for(let i=0;i<58;i++)particles.push(spawn({},true));
+ measure();for(let i=0;i<116;i++)particles.push(spawn({},true));
  new ResizeObserver(measure).observe(hero);document.fonts?.ready.then(measure);
  new IntersectionObserver(entries=>{visible=entries[0].isIntersecting;sync()}).observe(hero);
  document.addEventListener('visibilitychange',sync);motion.addEventListener('change',sync);fine.addEventListener('change',reset);
@@ -323,6 +449,55 @@ dialog.addEventListener('click',e=>{if(e.target===dialog){const r=dialog.getBoun
   const clear=()=>{card.style.removeProperty('--mx');card.style.removeProperty('--my');origin=null};
   card.addEventListener('pointerleave',clear);motion.addEventListener('change',clear);fine.addEventListener('change',clear);
  });
+})();
+</script>
+
+<script>
+(()=>{
+ const modal=document.getElementById('linkDialog'),form=document.getElementById('inquiryForm'),preview=document.getElementById('mailPreview'),heading=document.getElementById('dialogTitle');
+ const type=document.getElementById('inquiryType'),other=document.getElementById('otherType'),picker=document.getElementById('inquiryFiles'),list=document.getElementById('fileList'),send=document.getElementById('sendInquiry'),edit=document.getElementById('editInquiry'),toast=document.getElementById('prototypeToast');
+ const reduced=matchMedia('(prefers-reduced-motion:reduce)');
+ let files=[],opener=null,busy=false,animation=null,timer=0,oldOverflow='';
+ const name=document.getElementById('senderName'),email=document.getElementById('senderEmail'),message=document.getElementById('inquiryMessage');
+ function editView(){form.hidden=false;preview.hidden=true;heading.textContent='프로젝트 문의'}
+ function animate(frames,duration){if(reduced.matches)return Promise.resolve();animation=modal.animate(frames,{duration,easing:'cubic-bezier(.2,.8,.2,1)',fill:'none'});return animation.finished.catch(()=>{}).finally(()=>animation=null)}
+ window.openInquiry=async button=>{
+  if(modal.open||busy)return;opener=button;editView();modal.showModal();oldOverflow=document.body.style.overflow;document.body.style.overflow='hidden';
+  const r=modal.getBoundingClientRect(),o=button.getBoundingClientRect(),dx=o.left+o.width/2-(r.left+r.width/2),dy=o.top+o.height/2-r.top;
+  await animate([{opacity:0,transform:'translate('+dx+'px,'+dy+'px) scale(.06,.02)',borderRadius:'90px',clipPath:'polygon(45% 0,55% 0,100% 100%,0 100%)'},{offset:.65,opacity:1,transform:'translate(0,0) scale(.96,1.03)',clipPath:'polygon(0 0,100% 0,100% 100%,0 100%)'},{opacity:1,transform:'none',borderRadius:'20px'}],620);
+ };
+ async function close(sending=false){
+  if(busy||!modal.open)return;busy=true;animation?.cancel();send.disabled=true;edit.disabled=true;
+  const r=modal.getBoundingClientRect(),o=opener?.getBoundingClientRect(),dx=sending?innerWidth/2-(r.left+r.width/2):(o?o.left+o.width/2-(r.left+r.width/2):0),dy=sending?-r.top-80:(o?o.top+o.height/2-r.top:40);
+  await animate([{opacity:1,transform:'none',clipPath:'polygon(0 0,100% 0,100% 100%,0 100%)'},{offset:.4,opacity:.95,transform:'translate(0,-20px) scale(.82,1.08)',clipPath:'polygon(35% 0,65% 0,100% 100%,0 100%)'},{opacity:0,transform:'translate('+dx+'px,'+dy+'px) scale(.035,.08)',clipPath:'polygon(45% 0,55% 0,60% 100%,40% 100%)'}],sending?720:460);
+  modal.close();document.body.style.overflow=oldOverflow;busy=false;send.disabled=false;edit.disabled=false;opener?.focus({preventScroll:true});
+  if(sending){form.reset();files=[];picker.value='';refreshFiles();toggleOther();editView();toast.textContent='발송 모션 미리보기 완료 · 실제 메일은 발송되지 않았습니다.';toast.classList.add('show');clearTimeout(timer);timer=setTimeout(()=>toast.classList.remove('show'),4200)}
+ }
+ modal.querySelector('.close-inquiry').addEventListener('click',()=>close());
+ modal.addEventListener('cancel',e=>{e.preventDefault();close()});
+ modal.addEventListener('click',e=>{if(e.target!==modal)return;const r=modal.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)close()});
+ modal.addEventListener('pointermove',e=>{if(reduced.matches||e.pointerType!=='mouse')return;const r=modal.getBoundingClientRect();modal.style.setProperty('--light-x',(e.clientX-r.left)/r.width*100+'%');modal.style.setProperty('--light-y',(e.clientY-r.top)/r.height*100+'%')});
+ function toggleOther(){const on=type.value==='기타';document.getElementById('otherField').hidden=!on;other.disabled=!on;other.required=on}
+ type.addEventListener('change',toggleOther);
+ function refreshFiles(){list.replaceChildren();files.forEach((f,i)=>{const li=document.createElement('li'),label=document.createElement('span'),remove=document.createElement('button');label.textContent=f.name+' · '+(f.size/1024/1024<1?Math.max(1,Math.round(f.size/1024))+' KB':(f.size/1024/1024).toFixed(1)+' MB');remove.type='button';remove.textContent='삭제';remove.setAttribute('aria-label',f.name+' 삭제');remove.onclick=()=>{files.splice(i,1);refreshFiles()};li.append(label,remove);list.append(li)})}
+ picker.addEventListener('change',()=>{for(const f of picker.files){if(!files.some(v=>v.name===f.name&&v.size===f.size&&v.lastModified===f.lastModified))files.push(f)}picker.value='';refreshFiles()});
+ form.addEventListener('submit',e=>{
+  e.preventDefault();
+  name.setCustomValidity(name.value.trim()?'':'이름을 입력해 주세요.');message.setCustomValidity(message.value.trim()?'':'문의 내용을 입력해 주세요.');other.setCustomValidity(other.disabled||other.value.trim()?'':'문의 유형을 입력해 주세요.');
+  if(!form.reportValidity())return;
+  const category=type.value==='기타'?other.value.trim():type.value;
+  document.getElementById('previewSender').textContent=name.value.trim()+' <'+email.value.trim()+'>';
+  document.getElementById('previewSubject').textContent='[SEORO 문의] '+category+' — '+name.value.trim();
+  document.getElementById('previewBody').textContent=message.value.trim();
+  const target=document.getElementById('previewFiles');target.replaceChildren();files.forEach(f=>{const li=document.createElement('li');li.textContent=f.name;target.append(li)});
+  form.hidden=true;preview.hidden=false;heading.textContent='메일 미리보기';modal.scrollTop=0;edit.focus();
+ });
+ [name,message,other].forEach(el=>el.addEventListener('input',()=>el.setCustomValidity('')));
+ edit.addEventListener('click',()=>{editView();message.focus()});
+ send.addEventListener('click',()=>close(true));
+ const observer=new IntersectionObserver(entries=>entries.forEach(entry=>entry.target.classList.toggle('clay-running',entry.isIntersecting&&!document.hidden)));
+ document.querySelectorAll('.focus-card').forEach(card=>observer.observe(card));
+ document.addEventListener('visibilitychange',()=>{document.querySelectorAll('.focus-card').forEach(card=>{const r=card.getBoundingClientRect();card.classList.toggle('clay-running',!document.hidden&&r.bottom>0&&r.top<innerHeight)})});
 })();
 </script>
 </body>
