@@ -1,3 +1,100 @@
+hero_warp_merged_BC_v3.html
+파일
+
+결정사항은 너의 추천대로 하는게 좋을거 같아.
+그리고 추가로, 히어로 부분 인터렉션 및 업데이트를 추가로 한 것들이 있어.
+시안 줄게. 반영한 내용들 리스트도 줄게.
+
+히어로 인터랙션/애니메이션 전체 리스트업
+
+배경 레이어
+
+기존 heroFlow(radial gradient 흐름, 12초 주기), heroSheen(대각선 광택, 15초 주기) 애니메이션 유지
+포인터 이동에 따라 배경 그라디언트 2겹이 텍스트와 반대 방향으로 미세하게 시차 이동(parallax)
+
+파티클 시스템 (Warp)
+
+58개의 파티클이 중심 부근(비집약적으로 분산된 시작점)에서 바깥으로 확산되는 워프 이동
+개별 랜덤화: 크기, 투명도, 속도(35%는 -18%~+22% 편차), 각도 드리프트, 이동 곡선(easingPower), 타원율
+페이드인/아웃 커브를 파티클별로 다르게 설정해 동시 등장/소멸 방지, 초기 순차 등장(initialDelay)
+중심부(스폰 직후) 알파를 추가 억제해 뭉침 현상 완화(centerSuppression)
+조건 충족 파티클 중 40%만 은은한 글로우(shadowBlur) 적용
+빠르고 밝은 일부 파티클에 약한 잔상(tail) 효과
+8% 이하 파티클에 미세한 색상 편차(블루/앰버 계열)
+
+텍스트 크롬 재질
+
+h1에 다중 그라디언트로 크롬/메탈 톤 적용, 포인터 이동에 따라 그라디언트 위치가 흐르듯 이동
+
+파티클-텍스트/버튼 반사
+
+별도의 mix-blend-mode: screen 캔버스에서, 파티클이 텍스트나 버튼 영역을 지나갈 때만 옅은 반사광 표시
+
+포인터 인터랙션 (전체 재구조화)
+
+텍스트+버튼(wrap) 전체가 마우스를 따라 pan/tilt/scale
+버튼 마그네틱 호버: 반경 170px(블랙홀급 확대) 안에서 smoothstep 기반으로 끌려오고 커지며, 크롬 하이라이트가 표면을 스침
+버튼에 흡입 민감도가 높은 파티클들이 궤적을 틀어 버튼 쪽으로 빨려들어가다가 중심 근처에서 소멸·재생성
+모든 pan/tilt/magnet 값을 단일 draw() 루프에서 lerp로 통합 관리해 이벤트-렌더 타이밍 불일치로 인한 튐 현상 제거
+
+접근성
+
+prefers-reduced-motion: reduce 환경에서는 배경 애니메이션, 텍스트 크롬 위치 변화, 버튼 transform, 파티클 캔버스 전체를 비활성화
+release-submission(1).html
+파일
+지금까지의 BI 톤앤매너에 맞춰서 내가 주는 파일(유통신청시스템)도 리뉴얼 해줘.
+
+release-submission.html 다운로드
+
+SEORO 톤앤매너로 리뉴얼했습니다.
+
+네이비·웜화이트·블루 컬러 적용
+SEORO 로고에 SUIT 굵은체 적용
+시작 화면에 그라디언트·공간음향 그래픽 추가
+입력폼·사이드바·진행률·버튼 디자인 통일
+모바일 레이아웃 및 모션 감소 설정 대응
+메인 사이트 복귀 링크 추가
+
+기존 입력 항목과 프로토타입 동작을 유지했습니다. index.html과 같은 폴더에 올리면 연결됩니다.
+
+문법·구조 검사는 완료했으며, 실제 브라우저 화면 검증은 미완료입니다.
+
+release-submission.html
+HTML
+오늘 오후 12:51
+폰트, 컬러 시스템 등 CSS가 상이한데, 모두 플랫폼(Seoro prototype)고ㅓ 통일 해줘. 네비게이션 바 두께나 고정여부, 텍스트 배치 위치 등. 그리고 불필요한 텍스트 추가하는 것은 최소화 해줘.
+
+접수 페이지를 SEORO 메인 프로토타입의 BI에 맞춰 통일했습니다. 본문은 Wanted Sans, SEORO 표기는 SUIT Bold로 맞췄고, 컬러·헤더 높이와 고정 방식·시작 화면의 중앙 정렬을 동일한 기준으로 적용했습니다. 중복 문구는 줄이고 기존 입력 항목과 화면 전환은 유지했습니다.
+
+release-submission.html 다운로드
+
+메인 index.html의 접수 버튼이 가리키는 파일명으로 저장했습니다. 코드 구조와 문법은 확인했으며, 실제 브라우저 렌더링은 검증하지 못했습니다.
+
+index.html
+/개발/index.html
+index.html
+/index.html
+release-submission.html
+/개발/release-submission.html
+index.html
+/개발/index.html
+index.html
+/index.html
+release-submission.html
+/개발/release-submission.html
+release-submission.html
+HTML
+
+메인으로 돌아가기 누르면 http://leekunwu.github.io/Seoro-prototype
+이 주소로 바로 리다이렉트 되기 때문에, 메인 페이지에 대한 코드는 전부 지워줘.
+그리고 히어로는 윗줄 500~550, 아랫줄 700 유지를 추천
+
+release-submission.html 다운로드
+
+상단 SEORO 로고와 두 곳의 ‘메인으로’ 링크를 모두 지정한 주소로 연결했습니다. 내부 메인 복귀 코드와 확인 모달은 제거하고, 접수에 필요한 시작 화면은 유지했습니다. 히어로 글자 굵기는 윗줄 500, 아랫줄 700으로 적용했습니다.
+
+링크와 JavaScript 문법을 확인했습니다.
+
 <!doctype html>
 <html lang="ko">
 <head>
@@ -387,11 +484,6 @@ select.control{appearance:none;padding-right:34px}
   padding:12px 14px;border-radius:var(--r-md);background:#1F2429;color:#fff;
   display:flex;align-items:center;gap:9px;box-shadow:var(--shadow-float)
 }
-.modal-backdrop{
-  position:fixed;inset:0;z-index:110;background:rgba(20,26,31,.28);display:grid;place-items:center;padding:20px
-}
-.modal{width:min(420px,100%);background:#fff;border-radius:var(--r-xl);box-shadow:var(--shadow-float);padding:22px}
-.modal-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:20px}
 .mobile-nav{display:none}
 
 /* dev controls */
@@ -443,28 +535,24 @@ a{color:inherit}.topbar{background:rgba(243,240,232,.95);padding:0 36px;border-c
 .entry-stage:before{content:"";position:absolute;z-index:-1;inset:-25%;background:radial-gradient(ellipse at 20% 25%,rgba(49,93,223,.24),transparent 50%),radial-gradient(ellipse at 82% 65%,rgba(174,191,220,.12),transparent 42%);animation:entryFlow 16s ease-in-out infinite alternate;pointer-events:none}
 @keyframes entryFlow{to{transform:translate(3%,-2%) scale(1.08)}}
 .entry-wrap{width:min(1120px,84vw,100%);display:grid;grid-template-columns:1fr;gap:42px;justify-items:center;align-items:center}
-.entry-head{margin:0;align-self:start;padding-top:12px}.eyebrow{font-size:11px;letter-spacing:.18em;font-weight:600;color:#AEBFDC;margin:0 0 22px}
+.entry-head{margin:0;align-self:start;padding-top:12px}
 .entry-head .page-title{font-size:clamp(36px,4.3vw,60px);font-weight:650;line-height:1.2;letter-spacing:-.055em}
-.entry-head .page-title span{color:#AEBFDC}.entry-intro{color:#AEBFDC;line-height:1.85;font-size:14px;margin:24px 0 0;max-width:340px}
-.sound-sculpture{width:240px;height:150px;position:relative;margin:28px 0 0;perspective:600px;opacity:.8}
-.sound-sculpture i{position:absolute;inset:12px 24px;border:1px solid rgba(174,191,220,.42);border-radius:50%;transform:rotate(-25deg) rotateY(var(--angle));box-shadow:0 0 25px rgba(49,93,223,.06)}
-.sound-sculpture:after{content:"";position:absolute;width:8px;height:8px;border-radius:50%;background:#AEBFDC;top:70px;left:117px;box-shadow:0 0 28px #5276DF}
 .entry-list{color:var(--text);gap:12px}.entry-choice{min-height:112px;padding:22px 24px;border:0;background:#F3F0E8;border-radius:20px;gap:18px;transition:background .2s,box-shadow .2s,transform .2s}
 .entry-choice:hover{background:#fff;transform:translateY(-2px);box-shadow:0 12px 30px #0002}.entry-choice[aria-expanded="true"]{background:#DCE5F2;box-shadow:inset 0 0 0 2px #AEBFDC}
 .entry-choice .round-icon{background:#DCE5F2;color:#315DDF;width:44px;height:44px;border-radius:14px}.entry-title{font-size:19px;font-weight:650;letter-spacing:-.035em}.entry-copy{margin-top:5px}.entry-panel{margin-top:-4px;padding:24px;border:0;border-radius:20px}.entry-note{font-size:11px;color:#AEBFDC;line-height:1.7;margin:8px 4px 0}
 .entry-footer{width:min(1180px,84vw,100%);text-align:center;border-top:1px solid #aebfdc26;padding-top:22px;color:var(--sky);font-size:11px}
-.btn{font-weight:600;border-radius:10px;min-height:44px}.btn-sm{min-height:36px}.btn-primary{box-shadow:0 3px 10px #315ddf18}.btn-primary:hover{box-shadow:0 5px 16px #315ddf28}.btn:focus-visible,a:focus-visible,button:focus-visible{outline:2px solid #5276DF;outline-offset:3px}
+.btn{font-weight:600;border-radius:10px;min-height:44px;text-decoration:none}.btn-sm{min-height:36px}.btn-primary{box-shadow:0 3px 10px #315ddf18}.btn-primary:hover{box-shadow:0 5px 16px #315ddf28}.btn:focus-visible,a:focus-visible,button:focus-visible{outline:2px solid #5276DF;outline-offset:3px}
 .sidebar{background:#0C1728;border:0;padding:28px 16px;gap:24px}.case-meta{border-bottom:1px solid #aebfdc26;padding-bottom:22px}.case-code{color:#AEBFDC}.case-title{color:#F3F0E8;margin-top:8px}.nav{gap:6px}.nav-btn{color:#AEBFDC;min-height:46px}.nav-icon,.nav-status{color:#AEBFDC}.nav-btn:hover{background:#ffffff0d;color:#fff}.nav-btn.active{background:#315DDF;color:#fff}.nav-btn.active .nav-icon,.nav-btn.active .nav-status{color:#fff}.side-progress{background:#ffffff08;border:1px solid #aebfdc26;color:#F3F0E8;padding:16px}.side-progress .micro{color:#AEBFDC}.side-progress .progress-track{background:#ffffff14}.side-progress .progress-fill{background:#AEBFDC}
 .main{padding-top:44px}.page-title{font-size:30px;font-weight:650;letter-spacing:-.045em}.page-head{margin-bottom:30px}.page-desc{line-height:1.7}.card{border-color:transparent;box-shadow:0 3px 16px #10182703}.control{min-height:44px;border-color:#D8DDE5;border-radius:10px}.control:hover{border-color:#AEBFDC}.form-card,.track-detail,.artist-detail,.contract-card{padding:26px}.section-title{font-weight:650}.section-row:hover{background:#EDF2FC}.round-icon,.avatar{background:#DCE5F2;color:#315DDF}.next-card{background:#DCE5F2}.completion-card{background:#0C1728;color:#F3F0E8;gap:16px}.completion-card .caption,.completion-card .micro,.completion-card .muted{color:#AEBFDC}.completion-card .donut{background:conic-gradient(#AEBFDC calc(var(--p)*1%),#24324A 0)}.completion-card .donut:after{background:#0C1728}.donut-num{font-size:34px}.cover{background:radial-gradient(circle at 38% 38%,#ffffff88,transparent 24%),linear-gradient(145deg,#DCE5F2,#AEBFDC 45%,#5276DF);color:#315DDF}.upload-box{background:#F7F9FE;border-color:#AEBFDC}.prototype-badge{display:none}body:has(#entryView:not([hidden])) .workspace-footer{display:none}.workspace-footer{text-align:center;padding:20px;color:var(--text-2);font-size:11px}.toast{background:#101827}.mobile-nav{background:rgba(243,240,232,.97)}
 @media(max-width:1100px){.entry-wrap{gap:40px}.track-layout,.artist-layout{grid-template-columns:1fr}.dsp-row{grid-template-columns:110px 140px minmax(0,1fr)}}
-@media(max-width:760px){.entry-stage{padding:calc(var(--topbar) + 30px) 20px 24px;gap:36px}.entry-wrap{grid-template-columns:1fr;gap:28px;max-width:520px;width:100%}.entry-head{padding:0}.entry-head .page-title{font-size:40px}.sound-sculpture{display:none}.entry-choice{min-height:98px;padding:18px}.entry-title{font-size:18px}.entry-panel{padding:20px}.entry-footer{width:100%}.page-title{font-size:27px}.form-card,.track-detail,.artist-detail,.contract-card{padding:20px}.dsp-row{grid-template-columns:1fr}.next-card,.upload-inline{align-items:flex-start;flex-wrap:wrap}.page-actions{width:100%}.toast{left:16px;right:16px;min-width:0;max-width:none}.page-progress{min-width:0}.code{font-size:26px}.resume-found{flex-wrap:wrap}}
+@media(max-width:760px){.entry-stage{padding:calc(var(--topbar) + 30px) 20px 24px;gap:36px}.entry-wrap{grid-template-columns:1fr;gap:28px;max-width:520px;width:100%}.entry-head{padding:0}.entry-head .page-title{font-size:40px}.entry-choice{min-height:98px;padding:18px}.entry-title{font-size:18px}.entry-panel{padding:20px}.entry-footer{width:100%}.page-title{font-size:27px}.form-card,.track-detail,.artist-detail,.contract-card{padding:20px}.dsp-row{grid-template-columns:1fr}.next-card,.upload-inline{align-items:flex-start;flex-wrap:wrap}.page-actions{width:100%}.toast{left:16px;right:16px;min-width:0;max-width:none}.page-progress{min-width:0}.code{font-size:26px}.resume-found{flex-wrap:wrap}}
 /* Same fixed 88/76px header and optical alignment as the SEORO main page. */
 .topbar{position:fixed;inset:0 0 auto;z-index:80;height:var(--topbar);padding:0 44px;background:transparent;color:var(--paper);border-bottom:1px solid transparent;backdrop-filter:none;transition:background .65s,color .65s,border-color .65s}
 .topbar.workspace-mode{background:rgba(243,240,232,.91);color:var(--ink);border-color:rgba(16,24,39,.08);backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px)}
 .brand-home{font-family:SUIT,sans-serif;font-size:28px;font-weight:800;letter-spacing:-1.3px;color:inherit;padding:0;margin:0;border-radius:0}
 .brand-home:hover{background:transparent}.header-tools{gap:22px}.header-back{font-size:12px;color:inherit;text-decoration:none}.header-back:hover{color:var(--sky)}.workspace-mode .header-back:hover{color:var(--blue)}
 .product-label{display:none}.workspace{padding-top:var(--topbar);min-height:100svh}.sidebar{min-height:calc(100svh - var(--topbar))}.main{padding-top:44px}
-.entry-head{text-align:center;align-self:auto;padding:0}.entry-head .page-title{font-size:clamp(40px,6.2vw,96px);font-weight:700;line-height:1.28;letter-spacing:-.055em}.entry-head .page-title span{color:var(--sky)}.entry-list{width:min(640px,100%)}
+.entry-head{text-align:center;align-self:auto;padding:0}.entry-head .page-title{font-size:clamp(40px,6.2vw,96px);font-weight:500;line-height:1.28;letter-spacing:-.055em}.entry-head .page-title span{color:var(--sky);font-weight:700}.entry-list{width:min(640px,100%)}
 .entry-note{color:var(--sky)}.entry-choice{border-radius:12px}.entry-choice[aria-expanded="true"]{box-shadow:inset 0 0 0 1px var(--sky)}
 .entry-panel{border-radius:12px}.btn-primary{border-radius:99px;padding:0 22px;background:var(--blue);color:var(--paper)}.btn-primary:hover{background:#244ec9}.btn:focus-visible,.brand-home:focus-visible,.entry-choice:focus-visible,.header-back:focus-visible{outline:3px solid var(--blue);outline-offset:5px;box-shadow:none}
 @media(max-width:960px){:root{--topbar:76px}.topbar{padding:0 5%}}
@@ -545,8 +633,8 @@ a{color:inherit}.topbar{background:rgba(243,240,232,.95);padding:0 36px;border-c
 </svg>
 
 <header class="topbar" id="topbar">
-  <button class="brand-home" type="button" onclick="goHome()">SEORO</button>
-  <div class="header-tools"><a class="header-back" href="./index.html">메인으로</a></div>
+  <a class="brand-home" href="http://leekunwu.github.io/Seoro-prototype">SEORO</a>
+  <div class="header-tools"><a class="header-back" href="http://leekunwu.github.io/Seoro-prototype">메인으로</a></div>
 </header>
 
 <!-- ENTRY -->
@@ -1172,7 +1260,7 @@ a{color:inherit}.topbar{background:rgba(243,240,232,.95);padding:0 36px;border-c
             </article>
 
             <div style="display:flex;justify-content:center;margin-top:18px">
-              <button class="btn btn-secondary" onclick="exitToEntry()">메인으로</button>
+              <a class="btn btn-secondary" href="http://leekunwu.github.io/Seoro-prototype">메인으로</a>
             </div>
           </div>
         </section>
@@ -1183,17 +1271,6 @@ a{color:inherit}.topbar{background:rgba(243,240,232,.95);padding:0 36px;border-c
 
 <footer class="workspace-footer">© 2026 AUDIOGUY Co., Ltd.</footer>
 <div class="prototype-badge">INTERACTIVE PROTOTYPE · NO SERVER SAVE</div>
-
-<div class="modal-backdrop" id="unsavedModal" hidden>
-  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="unsavedTitle">
-    <h2 class="section-title" id="unsavedTitle">저장하지 않은 내용이 있어요</h2>
-    <p class="page-desc" style="margin-top:8px">지금 나가면 변경사항이 사라질 수 있어요.</p>
-    <div class="modal-actions">
-      <button class="btn btn-secondary" onclick="closeUnsaved()">계속 작성</button>
-      <button class="btn btn-primary" onclick="confirmLeave()">나가기</button>
-    </div>
-  </div>
-</div>
 
 <div class="toast" id="toast" role="status" aria-live="polite" hidden>
   <svg class="icon sm" style="color:#BCE7CE"><use href="#i-check"/></svg>
@@ -1294,29 +1371,6 @@ function enterWorkspace(page='overview'){
   showPage(page);
   window.scrollTo(0,0);
 }
-
-function exitToEntry(){
-  state.dirty=false;
-  document.getElementById('workspaceView').hidden=true;
-  document.getElementById('entryView').hidden=false;
-  document.getElementById('topbar').classList.remove('workspace-mode');
-  resetEntry();
-  window.scrollTo(0,0);
-}
-
-function goHome(){
-  if(document.getElementById('workspaceView').hidden){
-    window.scrollTo(0,0);return;
-  }
-  if(state.dirty){
-    document.getElementById('unsavedModal').hidden=false;
-  }else{
-    exitToEntry();
-  }
-}
-
-function closeUnsaved(){document.getElementById('unsavedModal').hidden=true}
-function confirmLeave(){document.getElementById('unsavedModal').hidden=true;exitToEntry()}
 
 function showPage(page){
   state.currentPage=page;
@@ -1456,12 +1510,6 @@ function submitPrototype(){
   showPage('tracking');
 }
 
-window.addEventListener('beforeunload',e=>{
-  if(state.dirty){
-    e.preventDefault();
-    e.returnValue='';
-  }
-});
 </script>
 </body>
 </html>
