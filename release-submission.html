@@ -4,10 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>음원 발매 접수 · SEORO</title>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sunn-us/SUIT/fonts/variable/stylesheet.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sunn-us/SUIT/fonts/static/woff2/SUIT.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfonts/static/complete/WantedSans.min.css">
 <style>
 :root{
-  --font-sans:"Helvetica Neue",Helvetica,"SUIT",-apple-system,BlinkMacSystemFont,"Segoe UI","Apple SD Gothic Neo",Arial,sans-serif;
+  --font-sans:"Wanted Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  --paper:#f3f0e8; --mist:#e5e8ec; --ink:#101827; --night:#0c1728;
+  --muted:#606b79; --blue:#315ddf; --pale:#dce5f2; --sky:#aebfdc; --line:#c9ced5;
 
   --bg:#F3F0E8;
   --surface:#FFFFFF;
@@ -43,7 +46,7 @@
   --shadow-float:0 16px 44px rgba(22,29,37,.13);
 
   --sidebar:228px;
-  --topbar:72px;
+  --topbar:88px;
 }
 *{box-sizing:border-box}
 html{background:var(--bg)}
@@ -436,10 +439,10 @@ a{color:inherit}.topbar{background:rgba(243,240,232,.95);padding:0 36px;border-c
 .brand-home{font-family:"SUIT",sans-serif;font-size:25px;font-weight:850;letter-spacing:-.055em;text-decoration:none}
 .header-tools{display:flex;align-items:center;gap:24px}.header-back{font-size:12px;text-decoration:none;color:var(--text-2)}
 .header-back:hover{color:var(--accent)}.product-label{color:var(--text-2);letter-spacing:.16em;font-size:10px}
-.entry-stage{position:relative;overflow:hidden;isolation:isolate;background:#0C1728;color:#F3F0E8;padding:72px 36px 36px;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:60px}
+.entry-stage{position:relative;overflow:hidden;isolation:isolate;background:var(--night);color:var(--paper);padding:calc(var(--topbar) + 50px) 36px 34px;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:48px;min-height:100svh}
 .entry-stage:before{content:"";position:absolute;z-index:-1;inset:-25%;background:radial-gradient(ellipse at 20% 25%,rgba(49,93,223,.24),transparent 50%),radial-gradient(ellipse at 82% 65%,rgba(174,191,220,.12),transparent 42%);animation:entryFlow 16s ease-in-out infinite alternate;pointer-events:none}
 @keyframes entryFlow{to{transform:translate(3%,-2%) scale(1.08)}}
-.entry-wrap{width:min(1120px,100%);display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.entry-wrap{width:min(1120px,84vw,100%);display:grid;grid-template-columns:1fr;gap:42px;justify-items:center;align-items:center}
 .entry-head{margin:0;align-self:start;padding-top:12px}.eyebrow{font-size:11px;letter-spacing:.18em;font-weight:600;color:#AEBFDC;margin:0 0 22px}
 .entry-head .page-title{font-size:clamp(36px,4.3vw,60px);font-weight:650;line-height:1.2;letter-spacing:-.055em}
 .entry-head .page-title span{color:#AEBFDC}.entry-intro{color:#AEBFDC;line-height:1.85;font-size:14px;margin:24px 0 0;max-width:340px}
@@ -449,12 +452,23 @@ a{color:inherit}.topbar{background:rgba(243,240,232,.95);padding:0 36px;border-c
 .entry-list{color:var(--text);gap:12px}.entry-choice{min-height:112px;padding:22px 24px;border:0;background:#F3F0E8;border-radius:20px;gap:18px;transition:background .2s,box-shadow .2s,transform .2s}
 .entry-choice:hover{background:#fff;transform:translateY(-2px);box-shadow:0 12px 30px #0002}.entry-choice[aria-expanded="true"]{background:#DCE5F2;box-shadow:inset 0 0 0 2px #AEBFDC}
 .entry-choice .round-icon{background:#DCE5F2;color:#315DDF;width:44px;height:44px;border-radius:14px}.entry-title{font-size:19px;font-weight:650;letter-spacing:-.035em}.entry-copy{margin-top:5px}.entry-panel{margin-top:-4px;padding:24px;border:0;border-radius:20px}.entry-note{font-size:11px;color:#AEBFDC;line-height:1.7;margin:8px 4px 0}
-.entry-footer{width:min(1120px,100%);display:flex;justify-content:space-between;gap:16px;align-items:center;border-top:1px solid #aebfdc26;padding-top:22px;color:#AEBFDC;font-size:11px}.entry-footer a{text-decoration:none}
+.entry-footer{width:min(1180px,84vw,100%);text-align:center;border-top:1px solid #aebfdc26;padding-top:22px;color:var(--sky);font-size:11px}
 .btn{font-weight:600;border-radius:10px;min-height:44px}.btn-sm{min-height:36px}.btn-primary{box-shadow:0 3px 10px #315ddf18}.btn-primary:hover{box-shadow:0 5px 16px #315ddf28}.btn:focus-visible,a:focus-visible,button:focus-visible{outline:2px solid #5276DF;outline-offset:3px}
 .sidebar{background:#0C1728;border:0;padding:28px 16px;gap:24px}.case-meta{border-bottom:1px solid #aebfdc26;padding-bottom:22px}.case-code{color:#AEBFDC}.case-title{color:#F3F0E8;margin-top:8px}.nav{gap:6px}.nav-btn{color:#AEBFDC;min-height:46px}.nav-icon,.nav-status{color:#AEBFDC}.nav-btn:hover{background:#ffffff0d;color:#fff}.nav-btn.active{background:#315DDF;color:#fff}.nav-btn.active .nav-icon,.nav-btn.active .nav-status{color:#fff}.side-progress{background:#ffffff08;border:1px solid #aebfdc26;color:#F3F0E8;padding:16px}.side-progress .micro{color:#AEBFDC}.side-progress .progress-track{background:#ffffff14}.side-progress .progress-fill{background:#AEBFDC}
 .main{padding-top:44px}.page-title{font-size:30px;font-weight:650;letter-spacing:-.045em}.page-head{margin-bottom:30px}.page-desc{line-height:1.7}.card{border-color:transparent;box-shadow:0 3px 16px #10182703}.control{min-height:44px;border-color:#D8DDE5;border-radius:10px}.control:hover{border-color:#AEBFDC}.form-card,.track-detail,.artist-detail,.contract-card{padding:26px}.section-title{font-weight:650}.section-row:hover{background:#EDF2FC}.round-icon,.avatar{background:#DCE5F2;color:#315DDF}.next-card{background:#DCE5F2}.completion-card{background:#0C1728;color:#F3F0E8;gap:16px}.completion-card .caption,.completion-card .micro,.completion-card .muted{color:#AEBFDC}.completion-card .donut{background:conic-gradient(#AEBFDC calc(var(--p)*1%),#24324A 0)}.completion-card .donut:after{background:#0C1728}.donut-num{font-size:34px}.cover{background:radial-gradient(circle at 38% 38%,#ffffff88,transparent 24%),linear-gradient(145deg,#DCE5F2,#AEBFDC 45%,#5276DF);color:#315DDF}.upload-box{background:#F7F9FE;border-color:#AEBFDC}.prototype-badge{display:none}body:has(#entryView:not([hidden])) .workspace-footer{display:none}.workspace-footer{text-align:center;padding:20px;color:var(--text-2);font-size:11px}.toast{background:#101827}.mobile-nav{background:rgba(243,240,232,.97)}
 @media(max-width:1100px){.entry-wrap{gap:40px}.track-layout,.artist-layout{grid-template-columns:1fr}.dsp-row{grid-template-columns:110px 140px minmax(0,1fr)}}
-@media(max-width:760px){.topbar{padding:0 18px}.brand-home{font-size:23px}.header-tools{gap:14px}.product-label{display:none}.entry-stage{padding:38px 20px 24px;gap:36px}.entry-wrap{grid-template-columns:1fr;gap:28px;max-width:520px}.entry-head{padding:0}.entry-head .page-title{font-size:40px}.entry-intro{margin-top:16px}.sound-sculpture{display:none}.eyebrow{margin-bottom:16px}.entry-choice{min-height:98px;padding:18px}.entry-title{font-size:18px}.entry-panel{padding:20px}.entry-footer{flex-direction:column;gap:10px;text-align:center}.page-title{font-size:27px}.form-card,.track-detail,.artist-detail,.contract-card{padding:20px}.dsp-row{grid-template-columns:1fr}.next-card,.upload-inline{align-items:flex-start;flex-wrap:wrap}.page-actions{width:100%}.toast{left:16px;right:16px;min-width:0;max-width:none}.entry-note{font-size:11px}.page-progress{min-width:0}.code{font-size:26px}.resume-found{flex-wrap:wrap}}
+@media(max-width:760px){.entry-stage{padding:calc(var(--topbar) + 30px) 20px 24px;gap:36px}.entry-wrap{grid-template-columns:1fr;gap:28px;max-width:520px;width:100%}.entry-head{padding:0}.entry-head .page-title{font-size:40px}.sound-sculpture{display:none}.entry-choice{min-height:98px;padding:18px}.entry-title{font-size:18px}.entry-panel{padding:20px}.entry-footer{width:100%}.page-title{font-size:27px}.form-card,.track-detail,.artist-detail,.contract-card{padding:20px}.dsp-row{grid-template-columns:1fr}.next-card,.upload-inline{align-items:flex-start;flex-wrap:wrap}.page-actions{width:100%}.toast{left:16px;right:16px;min-width:0;max-width:none}.page-progress{min-width:0}.code{font-size:26px}.resume-found{flex-wrap:wrap}}
+/* Same fixed 88/76px header and optical alignment as the SEORO main page. */
+.topbar{position:fixed;inset:0 0 auto;z-index:80;height:var(--topbar);padding:0 44px;background:transparent;color:var(--paper);border-bottom:1px solid transparent;backdrop-filter:none;transition:background .65s,color .65s,border-color .65s}
+.topbar.workspace-mode{background:rgba(243,240,232,.91);color:var(--ink);border-color:rgba(16,24,39,.08);backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px)}
+.brand-home{font-family:SUIT,sans-serif;font-size:28px;font-weight:800;letter-spacing:-1.3px;color:inherit;padding:0;margin:0;border-radius:0}
+.brand-home:hover{background:transparent}.header-tools{gap:22px}.header-back{font-size:12px;color:inherit;text-decoration:none}.header-back:hover{color:var(--sky)}.workspace-mode .header-back:hover{color:var(--blue)}
+.product-label{display:none}.workspace{padding-top:var(--topbar);min-height:100svh}.sidebar{min-height:calc(100svh - var(--topbar))}.main{padding-top:44px}
+.entry-head{text-align:center;align-self:auto;padding:0}.entry-head .page-title{font-size:clamp(40px,6.2vw,96px);font-weight:700;line-height:1.28;letter-spacing:-.055em}.entry-head .page-title span{color:var(--sky)}.entry-list{width:min(640px,100%)}
+.entry-note{color:var(--sky)}.entry-choice{border-radius:12px}.entry-choice[aria-expanded="true"]{box-shadow:inset 0 0 0 1px var(--sky)}
+.entry-panel{border-radius:12px}.btn-primary{border-radius:99px;padding:0 22px;background:var(--blue);color:var(--paper)}.btn-primary:hover{background:#244ec9}.btn:focus-visible,.brand-home:focus-visible,.entry-choice:focus-visible,.header-back:focus-visible{outline:3px solid var(--blue);outline-offset:5px;box-shadow:none}
+@media(max-width:960px){:root{--topbar:76px}.topbar{padding:0 5%}}
+@media(max-width:680px){.topbar{padding:0 6%}.brand-home{font-size:24px}.header-back{font-size:11px}.entry-head .page-title{font-size:clamp(33px,8vw,50px);line-height:1.4}.entry-stage{padding-top:calc(var(--topbar) + 40px)}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.btn:hover,.entry-choice:hover{transform:none}}
 
 </style>
@@ -530,19 +544,16 @@ a{color:inherit}.topbar{background:rgba(243,240,232,.95);padding:0 36px;border-c
   </defs>
 </svg>
 
-<header class="topbar">
+<header class="topbar" id="topbar">
   <button class="brand-home" type="button" onclick="goHome()">SEORO</button>
-  <div class="header-tools"><span class="product-label">RELEASE PORTAL</span><a class="header-back" href="./index.html">메인 사이트 ↗</a></div>
+  <div class="header-tools"><a class="header-back" href="./index.html">메인으로</a></div>
 </header>
 
 <!-- ENTRY -->
 <main id="entryView" class="entry-stage">
   <section class="entry-wrap">
     <div class="entry-head">
-      <p class="eyebrow">YOUR MUSIC, FURTHER.</p>
-      <h1 class="page-title">음악의 다음 여정.<br><span>발매를 시작합니다.</span></h1>
-      <p class="entry-intro">앨범 정보부터 음원, 아티스트, 계약까지.<br>당신의 음악을 세상에 전할 준비를 함께합니다.</p>
-      <div class="sound-sculpture" aria-hidden="true"><i style="--angle:0deg"></i><i style="--angle:30deg"></i><i style="--angle:60deg"></i><i style="--angle:90deg"></i><i style="--angle:120deg"></i><i style="--angle:150deg"></i></div>
+      <h1 class="page-title">음원 발매를<br><span>시작합니다.</span></h1>
     </div>
 
     <div class="entry-list">
@@ -550,7 +561,7 @@ a{color:inherit}.topbar{background:rgba(243,240,232,.95);padding:0 36px;border-c
         <span class="round-icon"><svg class="icon"><use href="#i-spark"/></svg></span>
         <span>
           <span class="entry-title">새로 발매해요</span>
-          <span class="entry-copy">발매 코드를 만들어요</span>
+          <span class="entry-copy">새 접수 시작</span>
         </span>
         <svg class="icon sm chevron"><use href="#i-chevron"/></svg>
       </button>
@@ -579,7 +590,7 @@ a{color:inherit}.topbar{background:rgba(243,240,232,.95);padding:0 36px;border-c
           <div class="code-result">
             <div>
               <div class="sub-title">발매 코드가 만들어졌어요</div>
-              <div class="caption" style="margin-top:4px">이 코드는 다시 들어올 때 필요해요.</div>
+              <div class="caption" style="margin-top:4px">체험용 코드입니다.</div>
             </div>
             <div class="code-line">
               <div class="code">AB12CD</div>
@@ -590,8 +601,7 @@ a{color:inherit}.topbar{background:rgba(243,240,232,.95);padding:0 36px;border-c
             <div class="tip">
               <svg class="icon sm" style="color:var(--accent);margin-top:1px"><use href="#i-info"/></svg>
               <div>
-                <div class="body-strong">캡처해 두면 다음에 바로 이어서 작성할 수 있어요.</div>
-                <div class="caption" style="margin-top:3px">이메일에서도 확인할 수 있어요. 메일이 보이지 않으면 스팸함도 확인해 주세요.</div>
+                <div class="body-strong">실제 코드는 발급되거나 발송되지 않습니다.</div>
               </div>
             </div>
             <div class="entry-actions" style="margin-top:0">
@@ -606,7 +616,7 @@ a{color:inherit}.topbar{background:rgba(243,240,232,.95);padding:0 36px;border-c
         <span class="round-icon"><svg class="icon"><use href="#i-history"/></svg></span>
         <span>
           <span class="entry-title">발매 코드가 있어요</span>
-          <span class="entry-copy">이어서 작성해요</span>
+          <span class="entry-copy">접수 화면 이어보기</span>
         </span>
         <svg class="icon sm chevron"><use href="#i-chevron"/></svg>
       </button>
@@ -629,10 +639,10 @@ a{color:inherit}.topbar{background:rgba(243,240,232,.95);padding:0 36px;border-c
         </div>
         <div id="verifyError" class="field-error" style="margin-top:10px" hidden>발매 코드를 찾을 수 없어요. 코드를 다시 확인해 주세요.</div>
       </section>
-      <p class="entry-note">체험용 프로토타입입니다. 입력 정보는 서버에 저장되지 않으며 실제 접수·메일 발송은 진행되지 않습니다.</p>
+      <p class="entry-note">프로토타입 · 입력 내용은 저장되지 않으며 실제 접수되지 않습니다.</p>
     </div>
   </section>
-  <footer class="entry-footer"><a href="https://sovo360.com/login">SOVO360 로그인 ↗</a><span>© 2026 AUDIOGUY Co., Ltd.</span></footer>
+  <footer class="entry-footer">© 2026 AUDIOGUY Co., Ltd.</footer>
 </main>
 
 <!-- WORKSPACE -->
@@ -1171,7 +1181,7 @@ a{color:inherit}.topbar{background:rgba(243,240,232,.95);padding:0 36px;border-c
   </div>
 </div>
 
-<footer class="workspace-footer">© 2026 AUDIOGUY Co., Ltd. · 체험용 프로토타입</footer>
+<footer class="workspace-footer">© 2026 AUDIOGUY Co., Ltd.</footer>
 <div class="prototype-badge">INTERACTIVE PROTOTYPE · NO SERVER SAVE</div>
 
 <div class="modal-backdrop" id="unsavedModal" hidden>
@@ -1279,6 +1289,7 @@ function handleCodeInput(input){
 function enterWorkspace(page='overview'){
   document.getElementById('entryView').hidden=true;
   document.getElementById('workspaceView').hidden=false;
+  document.getElementById('topbar').classList.add('workspace-mode');
   state.dirty=false;
   showPage(page);
   window.scrollTo(0,0);
@@ -1288,6 +1299,7 @@ function exitToEntry(){
   state.dirty=false;
   document.getElementById('workspaceView').hidden=true;
   document.getElementById('entryView').hidden=false;
+  document.getElementById('topbar').classList.remove('workspace-mode');
   resetEntry();
   window.scrollTo(0,0);
 }
