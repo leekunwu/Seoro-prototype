@@ -6,17 +6,107 @@
 <title>SEORO — 음악을 더 입체적으로, 더 멀리.</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/sunn-us/SUIT/fonts/static/woff2/SUIT.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfonts/static/complete/WantedSans.min.css">
+
+
+
+
+
+
+
 <style>
 :root{--paper:#f3f0e8;--mist:#e5e8ec;--ink:#101827;--night:#0c1728;--muted:#606b79;--blue:#315ddf;--pale:#dce5f2;--sky:#aebfdc;--line:#c9ced5;--header:88px}
-*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:110px}body{margin:0;background:var(--paper);color:var(--ink);font-family:'Wanted Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;-webkit-font-smoothing:antialiased}button,a,summary{-webkit-tap-highlight-color:transparent}a{color:inherit;text-decoration:none}button{font:inherit;cursor:pointer}button:disabled{cursor:default}button,a,summary{touch-action:manipulation}button:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid var(--blue);outline-offset:6px}::selection{background:var(--pale);color:var(--ink)}.skip{position:fixed;top:-80px;left:20px;z-index:100;background:var(--paper);padding:15px}.skip:focus{top:15px}.wrap{width:min(1180px,84%);margin:auto}.brand{font-family:SUIT,sans-serif;font-weight:800;font-size:28px;letter-spacing:-1.3px}.header{position:fixed;inset:0 0 auto;height:var(--header);z-index:30;color:var(--paper);transition:background .25s,color .25s;border-bottom:1px solid transparent}.header.scrolled,.header.open{background:rgba(243,240,232,.91);backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);color:var(--ink);border-color:rgba(16,24,39,.08)}.header-inner{width:calc(100% - 88px);height:100%;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:24px}.nav{position:absolute;left:50%;transform:translateX(-50%);display:flex;gap:2px;background:rgba(220,229,242,.5);padding:5px;border:1px solid rgba(16,24,39,.06);border-radius:99px;opacity:0;visibility:hidden;transition:opacity .25s}.scrolled .nav{opacity:1;visibility:visible}.nav a{position:relative;font-size:12px;padding:11px 15px;border-radius:99px;white-space:nowrap;color:var(--muted);transition:background .25s,color .25s}.nav a[aria-current]{background:var(--paper);color:var(--ink)}.nav a[aria-current]:after{content:'';position:absolute;bottom:5px;left:calc(50% - 7px);width:14px;height:2px;background:var(--blue)}.actions{display:flex;gap:22px;align-items:center}.text-btn{background:none;border:0;padding:10px 0;color:inherit;font-size:12px}.btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:13px 22px;border:0;border-radius:99px;background:var(--blue);color:#fff;font-size:13px;font-weight:600;transition:background .2s}.btn:hover{background:#244ec9}.menu-toggle{display:none;border:0;background:none;padding:10px;color:inherit;font-size:13px}.section{padding:140px 0;scroll-margin-top:10px}.label{font-size:11px;letter-spacing:.12em;text-transform:uppercase;margin:0 0 38px;color:var(--muted)}h1,h2,h3,p{margin-top:0}h1,h2{font-weight:500;letter-spacing:-.055em;word-break:keep-all}h2{font-size:clamp(34px,4vw,56px);line-height:1.3;margin-bottom:28px}h3{font-size:20px;font-weight:600;letter-spacing:-.03em}p{font-size:15px;line-height:1.9;word-break:keep-all}.lead{color:var(--muted);max-width:540px}.hero{min-height:100svh;display:flex;align-items:center;text-align:center;background:var(--night);color:var(--paper);padding:145px 0 100px;position:relative}.hero h1{font-size:clamp(40px,5.7vw,82px);line-height:1.28;margin:0 auto 46px;max-width:1120px}.hero h1 span{color:#aebfdc}.hero .btn{padding:15px 26px}.hero-foot{position:absolute;bottom:34px;left:8%;right:8%;display:flex;justify-content:space-between;font-size:10px;letter-spacing:.08em;color:#9ca9bc}.hero-foot a{padding:8px 0}.intro-heading{max-width:720px}.chain{margin-top:90px;display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line)}.chain article{padding:28px 32px 0 0;position:relative}.chain article:before{content:'';position:absolute;top:-3px;left:0;width:5px;height:5px;border-radius:50%;background:var(--blue)}.chain small{display:block;margin-bottom:38px;color:var(--muted);font-size:11px;letter-spacing:.07em}.chain p{max-width:250px;color:var(--muted);font-size:14px}.distribution{background:var(--mist)}.split{display:grid;grid-template-columns:1fr 1fr;gap:100px;align-items:center}.route{padding:38px 0}.route-source{font-family:SUIT,sans-serif;font-weight:800;font-size:24px;padding-bottom:28px;border-bottom:1px solid #b5becb}.route-branches{display:grid;grid-template-columns:1fr 1fr;gap:36px}.route-column{position:relative;padding-top:46px}.route-column:before{content:'';position:absolute;height:27px;width:1px;top:0;left:0;background:#b5becb}.route-column h3{font-size:16px}.route-column p{color:var(--muted);font-size:13px;line-height:2}.route-end{display:block;border-top:1px solid #b5becb;padding-top:18px;margin-top:28px;font-size:13px;color:var(--blue)}.note{color:var(--muted);font-size:12px;line-height:1.8;margin:28px 0 0}.capabilities{background:var(--night);color:var(--paper);overflow:hidden}.capabilities .label{color:#9ca9bc}.capabilities .lead{color:#aeb9ca}.audio-figure{position:relative;height:370px;display:flex;align-items:center;justify-content:center;margin:0}.audio-figure svg{width:100%;max-width:480px;height:100%}.audio-figure figcaption{position:absolute;bottom:0;left:0;right:0;text-align:center;color:#9ca9bc;font-size:11px}.glass{position:absolute;right:-12px;top:36px;padding:19px 22px;border-radius:12px;background:rgba(190,207,230,.1);border:1px solid rgba(220,229,242,.2);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);font-size:12px;line-height:1.8;min-width:152px}.glass span{display:block;color:#aeb9ca;font-size:10px;margin-bottom:8px;letter-spacing:.08em}.cap-list{margin-top:70px;display:grid;grid-template-columns:repeat(3,1fr);gap:40px}.cap-list article{border-top:1px solid #334050;padding-top:22px}.cap-list h3{font-size:16px}.cap-list p{color:#aeb9ca;font-size:13px;max-width:290px}.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:32px;margin:62px 0 96px;padding:0;list-style:none}.steps li{border-top:1px solid var(--line);padding-top:23px}.steps small{font-size:11px;color:var(--blue);display:block;margin-bottom:24px}.steps h3{font-size:18px}.steps p{font-size:13px;color:var(--muted);max-width:220px}.settlement{padding-top:54px;border-top:1px solid var(--line);display:grid;grid-template-columns:.8fr 1.2fr;gap:80px;align-items:center}.settlement h3{font-size:28px}.settlement p{color:var(--muted);font-size:14px;max-width:340px}.inline-link{font-size:13px;color:var(--blue);border:0;background:none;border-bottom:1px solid currentColor;padding:5px 0}.preview{background:#e9edf2;padding:28px;border-radius:6px;min-width:0}.preview-top{display:flex;justify-content:space-between;align-items:center;padding-bottom:28px;font-size:10px;color:var(--muted)}.preview-top strong{font-size:14px;color:var(--ink);font-weight:600}.report-row{display:grid;grid-template-columns:1.3fr 1fr .7fr;gap:16px;padding:15px 0;border-bottom:1px solid #ccd4df;font-size:12px}.report-row.heading{color:var(--muted);font-size:10px}.report-row:last-child{border-bottom:0}.report-row span:last-child{text-align:right}.preview-note{font-size:10px;color:var(--muted);margin:20px 0 0}.partnership{background:#e7e9eb}.partner-head{display:grid;grid-template-columns:1fr 1fr;gap:100px}.partner-list{border-top:1px solid #bdc5ce}.partner-list div{padding:19px 0;border-bottom:1px solid #bdc5ce;font-size:17px}.contact{display:flex;gap:22px;align-items:center;margin-top:32px}.faq{margin-top:110px;display:grid;grid-template-columns:1fr 2fr;gap:70px}.faq h3{font-size:18px}.faq details{border-top:1px solid #bdc5ce}.faq details:last-child{border-bottom:1px solid #bdc5ce}.faq summary{padding:20px 28px 20px 0;cursor:pointer;list-style:none;font-size:14px;position:relative;line-height:1.6}.faq summary::-webkit-details-marker{display:none}.faq summary:after{content:'+';position:absolute;right:0;color:var(--muted)}.faq details[open] summary:after{content:'−'}.faq details p{font-size:13px;color:var(--muted);max-width:560px;margin:0 0 24px}.footer{padding:35px 0}.footer .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px}.footer .brand{font-size:22px}.footer p{font-size:11px;color:var(--muted);margin:0}.dialog{border:1px solid var(--line);border-radius:12px;padding:36px;max-width:440px;width:calc(100% - 40px);color:var(--ink);background:var(--paper)}.dialog::backdrop{background:rgba(12,23,40,.5);backdrop-filter:blur(5px)}.dialog h2{font-size:26px;letter-spacing:-.03em}.dialog p{font-size:14px;color:var(--muted)}.dialog .btn{margin-top:8px}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:110px}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:'Wanted Sans',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;-webkit-font-smoothing:antialiased}
+button,a,summary{-webkit-tap-highlight-color:transparent}
+a{color:inherit;text-decoration:none}
+button{font:inherit;cursor:pointer}
+button:disabled{cursor:default}
+button,a,summary{touch-action:manipulation}
+button:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid var(--blue);outline-offset:6px}
+::selection{background:var(--pale);color:var(--ink)}
+.skip{position:fixed;top:-80px;left:20px;z-index:100;background:var(--paper);padding:15px}
+.skip:focus{top:15px}
+.wrap{width:min(1180px,84%);margin:auto}
+.brand{font-family:SUIT,sans-serif;font-weight:800;font-size:28px;letter-spacing:-1.3px}
+.header{position:fixed;inset:0 0 auto;height:var(--header);z-index:30;color:var(--paper);transition:background .25s,color .25s;border-bottom:1px solid transparent}
+.header.scrolled,.header.open{background:rgba(243,240,232,.91);backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);color:var(--ink);border-color:rgba(16,24,39,.08)}
+.header-inner{width:calc(100% - 88px);height:100%;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.nav{position:absolute;left:50%;transform:translateX(-50%);display:flex;gap:2px;background:rgba(220,229,242,.5);padding:5px;border:1px solid rgba(16,24,39,.06);border-radius:99px;opacity:0;visibility:hidden;transition:opacity .25s}
+.scrolled .nav{opacity:1;visibility:visible}
+.nav a{position:relative;font-size:12px;padding:11px 15px;border-radius:99px;white-space:nowrap;color:var(--muted);transition:background .25s,color .25s}
+.nav a[aria-current]{background:var(--paper);color:var(--ink)}
+.nav a[aria-current]:after{content:'';position:absolute;bottom:5px;left:calc(50% - 7px);width:14px;height:2px;background:var(--blue)}
+.actions{display:flex;gap:22px;align-items:center}
+.text-btn{background:none;border:0;padding:10px 0;color:inherit;font-size:12px}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:13px 22px;border:0;border-radius:99px;background:var(--blue);color:#fff;font-size:13px;font-weight:600;transition:background .2s}
+.btn:hover{background:#244ec9}
+.menu-toggle{display:none;border:0;background:none;padding:10px;color:inherit;font-size:13px}
+.section{padding:140px 0;scroll-margin-top:10px}
+.label{font-size:11px;letter-spacing:.12em;text-transform:uppercase;margin:0 0 38px;color:var(--muted)}
+h1,h2,h3,p{margin-top:0}
+h1,h2{font-weight:500;letter-spacing:-.055em;word-break:keep-all}
+h2{font-size:clamp(34px,4vw,56px);line-height:1.3;margin-bottom:28px}
+h3{font-size:20px;font-weight:600;letter-spacing:-.03em}
+p{font-size:15px;line-height:1.9;word-break:keep-all}
+.lead{color:var(--muted);max-width:540px}
+.hero{min-height:100svh;display:flex;align-items:center;text-align:center;background:var(--night);color:var(--paper);padding:145px 0 100px;position:relative}
+.hero h1{font-size:clamp(40px,5.7vw,82px);line-height:1.28;margin:0 auto 46px;max-width:1120px}
+.hero h1 span{color:#aebfdc}
+.hero .btn{padding:15px 26px}
+.note{color:var(--muted);font-size:12px;line-height:1.8;margin:28px 0 0}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:32px;margin:62px 0 96px;padding:0;list-style:none}
+.steps li{border-top:1px solid var(--line);padding-top:23px}
+.steps small{font-size:11px;color:var(--blue);display:block;margin-bottom:24px}
+.steps h3{font-size:18px}
+.steps p{font-size:13px;color:var(--muted);max-width:220px}
+.inline-link{font-size:13px;color:var(--blue);border:0;background:none;border-bottom:1px solid currentColor;padding:5px 0}
+.partnership{background:#e7e9eb}
+.partner-head{display:grid;grid-template-columns:1fr 1fr;gap:100px}
+.contact{display:flex;gap:22px;align-items:center;margin-top:32px}
+.footer{padding:35px 0}
+.footer .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px}
+.footer .brand{font-size:22px}
+.footer p{font-size:11px;color:var(--muted);margin:0}
 @media(min-width:1500px){.section{padding:170px 0}}
-@media(max-width:1150px){.header-inner{width:90%}.nav a{padding:10px 11px}.actions{gap:14px}.actions .text-btn{font-size:11px}.nav{left:47%}.split{gap:55px}.wrap{width:86%}}
-@media(max-width:960px){:root{--header:76px}.nav{display:none;opacity:1;visibility:visible;transform:none;position:absolute;left:0;right:0;top:76px;border-radius:0;padding:16px 7% 24px;background:var(--paper);border:0}.header.open .nav{display:flex;flex-direction:column}.nav a{font-size:15px;padding:14px;border-radius:4px}.nav a[aria-current]{background:var(--pale)}.nav a[aria-current]:after{display:none}.menu-toggle{display:block}.split{gap:36px}.actions{gap:20px}.section{padding:105px 0}.settlement{gap:45px}.partner-head{gap:50px}.audio-figure{height:330px}.glass{right:0}}
-@media(max-width:680px){.wrap{width:86%}.header-inner{width:88%;gap:12px}.brand{font-size:24px}.actions{gap:13px}.actions>.text-btn{display:none}.actions>.btn{font-size:11px;padding:11px 16px;min-height:40px}.menu-toggle{font-size:12px;padding:10px 0}.hero{min-height:90svh;padding-top:130px}.hero h1{font-size:clamp(33px,8vw,50px);line-height:1.45;letter-spacing:-.06em}.hero-foot{left:7%;right:7%;bottom:25px;font-size:9px}.hero-foot span{max-width:140px;line-height:1.6;text-align:left}.hero .wrap{width:94%}.section{padding:88px 0}.label{margin-bottom:26px;font-size:10px}h2{font-size:35px}.lead{font-size:14px}.chain{grid-template-columns:1fr;margin-top:48px;border:0}.chain article{border-top:1px solid var(--line);padding:24px 0 26px}.chain small{margin-bottom:20px}.chain p{max-width:100%;margin-bottom:0}.split,.partner-head{grid-template-columns:1fr;gap:24px}.route{padding:18px 0 0}.route-branches{gap:24px}.route-column p{font-size:12px}.audio-figure{height:330px;margin-top:26px}.glass{top:10px;right:0}.cap-list{grid-template-columns:1fr;margin-top:50px;gap:16px}.cap-list p{max-width:100%}.steps{grid-template-columns:1fr 1fr;gap:32px 24px;margin:45px 0 60px}.steps small{margin-bottom:16px}.settlement{grid-template-columns:1fr;gap:32px;padding-top:40px}.preview{padding:22px}.report-row{font-size:11px;gap:10px}.partner-list{margin-top:18px}.faq{grid-template-columns:1fr;gap:14px;margin-top:72px}.contact{flex-wrap:wrap}.footer .wrap{align-items:flex-start}.footer p{max-width:190px;text-align:right;font-size:10px}.dialog{padding:28px}}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important;animation:none!important}}
-</style>
-<style>
-/* Detail pass: slimmer progress rail, quieter depth, and content transitions */
+@media(max-width:1150px){.header-inner{width:90%}
+.nav a{padding:10px 11px}
+.actions{gap:14px}
+.actions .text-btn{font-size:11px}
+.nav{left:47%}
+.wrap{width:86%}}
+@media(max-width:960px){:root{--header:76px}
+.nav{display:none;opacity:1;visibility:visible;transform:none;position:absolute;left:0;right:0;top:76px;border-radius:0;padding:16px 7% 24px;background:var(--paper);border:0}
+.header.open .nav{display:flex;flex-direction:column}
+.nav a{font-size:15px;padding:14px;border-radius:4px}
+.nav a[aria-current]{background:var(--pale)}
+.nav a[aria-current]:after{display:none}
+.menu-toggle{display:block}
+.actions{gap:20px}
+.section{padding:105px 0}
+.partner-head{gap:50px}}
+@media(max-width:680px){.wrap{width:86%}
+.header-inner{width:88%;gap:12px}
+.brand{font-size:24px}
+.actions{gap:13px}
+.actions>.text-btn{display:none}
+.actions>.btn{font-size:11px;padding:11px 16px;min-height:40px}
+.menu-toggle{font-size:12px;padding:10px 0}
+.hero{min-height:90svh;padding-top:130px}
+.hero h1{font-size:clamp(33px,8vw,50px);line-height:1.45;letter-spacing:-.06em}
+.hero .wrap{width:94%}
+.section{padding:88px 0}
+.label{margin-bottom:26px;font-size:10px}
+h2{font-size:35px}
+.lead{font-size:14px}
+.partner-head{grid-template-columns:1fr;gap:24px}
+.steps{grid-template-columns:1fr 1fr;gap:32px 24px;margin:45px 0 60px}
+.steps small{margin-bottom:16px}
+.contact{flex-wrap:wrap}
+.footer .wrap{align-items:flex-start}
+.footer p{max-width:190px;text-align:right;font-size:10px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}
+*,*:before,*:after{transition:none!important;animation:none!important}}
 :root{--stage-accent:#315ddf}
 .nav{gap:7px;padding:3px 5px;background:rgba(206,214,225,.62);overflow:hidden;transition:opacity .35s,background-color .7s}
 .nav-indicator{position:absolute;left:0;top:3px;height:30px;width:0;border-radius:99px;background:rgba(250,249,245,.88);background:color-mix(in srgb,var(--stage-accent) 10%,#faf9f5);box-shadow:0 1px 6px rgba(16,24,39,.08),inset 0 0 0 1px rgba(255,255,255,.45);transform:translateX(0);transition:transform .58s cubic-bezier(.22,.9,.26,1),width .58s cubic-bezier(.22,.9,.26,1),background-color .7s;pointer-events:none}
@@ -25,34 +115,27 @@
 .nav a[aria-current]:after{display:none}
 .section{position:relative;transition:background-color .9s cubic-bezier(.22,.9,.26,1),color .7s}
 .section>.wrap{opacity:.78;transform:translateY(20px);transition:opacity .8s cubic-bezier(.22,.9,.26,1),transform .8s cubic-bezier(.22,.9,.26,1)}
-.section.in-view>.wrap{opacity:1;transform:none}
-.interactive-visual{transform:scale(1);transform-origin:center;transition:transform .6s cubic-bezier(.22,.9,.26,1),box-shadow .6s}
-.interactive-visual:hover{transform:scale(1.018)}
-.immersive{background:#e9eef5}
-.listen-compare{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#c4ccd7;padding:1px;min-height:340px}
-.listen-mode{position:relative;background:#edf0f4;padding:30px;display:flex;flex-direction:column;justify-content:space-between;overflow:hidden}
-.listen-mode.active{background:#dce5f2}
-.listen-mode small{font-size:10px;letter-spacing:.12em;color:var(--muted)}
-.listen-mode p{margin:0;font-size:12px;color:var(--muted)}
-.stereo-field,.immersive-field{height:180px;position:relative}
-.stereo-field:before,.stereo-field:after{content:'';position:absolute;top:50%;width:65px;height:65px;border:1px solid #7891b8;border-radius:50%;transform:translateY(-50%)}
-.stereo-field:before{left:18%}.stereo-field:after{right:18%}.stereo-field i{position:absolute;top:50%;width:5px;height:5px;border-radius:50%;background:var(--blue);transform:translateY(-50%)}.stereo-field i:first-child{left:29%}.stereo-field i:last-child{right:29%}
-.immersive-field:before,.immersive-field:after{content:'';position:absolute;inset:8% 12%;border:1px solid #7891b8;border-radius:50%}.immersive-field:after{inset:28% 30%;border-color:#9aacc7}
-.immersive-field i{position:absolute;width:5px;height:5px;border-radius:50%;background:var(--blue)}.immersive-field i:nth-child(1){left:15%;top:48%}.immersive-field i:nth-child(2){right:14%;top:44%}.immersive-field i:nth-child(3){left:48%;top:9%;background:var(--blue)}.immersive-field i:nth-child(4){left:60%;bottom:12%}.immersive-field b{position:absolute;left:50%;top:50%;width:8px;height:8px;border-radius:50%;background:var(--ink);transform:translate(-50%,-50%)}
-.channels{background:#f1eee6}.channel-head{display:grid;grid-template-columns:1fr 1fr;gap:100px;align-items:end}.channel-head .lead{margin:0 0 10px}.media-strip{display:grid;grid-template-columns:1.25fr 1fr 1fr;gap:1px;background:#bfc6cf;margin-top:70px;padding:1px;overflow:hidden}.media-strip article{min-height:270px;padding:28px;background:var(--ink);color:var(--paper);display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden}.media-strip article:nth-child(2){background:#dce5f2;color:var(--ink)}.media-strip article:nth-child(3){background:#315ddf}.media-strip article:after{content:'';position:absolute;width:170px;height:170px;border:1px solid currentColor;border-radius:50%;opacity:.2;right:-45px;bottom:-50px;transition:transform .65s cubic-bezier(.22,.9,.26,1)}.media-strip:hover article:after{transform:scale(1.12)}.media-strip small{font-size:10px;letter-spacing:.12em;opacity:.66}.media-strip strong{font-size:23px;font-weight:500;letter-spacing:-.03em}.settlement-section{background:#dde5ef}.settlement-section .settlement{padding-top:0;border-top:0}.settlement-section .label{margin-bottom:30px}.settlement-section .settlement>div:first-child p{font-size:14px}.preview{transition:transform .6s cubic-bezier(.22,.9,.26,1),box-shadow .6s}.preview:hover{box-shadow:0 18px 45px rgba(16,24,39,.1)}.steps{margin-bottom:0}
-@media(max-width:1150px){.nav{gap:3px}.nav a{padding:7px 14px}}
-@media(max-width:960px){.nav{overflow:visible}.nav-indicator{display:none}.nav a{opacity:.7}.nav a[aria-current]{background:var(--pale);opacity:1}.channel-head{gap:50px}}
-@media(max-width:680px){.hero{min-height:88svh}.listen-compare{min-height:290px}.listen-mode{padding:20px}.stereo-field,.immersive-field{height:150px}.channel-head{grid-template-columns:1fr;gap:12px}.media-strip{grid-template-columns:1fr;margin-top:44px}.media-strip article{min-height:165px}.settlement-section .settlement{padding-top:0}.interactive-visual:hover{transform:none}}
-@media(prefers-reduced-motion:reduce){.section>.wrap{opacity:1;transform:none}.nav-indicator,.interactive-visual{transition:none!important}}
-</style>
-<style>
-/* Service-focused edition. Fixed card geometry prevents movement on reveal. */
+.steps{margin-bottom:0}
+@media(max-width:1150px){.nav{gap:3px}
+.nav a{padding:7px 14px}}
+@media(max-width:960px){.nav{overflow:visible}
+.nav-indicator{display:none}
+.nav a{opacity:.7}
+.nav a[aria-current]{background:var(--pale);opacity:1}}
+@media(max-width:680px){.hero{min-height:88svh}}
+@media(prefers-reduced-motion:reduce){.section>.wrap{opacity:1;transform:none}
+.nav-indicator{transition:none!important}}
 .section>.wrap{opacity:1;transform:none}
-.hero{overflow:hidden;isolation:isolate;background:#0c1728}.hero:before,.hero:after{content:'';position:absolute;z-index:0;inset:-28%;pointer-events:none;will-change:transform}.hero:before{background:radial-gradient(ellipse at 25% 35%,rgba(49,93,223,.18),transparent 38%),radial-gradient(ellipse at 78% 62%,rgba(94,123,177,.15),transparent 42%);animation:heroFlow 12s ease-in-out infinite alternate}.hero:after{background:linear-gradient(115deg,transparent 28%,rgba(220,229,242,.045) 48%,transparent 69%);transform:translateX(-12%) rotate(2deg);animation:heroSheen 15s ease-in-out infinite alternate}.hero .wrap{perspective:1000px;position:relative;z-index:1}
-@keyframes heroFlow{0%{transform:translate3d(-3%,-2%,0) scale(1)}50%{transform:translate3d(4%,2%,0) scale(1.08)}100%{transform:translate3d(-1%,5%,0) scale(1.03)}}@keyframes heroSheen{0%{transform:translateX(-18%) rotate(2deg)}100%{transform:translateX(16%) rotate(-2deg)}}
+.hero{overflow:hidden;isolation:isolate;background:#0c1728}
+.hero .wrap{perspective:1000px;position:relative;z-index:1}
+@keyframes heroFlow{0%{transform:translate3d(-3%,-2%,0) scale(1)}50%{transform:translate3d(4%,2%,0) scale(1.08)}100%{transform:translate3d(-1%,5%,0) scale(1.03)}}
+@keyframes heroSheen{0%{transform:translateX(-18%) rotate(2deg)}100%{transform:translateX(16%) rotate(-2deg)}}
 .hero h1{transform:translate3d(var(--pan-x,0px),var(--pan-y,0px),0) rotateX(var(--tilt-x,0deg)) rotateY(var(--tilt-y,0deg)) scale(var(--pan-scale,1));transition:transform .42s cubic-bezier(.16,1,.3,1);backface-visibility:hidden;will-change:transform}
-[data-action="apply"].btn{background:var(--blue);color:var(--ink)}[data-action="apply"].btn:hover{background:#244ec9}
-.section-kicker{font-size:13px;letter-spacing:.08em;font-weight:600;margin:0 0 12px;line-height:1.5;color:var(--muted);text-transform:uppercase}.spatial-section .section-kicker{color:#91a2bc}.section-heading{font-size:clamp(36px,4.3vw,60px);margin-bottom:50px}
+[data-action="apply"].btn{background:var(--blue);color:var(--ink)}
+[data-action="apply"].btn:hover{background:#244ec9}
+.section-kicker{font-size:13px;letter-spacing:.08em;font-weight:600;margin:0 0 12px;line-height:1.5;color:var(--muted);text-transform:uppercase}
+.spatial-section .section-kicker{color:#91a2bc}
+.section-heading{font-size:clamp(36px,4.3vw,60px);margin-bottom:50px}
 .bento{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
 .focus-card{position:relative;min-width:0;min-height:270px;background:#e7e8e7;border:0;border-radius:12px;isolation:isolate;color:var(--ink);transition:transform .5s cubic-bezier(.22,.9,.26,1),filter .45s,box-shadow .5s;background-clip:padding-box}
 .bento .large{grid-column:span 2;min-height:300px}
@@ -66,38 +149,78 @@
 .large .card-title{font-size:34px}
 .card-detail{position:absolute;z-index:2;left:30px;right:30px;bottom:28px;visibility:hidden;opacity:0;transform:translateY(9px);pointer-events:none;transition:opacity .35s,transform .45s,visibility .35s}
 .card-detail p{font-size:13px;line-height:1.8;margin:0;word-break:keep-all}
-.large .card-detail{max-width:390px}.large .card-detail p{font-size:14px}
+.large .card-detail{max-width:390px}
+.large .card-detail p{font-size:14px}
 .focus-card.is-active{z-index:3;transform:scale(1.012);box-shadow:0 14px 38px rgba(16,24,39,.07)}
 .is-active .card-detail{visibility:visible;opacity:1;transform:none}
 .focus-group.has-active .focus-card:not(.is-active){filter:brightness(.86) blur(.75px)}
-.service-graphic{position:absolute;right:24px;bottom:22px;width:min(48%,220px);height:120px;color:currentColor;opacity:.34;fill:none;stroke-width:1.5;transition:opacity .4s,transform .55s cubic-bezier(.22,.9,.26,1)}.service-graphic.compact{width:50%;height:100px}.focus-card.is-active .service-graphic{opacity:.035;transform:scale(1.06) translateY(5px)}
 .spatial-section{background:var(--night);color:var(--paper)}
 .spatial-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
 .spatial-grid .focus-card{min-height:330px;background:#17263b;color:var(--paper)}
-.spatial-grid .card-trigger{padding:28px}.spatial-grid .card-title{font-size:20px}
+.spatial-grid .card-trigger{padding:28px}
+.spatial-grid .card-title{font-size:20px}
 .spatial-grid .card-detail{left:28px;right:28px;bottom:28px;color:#dce5f2}
-.spatial-diagram{position:absolute;left:8%;width:84%;height:150px;bottom:30px;transition:opacity .4s,transform .55s;color:#adc0e3}
-.visual-type{font-size:26px;line-height:1.5;letter-spacing:-.035em;color:#859cbc;position:absolute;bottom:42px;transition:opacity .4s,transform .55s;pointer-events:none}.visual-type em{font-style:normal;color:#aebfdc}.infrastructure-type{font-size:23px}.spatial-visual{position:absolute;left:8%;width:84%;height:150px;bottom:22px;color:#859cbc;fill:none;stroke-width:1.2;transition:opacity .4s,transform .55s}
-.spatial-grid .is-active .spatial-diagram,.spatial-grid .is-active .visual-type,.spatial-grid .is-active .spatial-visual{opacity:.06;transform:scale(1.045)}
-.conditions{margin-top:36px;max-width:760px}.conditions p{color:#aeb9ca;font-size:11px;line-height:1.9;margin:5px 0}
+.visual-type{font-size:26px;line-height:1.5;letter-spacing:-.035em;color:#859cbc;position:absolute;bottom:42px;transition:opacity .4s,transform .55s;pointer-events:none}
+.visual-type em{font-style:normal;color:#aebfdc}
+.infrastructure-type{font-size:23px}
+.spatial-grid .is-active .visual-type{opacity:.06;transform:scale(1.045)}
+.conditions{margin-top:36px;max-width:760px}
+.conditions p{color:#aeb9ca;font-size:11px;line-height:1.9;margin:5px 0}
 .steps{margin-bottom:0}
-.accordion-list{border-top:1px solid #bdc5ce}.accordion-list details{border-bottom:1px solid #bdc5ce}.accordion-list summary{position:relative;list-style:none;cursor:pointer;padding:22px 36px 22px 0;font-size:17px;line-height:1.5}.accordion-list summary::-webkit-details-marker{display:none}.accordion-list summary:after{content:'+';position:absolute;right:4px;color:var(--muted);font-size:20px;font-weight:400}.accordion-list details[open] summary:after{content:'−'}.accordion-list details p{color:var(--muted);font-size:13px;line-height:1.85;max-width:610px;margin:0 40px 24px 0}.accordion-list details[open] p{animation:accordionIn .3s ease both}@keyframes accordionIn{from{opacity:0;transform:translateY(-5px)}to{opacity:1;transform:none}}.faq-section{background:var(--paper)}.faq-section .wrap{max-width:980px}.faq-section h2{margin-bottom:50px}.faq-list summary{font-size:16px}.footer{padding:38px 0;border-top:1px solid rgba(16,24,39,.08)}.footer .wrap{justify-content:center}.footer p{max-width:none;text-align:center;color:var(--muted)}
-@media(max-width:1150px){.card-trigger{padding:25px}.card-detail{left:25px;right:25px}.bento,.spatial-grid{gap:12px}.spatial-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.spatial-grid .focus-card{min-height:300px}}
-@media(max-width:800px){.bento{grid-template-columns:repeat(2,minmax(0,1fr))}.bento .large{grid-column:span 1;min-height:310px}.large .card-title{font-size:24px}.large .card-detail p{font-size:13px}}
-@media(max-width:540px){.bento,.spatial-grid{grid-template-columns:1fr;gap:12px}.bento .focus-card,.bento .large{min-height:235px}.spatial-grid .focus-card{min-height:290px}.card-trigger{padding:27px}.card-detail{left:27px;right:27px;bottom:25px}.card-title,.large .card-title{font-size:25px}.service-graphic{right:19px;bottom:14px;width:47%}.focus-group.has-active .focus-card:not(.is-active){filter:brightness(.94)}.focus-card.is-active{transform:none}.hero h1{font-size:clamp(30px,7.5vw,42px)}.section-heading{font-size:36px;margin-bottom:36px}.accordion-list summary{font-size:15px}.accordion-list details p{margin-right:20px}}
-@media(hover:none),(pointer:coarse){.hero h1{transform:none!important}.focus-card.is-active{transform:none}}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.hero:before,.hero:after,.accordion-list details[open] p{animation:none!important}.hero h1{transform:none!important}.focus-card,.card-detail,.service-graphic,.spatial-diagram,.spatial-visual,.visual-type{transition:none!important}.focus-card.is-active{transform:none}.focus-group.has-active .focus-card:not(.is-active){filter:brightness(.94)}}
-@media print{.card-detail{position:static;visibility:visible;opacity:1;transform:none;padding:0 24px 24px}.card-trigger{min-height:0;height:auto}.focus-card{break-inside:avoid;filter:none!important}.header,.dialog{display:none}}
-</style>
-
-<style>
-/* Integrated blue edition */
+.accordion-list{border-top:1px solid #bdc5ce}
+.accordion-list details{border-bottom:1px solid #bdc5ce}
+.accordion-list summary{position:relative;list-style:none;cursor:pointer;padding:22px 36px 22px 0;font-size:17px;line-height:1.5}
+.accordion-list summary::-webkit-details-marker{display:none}
+.accordion-list summary:after{content:'+';position:absolute;right:4px;color:var(--muted);font-size:20px;font-weight:400}
+.accordion-list details[open] summary:after{content:'−'}
+.accordion-list details p{color:var(--muted);font-size:13px;line-height:1.85;max-width:610px;margin:0 40px 24px 0}
+.accordion-list details[open] p{animation:accordionIn .3s ease both}
+@keyframes accordionIn{from{opacity:0;transform:translateY(-5px)}to{opacity:1;transform:none}}
+.faq-section{background:var(--paper)}
+.faq-section .wrap{max-width:980px}
+.faq-section h2{margin-bottom:50px}
+.faq-list summary{font-size:16px}
+.footer{padding:38px 0;border-top:1px solid rgba(16,24,39,.08)}
+.footer .wrap{justify-content:center}
+.footer p{max-width:none;text-align:center;color:var(--muted)}
+@media(max-width:1150px){.card-trigger{padding:25px}
+.card-detail{left:25px;right:25px}
+.bento,.spatial-grid{gap:12px}
+.spatial-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.spatial-grid .focus-card{min-height:300px}}
+@media(max-width:800px){.bento{grid-template-columns:repeat(2,minmax(0,1fr))}
+.bento .large{grid-column:span 1;min-height:310px}
+.large .card-title{font-size:24px}
+.large .card-detail p{font-size:13px}}
+@media(max-width:540px){.bento,.spatial-grid{grid-template-columns:1fr;gap:12px}
+.bento .focus-card,.bento .large{min-height:235px}
+.spatial-grid .focus-card{min-height:290px}
+.card-trigger{padding:27px}
+.card-detail{left:27px;right:27px;bottom:25px}
+.card-title,.large .card-title{font-size:25px}
+.focus-group.has-active .focus-card:not(.is-active){filter:brightness(.94)}
+.focus-card.is-active{transform:none}
+.hero h1{font-size:clamp(30px,7.5vw,42px)}
+.section-heading{font-size:36px;margin-bottom:36px}
+.accordion-list summary{font-size:15px}
+.accordion-list details p{margin-right:20px}}
+@media(hover:none),(pointer:coarse){.hero h1{transform:none!important}
+.focus-card.is-active{transform:none}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}
+.accordion-list details[open] p{animation:none!important}
+.hero h1{transform:none!important}
+.focus-card,.card-detail,.visual-type{transition:none!important}
+.focus-card.is-active{transform:none}
+.focus-group.has-active .focus-card:not(.is-active){filter:brightness(.94)}}
+@media print{.card-detail{position:static;visibility:visible;opacity:1;transform:none;padding:0 24px 24px}
+.card-trigger{min-height:0;height:auto}
+.focus-card{break-inside:avoid;filter:none!important}
+.header{display:none}}
 .header{transition:background .65s,color .65s,border-color .65s}
 .header .actions>[data-action="apply"]{opacity:0;visibility:hidden;transform:translateY(-6px);transition:opacity .5s,transform .5s,visibility .5s}
 .header.cta-visible .actions>[data-action="apply"]{opacity:1;visibility:visible;transform:none}
 .header:not(.scrolled) .menu-toggle{visibility:hidden}
 [data-action="apply"].btn{background:var(--blue);color:var(--paper)}
-.hero:before,.hero:after{display:none}
 .hero-bg{position:absolute;inset:0;pointer-events:none}
 .hero-bg i{position:absolute;inset:-28%;display:block}
 .hero-bg i:first-child{background:radial-gradient(ellipse at 25% 35%,rgba(49,93,223,.18),transparent 38%),radial-gradient(ellipse at 78% 62%,rgba(94,123,177,.15),transparent 42%);animation:heroFlow 12s ease-in-out infinite alternate;translate:var(--bg-x,0px) var(--bg-y,0px)}
@@ -113,38 +236,35 @@
 .focus-group.has-active .focus-card:not(.is-active){filter:none}
 .card-title{display:block;transform-origin:left top;transition:transform .45s,opacity .4s,filter .4s}
 .focus-card.is-active .card-title{transform:scale(1.065)}
-.focus-group.has-active .focus-card:not(.is-active) .card-title,
-.focus-group.has-active .focus-card:not(.is-active) .service-graphic,
-.focus-group.has-active .focus-card:not(.is-active) .spatial-diagram,
-.focus-group.has-active .focus-card:not(.is-active) .spatial-visual,
-.focus-group.has-active .focus-card:not(.is-active) .visual-type{opacity:.3;filter:blur(1px)}
+.focus-group.has-active .focus-card:not(.is-active) .card-title,.focus-group.has-active .focus-card:not(.is-active) .visual-type{opacity:.3;filter:blur(1px)}
 .focus-card{transform:translate(var(--mx,0px),var(--my,0px));transition:transform .65s cubic-bezier(.2,1.5,.35,1),box-shadow .45s}
 .focus-card.is-active{transform:translate(var(--mx,0px),var(--my,0px)) scale(1.012)}
 .production-stat{display:block;font-size:22px;font-weight:600;line-height:1.3;margin-bottom:10px;color:var(--sky)}
-@media(max-width:680px){
- .header .actions>.text-btn{display:block;font-size:11px}
- .header:not(.cta-visible) .actions>[data-action="apply"]{display:none}
- .header.cta-visible .actions{gap:9px}
- .hero h1{font-size:clamp(30px,7.7vw,46px);line-height:1.4}
- .bento{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
- .bento .focus-card,.bento .large{min-height:205px}
- .bento .card-trigger{padding:17px}
- .bento .card-title,.bento .large .card-title{font-size:18px}
- .bento .service-graphic{width:42%;height:75px;right:15px;bottom:17px}
- .bento .card-detail{position:relative;left:auto;right:auto;bottom:auto;display:none;padding:0 17px 20px}
- .bento .is-active .card-trigger{height:auto;min-height:95px}
- .bento .is-active .card-detail{display:block}
- .bento .card-detail p{font-size:12px;line-height:1.7}
- .production-stat{font-size:17px}
- .bento .is-active .service-graphic{opacity:0}
-}
-@media(max-width:359px){.bento{grid-template-columns:1fr}.header .actions{gap:7px}.header.cta-visible .actions>.text-btn{font-size:10px}.header .brand{font-size:21px}.header .actions>.btn{padding:10px}}
-@media(hover:none),(pointer:coarse){.focus-card,.focus-card.is-active{transform:none}.hero .wrap{transform:none;scale:1!important}}
-@media(prefers-reduced-motion:reduce){.hero-bg i{animation:none!important;translate:none!important}#warp,#reflection{display:none}.hero .wrap{scale:1!important}.hero .wrap,#hero-button,.focus-card,.focus-card.is-active,.card-title{transform:none!important}.hero h1,.hero h1 span{background-position:50% 0!important}}
-</style>
-
-<style>
-/* Spatial / clay / inquiry edition */
+@media(max-width:680px){.header .actions>.text-btn{display:block;font-size:11px}
+.header:not(.cta-visible) .actions>[data-action="apply"]{display:none}
+.header.cta-visible .actions{gap:9px}
+.hero h1{font-size:clamp(30px,7.7vw,46px);line-height:1.4}
+.bento{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.bento .focus-card,.bento .large{min-height:205px}
+.bento .card-trigger{padding:17px}
+.bento .card-title,.bento .large .card-title{font-size:18px}
+.bento .card-detail{position:relative;left:auto;right:auto;bottom:auto;display:none;padding:0 17px 20px}
+.bento .is-active .card-trigger{height:auto;min-height:95px}
+.bento .is-active .card-detail{display:block}
+.bento .card-detail p{font-size:12px;line-height:1.7}
+.production-stat{font-size:17px}}
+@media(max-width:359px){.bento{grid-template-columns:1fr}
+.header .actions{gap:7px}
+.header.cta-visible .actions>.text-btn{font-size:10px}
+.header .brand{font-size:21px}
+.header .actions>.btn{padding:10px}}
+@media(hover:none),(pointer:coarse){.focus-card,.focus-card.is-active{transform:none}
+.hero .wrap{transform:none;scale:1!important}}
+@media(prefers-reduced-motion:reduce){.hero-bg i{animation:none!important;translate:none!important}
+#warp,#reflection{display:none}
+.hero .wrap{scale:1!important}
+.hero .wrap,#hero-button,.focus-card,.focus-card.is-active,.card-title{transform:none!important}
+.hero h1,.hero h1 span{background-position:50% 0!important}}
 .nav-indicator{top:2px}
 .hero h1{font-weight:500}
 .hero h1 span{font-weight:700}
@@ -165,42 +285,40 @@
 .infrastructure-type{font-size:14px;bottom:17px;left:24px;letter-spacing:0}
 .infrastructure-type br{display:none}
 .spatial-grid .infrastructure-type + .clay-visual{bottom:42px;height:130px}
-@media(min-width:1001px){
- .bento{grid-template-columns:repeat(6,minmax(0,1fr));gap:20px;align-items:start}
- .bento .focus-card{grid-column:span 2;min-height:280px}
- .bento .large{grid-column:span 3;min-height:300px}
- .bento .focus-card:nth-child(3){grid-column:2 / span 3;grid-row:2}
- .bento .focus-card:nth-child(4){grid-column:5 / span 2;grid-row:2}
- .bento .focus-card:nth-child(5){grid-column:1 / span 3;grid-row:3}
- .bento .focus-card:nth-child(6){grid-column:4 / span 2;grid-row:3}
- .bento .focus-card:nth-child(7){grid-column:1 / span 2;grid-row:4}
- .bento .focus-card:nth-child(8){grid-column:3 / span 2;grid-row:4}
- .bento .focus-card:nth-child(9){grid-column:2 / span 2;grid-row:5}
- .bento .focus-card:nth-child(10){grid-column:4 / span 3;grid-row:5}
- .bento .focus-card:nth-child(3) .card-title,.bento .focus-card:nth-child(5) .card-title{font-size:29px}
-}
-@media(min-width:681px) and (max-width:1000px){.bento{grid-template-columns:repeat(2,minmax(0,1fr))}.bento .large{grid-column:span 1}.bento .card-title{font-size:24px}}
-@media(max-width:680px){
- .header:not(.cta-visible) .actions>[data-action="apply"]{display:inline-flex}
- .header.cta-visible .actions>[data-action="apply"]{padding-left:12px;padding-right:12px;margin-left:10px}
- .header.scrolled .menu-toggle{margin-left:10px}
- .bento .focus-card,.bento .large{min-height:168px;align-self:start}
- .bento .card-trigger{min-height:168px}
- .bento .is-active .card-trigger{min-height:92px}
- .bento .clay-visual{width:95px;height:65px;right:12px;bottom:8px}
- .bento .is-active .clay-visual{opacity:0}
- .bento .card-title,.bento .large .card-title{font-size:17px}
- .spatial-grid{grid-template-columns:1fr;gap:10px}
- .spatial-grid .focus-card{min-height:160px}
- .spatial-grid .card-trigger{min-height:160px;padding:22px}
- .spatial-grid .card-title{max-width:58%;font-size:21px}
- .spatial-grid .clay-visual,.spatial-grid .infrastructure-type + .clay-visual{width:120px;height:110px;left:auto;right:15px;bottom:12px}
- .spatial-grid .infrastructure-type{left:22px;bottom:22px;font-size:12px;max-width:50%}
- .spatial-grid .card-detail{position:relative;display:none;left:auto;right:auto;bottom:auto;padding:0 22px 23px}
- .spatial-grid .is-active .card-trigger{min-height:78px;height:auto}
- .spatial-grid .is-active .card-detail{display:block}
- .spatial-grid .is-active .clay-visual,.spatial-grid .is-active .visual-type{opacity:0}
-}
+@media(min-width:1001px){.bento{grid-template-columns:repeat(6,minmax(0,1fr));gap:20px;align-items:start}
+.bento .focus-card{grid-column:span 2;min-height:280px}
+.bento .large{grid-column:span 3;min-height:300px}
+.bento .focus-card:nth-child(3){grid-column:2 / span 3;grid-row:2}
+.bento .focus-card:nth-child(4){grid-column:5 / span 2;grid-row:2}
+.bento .focus-card:nth-child(5){grid-column:1 / span 3;grid-row:3}
+.bento .focus-card:nth-child(6){grid-column:4 / span 2;grid-row:3}
+.bento .focus-card:nth-child(7){grid-column:1 / span 2;grid-row:4}
+.bento .focus-card:nth-child(8){grid-column:3 / span 2;grid-row:4}
+.bento .focus-card:nth-child(9){grid-column:2 / span 2;grid-row:5}
+.bento .focus-card:nth-child(10){grid-column:4 / span 3;grid-row:5}
+.bento .focus-card:nth-child(3) .card-title,.bento .focus-card:nth-child(5) .card-title{font-size:29px}}
+@media(min-width:681px) and (max-width:1000px){.bento{grid-template-columns:repeat(2,minmax(0,1fr))}
+.bento .large{grid-column:span 1}
+.bento .card-title{font-size:24px}}
+@media(max-width:680px){.header:not(.cta-visible) .actions>[data-action="apply"]{display:inline-flex}
+.header.cta-visible .actions>[data-action="apply"]{padding-left:12px;padding-right:12px;margin-left:10px}
+.header.scrolled .menu-toggle{margin-left:10px}
+.bento .focus-card,.bento .large{min-height:168px;align-self:start}
+.bento .card-trigger{min-height:168px}
+.bento .is-active .card-trigger{min-height:92px}
+.bento .clay-visual{width:95px;height:65px;right:12px;bottom:8px}
+.bento .is-active .clay-visual{opacity:0}
+.bento .card-title,.bento .large .card-title{font-size:17px}
+.spatial-grid{grid-template-columns:1fr;gap:10px}
+.spatial-grid .focus-card{min-height:160px}
+.spatial-grid .card-trigger{min-height:160px;padding:22px}
+.spatial-grid .card-title{max-width:58%;font-size:21px}
+.spatial-grid .clay-visual,.spatial-grid .infrastructure-type + .clay-visual{width:120px;height:110px;left:auto;right:15px;bottom:12px}
+.spatial-grid .infrastructure-type{left:22px;bottom:22px;font-size:12px;max-width:50%}
+.spatial-grid .card-detail{position:relative;display:none;left:auto;right:auto;bottom:auto;padding:0 22px 23px}
+.spatial-grid .is-active .card-trigger{min-height:78px;height:auto}
+.spatial-grid .is-active .card-detail{display:block}
+.spatial-grid .is-active .clay-visual,.spatial-grid .is-active .visual-type{opacity:0}}
 .inquiry{border:0;padding:0;width:min(600px,calc(100% - 28px));max-width:600px;max-height:min(88svh,850px);overflow:auto;border-radius:20px;background:var(--paper);color:var(--ink);box-shadow:0 35px 100px #07132255;transform-origin:50% 0}
 .inquiry::backdrop{background:rgba(12,23,40,.55);backdrop-filter:blur(9px)}
 .inquiry-inner{position:relative;padding:32px;overflow:hidden}
@@ -228,14 +346,45 @@
 .mock-note{font-size:11px!important;color:var(--muted);margin:0!important;line-height:1.5!important;margin-right:auto!important}
 .mail-meta{margin:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:12px 0;font-size:13px}
 .mail-meta div{display:grid;grid-template-columns:68px 1fr;gap:10px;padding:6px 0}
-.mail-meta dt{color:var(--muted)}.mail-meta dd{margin:0;overflow-wrap:anywhere}
+.mail-meta dt{color:var(--muted)}
+.mail-meta dd{margin:0;overflow-wrap:anywhere}
 .mail-body{white-space:pre-wrap;overflow-wrap:anywhere;min-height:110px;padding-top:22px;font-size:14px!important;line-height:1.8!important;color:var(--ink)!important}
 .inquiry [hidden]{display:none!important}
 .prototype-toast{position:fixed;top:100px;left:50%;transform:translateX(-50%) translateY(-12px);opacity:0;visibility:hidden;background:var(--night);color:var(--paper);padding:13px 20px;border-radius:99px;z-index:60;font-size:12px;text-align:center;transition:opacity .35s,transform .35s;max-width:90%;pointer-events:none}
 .prototype-toast.show{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}
-@media(max-width:540px){.inquiry-inner{padding:24px}.form-pair{grid-template-columns:1fr;gap:0}.inquiry h2{font-size:26px}.inquiry-actions{flex-wrap:wrap}.mock-note{width:100%}.inquiry{max-height:90svh}}
+@media(max-width:540px){.inquiry-inner{padding:24px}
+.form-pair{grid-template-columns:1fr;gap:0}
+.inquiry h2{font-size:26px}
+.inquiry-actions{flex-wrap:wrap}
+.mock-note{width:100%}
+.inquiry{max-height:90svh}}
 @media(prefers-reduced-motion:reduce){.clay-motion{animation:none!important}}
+/* One shared background blend keeps the opening free of a hard seam. */
+main{--opening-progress:0;--opening-content:0;--hero-copy:1}
+.hero{min-height:100svh;background:var(--night)}
+.hero::before,.services-section::before{content:"";position:absolute;inset:0;background:var(--paper);opacity:var(--opening-progress);pointer-events:none;z-index:0}
+.hero-bg{z-index:1;opacity:calc(1 - var(--opening-progress));mask-image:linear-gradient(#000 0%,#000 55%,transparent 100%);-webkit-mask-image:linear-gradient(#000 0%,#000 55%,transparent 100%)}
+.hero .wrap{opacity:var(--hero-copy)}
+#warp,#reflection{opacity:calc(1 - var(--opening-progress))}
+.services-section{isolation:isolate;background:var(--night);transition:none}
+.services-section>.wrap{position:relative;z-index:1;opacity:var(--opening-content);transition:none}
+.nav-indicator{opacity:0}
+.header.opening-light:not(.scrolled):not(.open){color:var(--ink)}
+/* Rounded solid forms, with color roles chosen for each card surface. */
+.focus-card{--g-main:#315bba;--g-accent:#18345e;--g-depth:#152d50;--g-light:#eaf0fa;--g-cutout:#e7e8e7}
+.bento .mist{--g-main:#294a87;--g-accent:#5479bc;--g-depth:#172e54;--g-cutout:#dce5f2}
+.bento .blue{--g-main:#f3f0e8;--g-accent:#b7d4ff;--g-depth:#163285;--g-light:#fff;--g-cutout:#315ddf}
+.bento .dark,.spatial-grid .focus-card{--g-main:#e2eaf6;--g-accent:#8eb5ed;--g-depth:#060e1b;--g-light:#fff;--g-cutout:#17263b}
+.bento .dark{--g-cutout:#0c1728}
+.clay-motion{transform-box:fill-box}
+@media(prefers-reduced-motion:reduce){
+ .hero::before{display:none}.services-section::before{opacity:1}
+ .hero .wrap,.services-section>.wrap{opacity:1}
+}
+@media print{.hero::before{display:none}.services-section::before{opacity:1}.hero .wrap,.services-section>.wrap{opacity:1}}
+
 </style>
+<noscript><style>.hero::before{display:none}.services-section::before{opacity:1}.hero .wrap,.services-section>.wrap{opacity:1}</style></noscript>
 </head>
 <body>
 <a class="skip" href="#services">본문으로 이동</a>
@@ -246,20 +395,20 @@
 </div></header>
 <main>
 <section class="hero" id="hero" aria-labelledby="hero-title"><div class="hero-bg" aria-hidden="true"><i></i><i></i></div><canvas id="warp" aria-hidden="true"></canvas><canvas id="reflection" aria-hidden="true"></canvas><div class="wrap" id="hero-wrap"><h1 id="hero-title">음악을 더 입체적으로 만들고,<br><span>더 멀리 보냅니다.</span></h1><span id="hero-button-anchor"><button class="btn" id="hero-button" data-action="apply">음원 발매 접수</button></span></div></section>
-<section class="section services-section" id="services" data-nav="services" data-accent="#315ddf" aria-labelledby="services-title"><div class="wrap"><p class="section-kicker">What We Do</p><h2 class="section-heading" id="services-title">SEORO가 하는 일.</h2><div class="bento focus-group"><article class="focus-card large dark"><button type="button" class="card-trigger" aria-expanded="false" aria-controls="service-0" aria-labelledby="service-0-title"><span class="card-title" id="service-0-title">공간음향 제작</span><span class="clay-visual" aria-hidden="true" style="--clay-cycle:8s;--clay-delay:-0s"><svg viewBox="0 0 220 180"><g class="clay-motion" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="112" cy="157" rx="52" ry="5" fill="#101827" opacity=".055"/><g transform="translate(0 4)" opacity=".48"><ellipse cx="105" cy="86" rx="63" ry="34" fill="none" stroke="#516b99" stroke-width="14"/><ellipse cx="105" cy="86" rx="30" ry="61" fill="none" stroke="#516b99" stroke-width="12" transform="rotate(24 105 86)"/><circle cx="105" cy="86" r="21" fill="#516b99"/><circle cx="159" cy="63" r="12" fill="#516b99"/></g><g><ellipse cx="105" cy="86" rx="63" ry="34" fill="none" stroke="#dce5f2" stroke-width="14"/><ellipse cx="105" cy="86" rx="30" ry="61" fill="none" stroke="#dce5f2" stroke-width="12" transform="rotate(24 105 86)"/><circle cx="105" cy="86" r="21" fill="#7593cf"/><circle cx="159" cy="63" r="12" fill="#7593cf"/></g></g></svg></span></button><div class="card-detail" id="service-0" aria-hidden="true"><p><strong class="production-stat">3,000+ Spatial Audio IP</strong>3,000건 이상의 공간음향 IP를 제작했습니다.<br>Dolby Atmos 기반 공간음향 믹싱부터 플랫폼별 기술 QC까지.</p></div></article>
-<article class="focus-card large blue"><button type="button" class="card-trigger" aria-expanded="false" aria-controls="service-1" aria-labelledby="service-1-title"><span class="card-title" id="service-1-title">국내·글로벌<br>유통 & 발매</span><span class="clay-visual" aria-hidden="true" style="--clay-cycle:8.73s;--clay-delay:-1.31s"><svg viewBox="0 0 220 180"><g class="clay-motion" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="112" cy="157" rx="52" ry="5" fill="#101827" opacity=".055"/><g transform="translate(0 4)" opacity=".48"><path d="M56 91H99Q119 91 119 53H164M99 91Q119 91 119 130H164" fill="none" stroke="#516b99" stroke-width="15"/><circle cx="48" cy="91" r="22" fill="#516b99"/><circle cx="169" cy="53" r="18" fill="#516b99"/><circle cx="169" cy="130" r="18" fill="#516b99"/></g><g><path d="M56 91H99Q119 91 119 53H164M99 91Q119 91 119 130H164" fill="none" stroke="#dce5f2" stroke-width="15"/><circle cx="48" cy="91" r="22" fill="#7593cf"/><circle cx="169" cy="53" r="18" fill="#dce5f2"/><circle cx="169" cy="130" r="18" fill="#dce5f2"/></g></g></svg></span></button><div class="card-detail" id="service-1" aria-hidden="true"><p>국내 주요 플랫폼 직접 공급과 Naxos를 통한 FUGA 글로벌 네트워크. 발매 일정과 권리 범위에 맞춰 공급합니다.</p></div></article>
-<article class="focus-card "><button type="button" class="card-trigger" aria-expanded="false" aria-controls="service-2" aria-labelledby="service-2-title"><span class="card-title" id="service-2-title">글로벌 플레이리스트 피칭</span><span class="clay-visual" aria-hidden="true" style="--clay-cycle:9.46s;--clay-delay:-2.62s"><svg viewBox="0 0 220 180"><g class="clay-motion" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="112" cy="157" rx="52" ry="5" fill="#101827" opacity=".055"/><g transform="translate(0 4)" opacity=".48"><rect x="39" y="36" width="104" height="116" rx="22" fill="#516b99"/><path d="M63 66H116M63 90H108M63 114H94" stroke="#516b99" stroke-width="8"/><path d="M169 133V62M151 80L169 62L187 80" stroke="#516b99" stroke-width="13" fill="none"/></g><g><rect x="39" y="36" width="104" height="116" rx="22" fill="#dce5f2"/><path d="M63 66H116M63 90H108M63 114H94" stroke="#91a7ca" stroke-width="8"/><path d="M169 133V62M151 80L169 62L187 80" stroke="#7593cf" stroke-width="13" fill="none"/></g></g></svg></span></button><div class="card-detail" id="service-2" aria-hidden="true"><p>Spotify·Apple Music 등 주요 플랫폼의 플레이리스트 피칭을 지원합니다. 편성은 플랫폼의 편집 기준에 따라 결정됩니다.</p></div></article>
-<article class="focus-card mist"><button type="button" class="card-trigger" aria-expanded="false" aria-controls="service-3" aria-labelledby="service-3-title"><span class="card-title" id="service-3-title">정산시스템<br>SOVO360</span><span class="clay-visual" aria-hidden="true" style="--clay-cycle:10.19s;--clay-delay:-3.93s"><svg viewBox="0 0 220 180"><g class="clay-motion" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="112" cy="157" rx="52" ry="5" fill="#101827" opacity=".055"/><g transform="translate(0 4)" opacity=".48"><rect x="34" y="32" width="151" height="111" rx="24" fill="#516b99"/><path d="M64 116V90M95 116V66M126 116V79M157 116V55" stroke="#516b99" stroke-width="15"/></g><g><rect x="34" y="32" width="151" height="111" rx="24" fill="#dce5f2"/><path d="M64 116V90M95 116V66M126 116V79M157 116V55" stroke="#7593cf" stroke-width="15"/></g></g></svg></span></button><div class="card-detail" id="service-3" aria-hidden="true"><p>발매·플랫폼별 정산과 카탈로그 정보를 확인합니다. 국내 직배 및 공간음향 조건을 반영한 수수료·권리자 배분 구조를 안내합니다.</p></div></article>
-<article class="focus-card "><button type="button" class="card-trigger" aria-expanded="false" aria-controls="service-4" aria-labelledby="service-4-title"><span class="card-title" id="service-4-title">프리세이브 & 스마트링크</span><span class="clay-visual" aria-hidden="true" style="--clay-cycle:10.92s;--clay-delay:-5.24s"><svg viewBox="0 0 220 180"><g class="clay-motion" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="112" cy="157" rx="52" ry="5" fill="#101827" opacity=".055"/><g transform="translate(0 4)" opacity=".48"><g transform="rotate(-28 110 90)"><rect x="29" y="62" width="100" height="57" rx="28" fill="none" stroke="#516b99" stroke-width="19"/><rect x="93" y="62" width="100" height="57" rx="28" fill="none" stroke="#516b99" stroke-width="19"/></g></g><g><g transform="rotate(-28 110 90)"><rect x="29" y="62" width="100" height="57" rx="28" fill="none" stroke="#dce5f2" stroke-width="19"/><rect x="93" y="62" width="100" height="57" rx="28" fill="none" stroke="#7593cf" stroke-width="19"/></g></g></g></svg></span></button><div class="card-detail" id="service-4" aria-hidden="true"><p>발매 전 사전 저장부터 발매 후 주요 플랫폼을 한곳에 모은 청취 링크까지.</p></div></article>
-<article class="focus-card mist"><button type="button" class="card-trigger" aria-expanded="false" aria-controls="service-5" aria-labelledby="service-5-title"><span class="card-title" id="service-5-title">글로벌 시장 진출</span><span class="clay-visual" aria-hidden="true" style="--clay-cycle:11.65s;--clay-delay:-6.550000000000001s"><svg viewBox="0 0 220 180"><g class="clay-motion" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="112" cy="157" rx="52" ry="5" fill="#101827" opacity=".055"/><g transform="translate(0 4)" opacity=".48"><circle cx="110" cy="90" r="59" fill="#516b99"/><ellipse cx="110" cy="90" rx="25" ry="59" fill="none" stroke="#516b99" stroke-width="7"/><path d="M52 90H168" stroke="#516b99" stroke-width="7"/></g><g><circle cx="110" cy="90" r="59" fill="#7593cf"/><ellipse cx="110" cy="90" rx="25" ry="59" fill="none" stroke="#dce5f2" stroke-width="7"/><path d="M52 90H168" stroke="#dce5f2" stroke-width="7"/></g></g></svg></span></button><div class="card-detail" id="service-5" aria-hidden="true"><p>국가별 권리 조건과 현지 파트너를 검토해 발매·프로모션 협력을 논의합니다.</p></div></article>
-<article class="focus-card "><button type="button" class="card-trigger" aria-expanded="false" aria-controls="service-6" aria-labelledby="service-6-title"><span class="card-title" id="service-6-title">YouTube Content ID</span><span class="clay-visual" aria-hidden="true" style="--clay-cycle:12.379999999999999s;--clay-delay:-7.86s"><svg viewBox="0 0 220 180"><g class="clay-motion" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="112" cy="157" rx="52" ry="5" fill="#101827" opacity=".055"/><g transform="translate(0 4)" opacity=".48"><rect x="29" y="43" width="163" height="102" rx="31" fill="#516b99"/><path d="M96 69L140 94L96 120Z" fill="#516b99" stroke="#516b99" stroke-width="7"/></g><g><rect x="29" y="43" width="163" height="102" rx="31" fill="#7593cf"/><path d="M96 69L140 94L96 120Z" fill="#dce5f2" stroke="#dce5f2" stroke-width="7"/></g></g></svg></span></button><div class="card-detail" id="service-6" aria-hidden="true"><p>음원 등록을 통해 YouTube 영상 내 사용을 식별하고 수익 관리를 지원합니다. 권리 및 플랫폼 정책에 따라 적용됩니다.</p></div></article>
-<article class="focus-card "><button type="button" class="card-trigger" aria-expanded="false" aria-controls="service-7" aria-labelledby="service-7-title"><span class="card-title" id="service-7-title">카탈로그 이전</span><span class="clay-visual" aria-hidden="true" style="--clay-cycle:13.11s;--clay-delay:-9.17s"><svg viewBox="0 0 220 180"><g class="clay-motion" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="112" cy="157" rx="52" ry="5" fill="#101827" opacity=".055"/><g transform="translate(0 4)" opacity=".48"><path d="M45 70H174V137Q174 148 161 148H58Q45 148 45 135Z" fill="#516b99"/><path d="M37 64H182L174 85H45Z" fill="#516b99"/><path d="M110 28V105M88 83L110 106L133 83" fill="none" stroke="#516b99" stroke-width="15"/></g><g><path d="M45 70H174V137Q174 148 161 148H58Q45 148 45 135Z" fill="#dce5f2"/><path d="M37 64H182L174 85H45Z" fill="#7593cf"/><path d="M110 28V105M88 83L110 106L133 83" fill="none" stroke="#7593cf" stroke-width="15"/></g></g></svg></span></button><div class="card-detail" id="service-7" aria-hidden="true"><p>기존 계약과 권리 상태를 확인하고 음원·메타데이터 이전과 발매 운영을 지원합니다.</p></div></article>
-<article class="focus-card mist"><button type="button" class="card-trigger" aria-expanded="false" aria-controls="service-8" aria-labelledby="service-8-title"><span class="card-title" id="service-8-title">피지컬 제작</span><span class="clay-visual" aria-hidden="true" style="--clay-cycle:13.84s;--clay-delay:-10.48s"><svg viewBox="0 0 220 180"><g class="clay-motion" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="112" cy="157" rx="52" ry="5" fill="#101827" opacity=".055"/><g transform="translate(0 4)" opacity=".48"><circle cx="110" cy="90" r="60" fill="#516b99"/><circle cx="110" cy="90" r="22" fill="#516b99"/><circle cx="110" cy="90" r="8" fill="#516b99"/></g><g><circle cx="110" cy="90" r="60" fill="#dce5f2"/><circle cx="110" cy="90" r="22" fill="#7593cf"/><circle cx="110" cy="90" r="8" fill="#eaf0f8"/></g></g></svg></span></button><div class="card-detail" id="service-8" aria-hidden="true"><p>CD·바이닐·키트 등 작품과 프로젝트에 맞는 피지컬 제작을 협의합니다.</p></div></article>
-<article class="focus-card "><button type="button" class="card-trigger" aria-expanded="false" aria-controls="service-9" aria-labelledby="service-9-title"><span class="card-title" id="service-9-title">레이블·아티스트 서비스</span><span class="clay-visual" aria-hidden="true" style="--clay-cycle:14.57s;--clay-delay:-11.790000000000001s"><svg viewBox="0 0 220 180"><g class="clay-motion" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="112" cy="157" rx="52" ry="5" fill="#101827" opacity=".055"/><g transform="translate(0 4)" opacity=".48"><rect x="85" y="22" width="48" height="85" rx="24" fill="#516b99"/><path d="M68 78V83A41 41 0 0 0 150 83V78M109 125V150M86 150H132" fill="none" stroke="#516b99" stroke-width="12"/></g><g><rect x="85" y="22" width="48" height="85" rx="24" fill="#dce5f2"/><path d="M68 78V83A41 41 0 0 0 150 83V78M109 125V150M86 150H132" fill="none" stroke="#7593cf" stroke-width="12"/></g></g></svg></span></button><div class="card-detail" id="service-9" aria-hidden="true"><p>선정된 아티스트와 레이블은 전문팀과 제작·발매·콘텐츠 협업을 진행할 수 있습니다.</p></div></article></div></div></section>
-<section class="section spatial-section" id="spatial" data-nav="spatial" data-accent="#5276df" aria-labelledby="spatial-title"><div class="wrap"><p class="section-kicker">Why Spatial Audio</p><h2 class="section-heading" id="spatial-title">공간음향을 선택하는 이유.</h2><div class="spatial-grid focus-group"><article class="focus-card "><button type="button" class="card-trigger" aria-expanded="false" aria-controls="spatial-0" aria-labelledby="spatial-0-title"><span class="card-title" id="spatial-0-title">청취 경험의 확장</span><span class="clay-visual" aria-hidden="true" style="--clay-cycle:15.3s;--clay-delay:-13.100000000000001s"><svg viewBox="0 0 220 180"><g class="clay-motion" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="112" cy="157" rx="52" ry="5" fill="#101827" opacity=".055"/><g transform="translate(0 4)" opacity=".48"><ellipse cx="110" cy="91" rx="76" ry="39" fill="none" stroke="#516b99" stroke-width="12"/><ellipse cx="110" cy="91" rx="34" ry="68" fill="none" stroke="#516b99" stroke-width="10" transform="rotate(-25 110 91)"/><circle cx="110" cy="91" r="24" fill="#516b99"/><circle cx="173" cy="64" r="13" fill="#516b99"/></g><g><ellipse cx="110" cy="91" rx="76" ry="39" fill="none" stroke="#dce5f2" stroke-width="12"/><ellipse cx="110" cy="91" rx="34" ry="68" fill="none" stroke="#dce5f2" stroke-width="10" transform="rotate(-25 110 91)"/><circle cx="110" cy="91" r="24" fill="#7593cf"/><circle cx="173" cy="64" r="13" fill="#7593cf"/></g></g></svg></span></button><div class="card-detail" id="spatial-0" aria-hidden="true"><p>높이 정보를 포함한 3차원 공간에 소리를 배치해 보컬과 악기의 위치·움직임을 더 선명하게 전달합니다.</p></div></article>
-<article class="focus-card "><button type="button" class="card-trigger" aria-expanded="false" aria-controls="spatial-1" aria-labelledby="spatial-1-title"><span class="card-title" id="spatial-1-title">제작 인프라</span><span class="visual-type infrastructure-type" aria-hidden="true">AUDIOGUY &amp; SOUND360</span><span class="clay-visual" aria-hidden="true" style="--clay-cycle:16.03s;--clay-delay:-14.41s"><svg viewBox="0 0 220 180"><g class="clay-motion" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="112" cy="157" rx="52" ry="5" fill="#101827" opacity=".055"/><g transform="translate(0 4)" opacity=".48"><rect x="34" y="33" width="152" height="111" rx="25" fill="#516b99"/><path d="M69 57V119M110 57V119M151 57V119" stroke="#516b99" stroke-width="7"/><rect x="58" y="73" width="22" height="26" rx="9" fill="#516b99"/><rect x="99" y="95" width="22" height="26" rx="9" fill="#516b99"/><rect x="140" y="57" width="22" height="26" rx="9" fill="#516b99"/></g><g><rect x="34" y="33" width="152" height="111" rx="25" fill="#dce5f2"/><path d="M69 57V119M110 57V119M151 57V119" stroke="#91a7cc" stroke-width="7"/><rect x="58" y="73" width="22" height="26" rx="9" fill="#7593cf"/><rect x="99" y="95" width="22" height="26" rx="9" fill="#7593cf"/><rect x="140" y="57" width="22" height="26" rx="9" fill="#7593cf"/></g></g></svg></span></button><div class="card-detail" id="spatial-1" aria-hidden="true"><p>AUDIOGUY의 제작 경험과 SOUND360의 스튜디오 인프라, 다양한 공간음향 작업 경험을 바탕으로 제작부터 발매·공급까지 연결합니다.</p></div></article>
-<article class="focus-card "><button type="button" class="card-trigger" aria-expanded="false" aria-controls="spatial-2" aria-labelledby="spatial-2-title"><span class="card-title" id="spatial-2-title">정산 구조</span><span class="clay-visual" aria-hidden="true" style="--clay-cycle:16.759999999999998s;--clay-delay:-15.72s"><svg viewBox="0 0 220 180"><g class="clay-motion" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="112" cy="157" rx="52" ry="5" fill="#101827" opacity=".055"/><g transform="translate(0 4)" opacity=".48"><rect x="41" y="100" width="33" height="45" rx="12" fill="#516b99"/><rect x="92" y="73" width="33" height="72" rx="12" fill="#516b99"/><rect x="143" y="39" width="33" height="106" rx="12" fill="#516b99"/><path d="M47 76L112 39M91 37L115 37L110 58" fill="none" stroke="#516b99" stroke-width="10"/></g><g><rect x="41" y="100" width="33" height="45" rx="12" fill="#dce5f2"/><rect x="92" y="73" width="33" height="72" rx="12" fill="#dce5f2"/><rect x="143" y="39" width="33" height="106" rx="12" fill="#7593cf"/><path d="M47 76L112 39M91 37L115 37L110 58" fill="none" stroke="#7593cf" stroke-width="10"/></g></g></svg></span></button><div class="card-detail" id="spatial-2" aria-hidden="true"><p>플랫폼별 공간음향 정산 조건과 국내 직배 구조를 함께 검토해 권리자에게 적용되는 배분 조건을 안내합니다.</p></div></article>
-<article class="focus-card "><button type="button" class="card-trigger" aria-expanded="false" aria-controls="spatial-3" aria-labelledby="spatial-3-title"><span class="card-title" id="spatial-3-title">피칭 자료의 완성도</span><span class="clay-visual" aria-hidden="true" style="--clay-cycle:17.490000000000002s;--clay-delay:-17.03s"><svg viewBox="0 0 220 180"><g class="clay-motion" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="112" cy="157" rx="52" ry="5" fill="#101827" opacity=".055"/><g transform="translate(0 4)" opacity=".48"><rect x="36" y="57" width="116" height="100" rx="19" fill="#516b99" transform="rotate(-8 95 107)"/><rect x="84" y="25" width="108" height="98" rx="20" fill="#516b99" transform="rotate(7 135 75)"/><path d="M124 49L160 76L124 95Z" fill="#516b99"/><path d="M57 115H108M57 134H89" stroke="#516b99" stroke-width="7"/></g><g><rect x="36" y="57" width="116" height="100" rx="19" fill="#dce5f2" transform="rotate(-8 95 107)"/><rect x="84" y="25" width="108" height="98" rx="20" fill="#7593cf" transform="rotate(7 135 75)"/><path d="M124 49L160 76L124 95Z" fill="#dce5f2"/><path d="M57 115H108M57 134H89" stroke="#8da5cf" stroke-width="7"/></g></g></svg></span></button><div class="card-detail" id="spatial-3" aria-hidden="true"><p>공간음향 버전과 모션아트를 포함해 작품의 특성이 드러나는 발매 자료를 준비합니다.</p></div></article></div><div class="conditions"><p>공간음향 지원 여부는 기기, 스트리밍 플랫폼, 발매 포맷에 따라 달라질 수 있습니다.</p><p>추가 로열티의 적용 여부·비율은 플랫폼 정책 및 계약 조건에 따르며, 플레이리스트 편성은 보장되지 않습니다.</p></div></div></section>
+<section class="section services-section" id="services" data-nav="services" data-accent="#315ddf" aria-labelledby="services-title"><div class="wrap"><p class="section-kicker">What We Do</p><h2 class="section-heading" id="services-title">SEORO가 하는 일.</h2><div class="bento focus-group"><article class="focus-card large dark"><button type="button" class="card-trigger" aria-expanded="false" aria-controls="service-0" aria-labelledby="service-0-title"><span class="card-title" id="service-0-title">공간음향 제작</span><span class="clay-visual" aria-hidden="true" style="--clay-cycle:6.667s;--clay-delay:-0.000s"><svg viewBox="0 0 220 180"><g class="clay-motion" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="110" cy="158" rx="52" ry="5" fill="var(--g-depth)" opacity=".1"/><g transform="translate(0 3)" opacity=".48"><ellipse cx="110" cy="91" rx="69" ry="35" fill="none" stroke="var(--g-depth)" stroke-width="14"/><path d="M88 43C54 85 77 138 111 144C147 138 170 85 134 43" fill="none" stroke="var(--g-depth)" stroke-width="14"/><circle cx="110" cy="89" r="23" fill="var(--g-depth)"/></g><g><ellipse cx="110" cy="91" rx="69" ry="35" fill="none" stroke="var(--g-main)" stroke-width="14"/><path d="M88 43C54 85 77 138 111 144C147 138 170 85 134 43" fill="none" stroke="var(--g-accent)" stroke-width="14"/><circle cx="110" cy="89" r="23" fill="var(--g-main)"/><path d="M99 76Q110 70 120 78" fill="none" stroke="var(--g-light)" stroke-width="5" opacity=".5"/></g></g></svg></span></button><div class="card-detail" id="service-0" aria-hidden="true"><p><strong class="production-stat">3,000+ Spatial Audio IP</strong>3,000건 이상의 공간음향 IP를 제작했습니다.<br>Dolby Atmos 기반 공간음향 믹싱부터 플랫폼별 기술 QC까지.</p></div></article>
+<article class="focus-card large blue"><button type="button" class="card-trigger" aria-expanded="false" aria-controls="service-1" aria-labelledby="service-1-title"><span class="card-title" id="service-1-title">국내·글로벌<br>유통 & 발매</span><span class="clay-visual" aria-hidden="true" style="--clay-cycle:7.275s;--clay-delay:-1.092s"><svg viewBox="0 0 220 180"><g class="clay-motion" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="110" cy="158" rx="52" ry="5" fill="var(--g-depth)" opacity=".1"/><g transform="translate(0 3)" opacity=".48"><path d="M66 90H106Q120 90 120 66V52H153M106 90Q120 90 120 114V130H153" stroke="var(--g-depth)" stroke-width="13" fill="none"/><rect x="32" y="64" width="52" height="52" rx="20" fill="var(--g-depth)"/><rect x="143" y="29" width="47" height="47" rx="17" fill="var(--g-depth)"/><rect x="143" y="106" width="47" height="47" rx="17" fill="var(--g-depth)"/></g><g><path d="M66 90H106Q120 90 120 66V52H153M106 90Q120 90 120 114V130H153" stroke="var(--g-accent)" stroke-width="13" fill="none"/><rect x="32" y="64" width="52" height="52" rx="20" fill="var(--g-main)"/><rect x="143" y="29" width="47" height="47" rx="17" fill="var(--g-main)"/><rect x="143" y="106" width="47" height="47" rx="17" fill="var(--g-main)"/><path d="M48 79H65M157 44H175M157 121H175" stroke="var(--g-light)" stroke-width="4" opacity=".5"/></g></g></svg></span></button><div class="card-detail" id="service-1" aria-hidden="true"><p>국내 주요 플랫폼 직접 공급과 Naxos를 통한 FUGA 글로벌 네트워크. 발매 일정과 권리 범위에 맞춰 공급합니다.</p></div></article>
+<article class="focus-card "><button type="button" class="card-trigger" aria-expanded="false" aria-controls="service-2" aria-labelledby="service-2-title"><span class="card-title" id="service-2-title">글로벌 플레이리스트 피칭</span><span class="clay-visual" aria-hidden="true" style="--clay-cycle:7.883s;--clay-delay:-2.183s"><svg viewBox="0 0 220 180"><g class="clay-motion" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="110" cy="158" rx="52" ry="5" fill="var(--g-depth)" opacity=".1"/><g transform="translate(0 3)" opacity=".48"><rect x="40" y="27" width="118" height="126" rx="25" fill="var(--g-depth)"/><path d="M63 56H128M63 80H116M63 104H95" stroke="var(--g-depth)" stroke-width="8"/><rect x="124" y="98" width="63" height="57" rx="20" fill="var(--g-depth)"/><path d="M149 115L168 126L149 138Z" fill="var(--g-depth)"/></g><g><rect x="40" y="27" width="118" height="126" rx="25" fill="var(--g-main)"/><path d="M63 56H128M63 80H116M63 104H95" stroke="var(--g-accent)" stroke-width="8"/><rect x="124" y="98" width="63" height="57" rx="20" fill="var(--g-accent)"/><path d="M149 115L168 126L149 138Z" fill="var(--g-light)"/></g></g></svg></span></button><div class="card-detail" id="service-2" aria-hidden="true"><p>Spotify·Apple Music 등 주요 플랫폼의 플레이리스트 피칭을 지원합니다. 편성은 플랫폼의 편집 기준에 따라 결정됩니다.</p></div></article>
+<article class="focus-card mist"><button type="button" class="card-trigger" aria-expanded="false" aria-controls="service-3" aria-labelledby="service-3-title"><span class="card-title" id="service-3-title">정산시스템<br>SOVO360</span><span class="clay-visual" aria-hidden="true" style="--clay-cycle:8.492s;--clay-delay:-3.275s"><svg viewBox="0 0 220 180"><g class="clay-motion" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="110" cy="158" rx="52" ry="5" fill="var(--g-depth)" opacity=".1"/><g transform="translate(0 3)" opacity=".48"><rect x="43" y="30" width="119" height="121" rx="23" fill="var(--g-depth)"/><path d="M66 57H128M66 80H106" stroke="var(--g-depth)" stroke-width="7"/><rect x="66" y="106" width="12" height="23" rx="5" fill="var(--g-depth)"/><rect x="87" y="96" width="12" height="33" rx="5" fill="var(--g-depth)"/><circle cx="156" cy="123" r="30" fill="var(--g-depth)"/><path d="M142 122L152 132L171 112" fill="none" stroke="var(--g-depth)" stroke-width="7"/></g><g><rect x="43" y="30" width="119" height="121" rx="23" fill="var(--g-main)"/><path d="M66 57H128M66 80H106" stroke="var(--g-accent)" stroke-width="7"/><rect x="66" y="106" width="12" height="23" rx="5" fill="var(--g-accent)"/><rect x="87" y="96" width="12" height="33" rx="5" fill="var(--g-accent)"/><circle cx="156" cy="123" r="30" fill="var(--g-accent)"/><path d="M142 122L152 132L171 112" fill="none" stroke="var(--g-light)" stroke-width="7"/></g></g></svg></span></button><div class="card-detail" id="service-3" aria-hidden="true"><p>발매·플랫폼별 정산과 카탈로그 정보를 확인합니다. 국내 직배 및 공간음향 조건을 반영한 수수료·권리자 배분 구조를 안내합니다.</p></div></article>
+<article class="focus-card "><button type="button" class="card-trigger" aria-expanded="false" aria-controls="service-4" aria-labelledby="service-4-title"><span class="card-title" id="service-4-title">프리세이브 & 스마트링크</span><span class="clay-visual" aria-hidden="true" style="--clay-cycle:9.100s;--clay-delay:-4.367s"><svg viewBox="0 0 220 180"><g class="clay-motion" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="110" cy="158" rx="52" ry="5" fill="var(--g-depth)" opacity=".1"/><g transform="translate(0 3)" opacity=".48"><g transform="rotate(-32 110 90)"><rect x="35" y="63" width="93" height="54" rx="27" fill="none" stroke="var(--g-depth)" stroke-width="17"/><rect x="93" y="63" width="93" height="54" rx="27" fill="none" stroke="var(--g-depth)" stroke-width="17"/></g></g><g><g transform="rotate(-32 110 90)"><rect x="35" y="63" width="93" height="54" rx="27" fill="none" stroke="var(--g-main)" stroke-width="17"/><rect x="93" y="63" width="93" height="54" rx="27" fill="none" stroke="var(--g-accent)" stroke-width="17"/></g></g></g></svg></span></button><div class="card-detail" id="service-4" aria-hidden="true"><p>발매 전 사전 저장부터 발매 후 주요 플랫폼을 한곳에 모은 청취 링크까지.</p></div></article>
+<article class="focus-card mist"><button type="button" class="card-trigger" aria-expanded="false" aria-controls="service-5" aria-labelledby="service-5-title"><span class="card-title" id="service-5-title">글로벌 시장 진출</span><span class="clay-visual" aria-hidden="true" style="--clay-cycle:9.708s;--clay-delay:-5.458s"><svg viewBox="0 0 220 180"><g class="clay-motion" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="110" cy="158" rx="52" ry="5" fill="var(--g-depth)" opacity=".1"/><g transform="translate(0 3)" opacity=".48"><circle cx="108" cy="89" r="58" fill="var(--g-depth)"/><ellipse cx="108" cy="89" rx="25" ry="57" fill="none" stroke="var(--g-depth)" stroke-width="7"/><path d="M53 89H163" stroke="var(--g-depth)" stroke-width="7"/><circle cx="157" cy="48" r="18" fill="var(--g-depth)"/></g><g><circle cx="108" cy="89" r="58" fill="var(--g-main)"/><ellipse cx="108" cy="89" rx="25" ry="57" fill="none" stroke="var(--g-accent)" stroke-width="7"/><path d="M53 89H163" stroke="var(--g-accent)" stroke-width="7"/><circle cx="157" cy="48" r="18" fill="var(--g-accent)"/><circle cx="151" cy="42" r="4" fill="var(--g-light)" opacity=".6"/></g></g></svg></span></button><div class="card-detail" id="service-5" aria-hidden="true"><p>국가별 권리 조건과 현지 파트너를 검토해 발매·프로모션 협력을 논의합니다.</p></div></article>
+<article class="focus-card "><button type="button" class="card-trigger" aria-expanded="false" aria-controls="service-6" aria-labelledby="service-6-title"><span class="card-title" id="service-6-title">YouTube Content ID</span><span class="clay-visual" aria-hidden="true" style="--clay-cycle:10.317s;--clay-delay:-6.550s"><svg viewBox="0 0 220 180"><g class="clay-motion" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="110" cy="158" rx="52" ry="5" fill="var(--g-depth)" opacity=".1"/><g transform="translate(0 3)" opacity=".48"><rect x="34" y="46" width="152" height="94" rx="30" fill="var(--g-depth)"/><path d="M96 69Q93 68 93 72V114Q93 118 97 116L136 95Q140 93 136 90Z" fill="var(--g-depth)"/></g><g><rect x="34" y="46" width="152" height="94" rx="30" fill="var(--g-main)"/><path d="M96 69Q93 68 93 72V114Q93 118 97 116L136 95Q140 93 136 90Z" fill="var(--g-accent)"/><path d="M57 59H82" stroke="var(--g-light)" stroke-width="4" opacity=".45"/></g></g></svg></span></button><div class="card-detail" id="service-6" aria-hidden="true"><p>음원 등록을 통해 YouTube 영상 내 사용을 식별하고 수익 관리를 지원합니다. 권리 및 플랫폼 정책에 따라 적용됩니다.</p></div></article>
+<article class="focus-card "><button type="button" class="card-trigger" aria-expanded="false" aria-controls="service-7" aria-labelledby="service-7-title"><span class="card-title" id="service-7-title">카탈로그 이전</span><span class="clay-visual" aria-hidden="true" style="--clay-cycle:10.925s;--clay-delay:-7.642s"><svg viewBox="0 0 220 180"><g class="clay-motion" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="110" cy="158" rx="52" ry="5" fill="var(--g-depth)" opacity=".1"/><g transform="translate(0 3)" opacity=".48"><path d="M35 61Q35 46 50 46H82L97 61H171Q185 61 185 76V133Q185 148 170 148H50Q35 148 35 133Z" fill="var(--g-depth)"/><path d="M70 99H144M126 82L146 99L126 116" stroke="var(--g-depth)" stroke-width="12" fill="none"/></g><g><path d="M35 61Q35 46 50 46H82L97 61H171Q185 61 185 76V133Q185 148 170 148H50Q35 148 35 133Z" fill="var(--g-main)"/><path d="M70 99H144M126 82L146 99L126 116" stroke="var(--g-accent)" stroke-width="12" fill="none"/></g></g></svg></span></button><div class="card-detail" id="service-7" aria-hidden="true"><p>기존 계약과 권리 상태를 확인하고 음원·메타데이터 이전과 발매 운영을 지원합니다.</p></div></article>
+<article class="focus-card mist"><button type="button" class="card-trigger" aria-expanded="false" aria-controls="service-8" aria-labelledby="service-8-title"><span class="card-title" id="service-8-title">피지컬 제작</span><span class="clay-visual" aria-hidden="true" style="--clay-cycle:11.533s;--clay-delay:-8.733s"><svg viewBox="0 0 220 180"><g class="clay-motion" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="110" cy="158" rx="52" ry="5" fill="var(--g-depth)" opacity=".1"/><g transform="translate(0 3)" opacity=".48"><rect x="34" y="38" width="99" height="111" rx="18" fill="var(--g-depth)"/><circle cx="134" cy="94" r="57" fill="var(--g-depth)"/><circle cx="134" cy="94" r="20" fill="var(--g-depth)"/><circle cx="134" cy="94" r="6" fill="var(--g-depth)"/></g><g><rect x="34" y="38" width="99" height="111" rx="18" fill="var(--g-accent)"/><circle cx="134" cy="94" r="57" fill="var(--g-main)"/><circle cx="134" cy="94" r="20" fill="var(--g-accent)"/><circle cx="134" cy="94" r="6" fill="var(--g-cutout)"/><path d="M105 56Q136 41 159 61" stroke="var(--g-light)" stroke-width="5" fill="none" opacity=".4"/></g></g></svg></span></button><div class="card-detail" id="service-8" aria-hidden="true"><p>CD·바이닐·키트 등 작품과 프로젝트에 맞는 피지컬 제작을 협의합니다.</p></div></article>
+<article class="focus-card "><button type="button" class="card-trigger" aria-expanded="false" aria-controls="service-9" aria-labelledby="service-9-title"><span class="card-title" id="service-9-title">레이블·아티스트 서비스</span><span class="clay-visual" aria-hidden="true" style="--clay-cycle:12.142s;--clay-delay:-9.825s"><svg viewBox="0 0 220 180"><g class="clay-motion" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="110" cy="158" rx="52" ry="5" fill="var(--g-depth)" opacity=".1"/><g transform="translate(0 3)" opacity=".48"><rect x="87" y="26" width="46" height="82" rx="23" fill="var(--g-depth)"/><path d="M72 80V88Q72 128 110 128Q148 128 148 88V80M110 128V150M89 150H131" stroke="var(--g-depth)" stroke-width="12" fill="none"/></g><g><rect x="87" y="26" width="46" height="82" rx="23" fill="var(--g-main)"/><path d="M72 80V88Q72 128 110 128Q148 128 148 88V80M110 128V150M89 150H131" stroke="var(--g-accent)" stroke-width="12" fill="none"/><path d="M102 40V59" stroke="var(--g-light)" stroke-width="5" opacity=".5"/></g></g></svg></span></button><div class="card-detail" id="service-9" aria-hidden="true"><p>선정된 아티스트와 레이블은 전문팀과 제작·발매·콘텐츠 협업을 진행할 수 있습니다.</p></div></article></div></div></section>
+<section class="section spatial-section" id="spatial" data-nav="spatial" data-accent="#5276df" aria-labelledby="spatial-title"><div class="wrap"><p class="section-kicker">Why Spatial Audio</p><h2 class="section-heading" id="spatial-title">공간음향을 선택하는 이유.</h2><div class="spatial-grid focus-group"><article class="focus-card "><button type="button" class="card-trigger" aria-expanded="false" aria-controls="spatial-0" aria-labelledby="spatial-0-title"><span class="card-title" id="spatial-0-title">청취 경험의 확장</span><span class="clay-visual" aria-hidden="true" style="--clay-cycle:12.750s;--clay-delay:-10.917s"><svg viewBox="0 0 220 180"><g class="clay-motion" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="110" cy="158" rx="52" ry="5" fill="var(--g-depth)" opacity=".1"/><g transform="translate(0 3)" opacity=".48"><ellipse cx="110" cy="90" rx="65" ry="42" fill="none" stroke="var(--g-depth)" stroke-width="12"/><rect x="28" y="63" width="28" height="56" rx="14" fill="var(--g-depth)"/><rect x="164" y="63" width="28" height="56" rx="14" fill="var(--g-depth)"/><circle cx="110" cy="74" r="20" fill="var(--g-depth)"/><path d="M76 120Q79 95 110 95Q141 95 144 120Q110 134 76 120Z" fill="var(--g-depth)"/></g><g><ellipse cx="110" cy="90" rx="65" ry="42" fill="none" stroke="var(--g-accent)" stroke-width="12"/><rect x="28" y="63" width="28" height="56" rx="14" fill="var(--g-main)"/><rect x="164" y="63" width="28" height="56" rx="14" fill="var(--g-main)"/><circle cx="110" cy="74" r="20" fill="var(--g-main)"/><path d="M76 120Q79 95 110 95Q141 95 144 120Q110 134 76 120Z" fill="var(--g-main)"/></g></g></svg></span></button><div class="card-detail" id="spatial-0" aria-hidden="true"><p>높이 정보를 포함한 3차원 공간에 소리를 배치해 보컬과 악기의 위치·움직임을 더 선명하게 전달합니다.</p></div></article>
+<article class="focus-card "><button type="button" class="card-trigger" aria-expanded="false" aria-controls="spatial-1" aria-labelledby="spatial-1-title"><span class="card-title" id="spatial-1-title">제작 인프라</span><span class="visual-type infrastructure-type" aria-hidden="true">AUDIOGUY &amp; SOUND360</span><span class="clay-visual" aria-hidden="true" style="--clay-cycle:13.358s;--clay-delay:-12.008s"><svg viewBox="0 0 220 180"><g class="clay-motion" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="110" cy="158" rx="52" ry="5" fill="var(--g-depth)" opacity=".1"/><g transform="translate(0 3)" opacity=".48"><rect x="33" y="32" width="154" height="116" rx="26" fill="var(--g-depth)"/><path d="M71 56V126M110 56V126M149 56V126" stroke="var(--g-depth)" stroke-width="6"/><rect x="59" y="65" width="24" height="27" rx="9" fill="var(--g-depth)"/><rect x="98" y="94" width="24" height="27" rx="9" fill="var(--g-depth)"/><rect x="137" y="50" width="24" height="27" rx="9" fill="var(--g-depth)"/></g><g><rect x="33" y="32" width="154" height="116" rx="26" fill="var(--g-main)"/><path d="M71 56V126M110 56V126M149 56V126" stroke="var(--g-accent)" stroke-width="6"/><rect x="59" y="65" width="24" height="27" rx="9" fill="var(--g-accent)"/><rect x="98" y="94" width="24" height="27" rx="9" fill="var(--g-accent)"/><rect x="137" y="50" width="24" height="27" rx="9" fill="var(--g-accent)"/></g></g></svg></span></button><div class="card-detail" id="spatial-1" aria-hidden="true"><p>AUDIOGUY의 제작 경험과 SOUND360의 스튜디오 인프라, 다양한 공간음향 작업 경험을 바탕으로 제작부터 발매·공급까지 연결합니다.</p></div></article>
+<article class="focus-card "><button type="button" class="card-trigger" aria-expanded="false" aria-controls="spatial-2" aria-labelledby="spatial-2-title"><span class="card-title" id="spatial-2-title">정산 구조</span><span class="clay-visual" aria-hidden="true" style="--clay-cycle:13.967s;--clay-delay:-13.100s"><svg viewBox="0 0 220 180"><g class="clay-motion" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="110" cy="158" rx="52" ry="5" fill="var(--g-depth)" opacity=".1"/><g transform="translate(0 3)" opacity=".48"><rect x="42" y="101" width="34" height="47" rx="13" fill="var(--g-depth)"/><rect x="94" y="74" width="34" height="74" rx="13" fill="var(--g-depth)"/><rect x="146" y="42" width="34" height="106" rx="13" fill="var(--g-depth)"/><path d="M50 77L112 39M92 38H114V60" fill="none" stroke="var(--g-depth)" stroke-width="9"/></g><g><rect x="42" y="101" width="34" height="47" rx="13" fill="var(--g-main)"/><rect x="94" y="74" width="34" height="74" rx="13" fill="var(--g-main)"/><rect x="146" y="42" width="34" height="106" rx="13" fill="var(--g-accent)"/><path d="M50 77L112 39M92 38H114V60" fill="none" stroke="var(--g-accent)" stroke-width="9"/></g></g></svg></span></button><div class="card-detail" id="spatial-2" aria-hidden="true"><p>플랫폼별 공간음향 정산 조건과 국내 직배 구조를 함께 검토해 권리자에게 적용되는 배분 조건을 안내합니다.</p></div></article>
+<article class="focus-card "><button type="button" class="card-trigger" aria-expanded="false" aria-controls="spatial-3" aria-labelledby="spatial-3-title"><span class="card-title" id="spatial-3-title">피칭 자료의 완성도</span><span class="clay-visual" aria-hidden="true" style="--clay-cycle:14.575s;--clay-delay:-14.192s"><svg viewBox="0 0 220 180"><g class="clay-motion" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="110" cy="158" rx="52" ry="5" fill="var(--g-depth)" opacity=".1"/><g transform="translate(0 3)" opacity=".48"><rect x="35" y="49" width="104" height="105" rx="22" fill="var(--g-depth)"/><rect x="87" y="27" width="101" height="104" rx="22" fill="var(--g-depth)"/><path d="M124 53L157 78L124 101Z" fill="var(--g-depth)"/><path d="M57 119H108M57 136H87" stroke="var(--g-depth)" stroke-width="7"/></g><g><rect x="35" y="49" width="104" height="105" rx="22" fill="var(--g-main)"/><rect x="87" y="27" width="101" height="104" rx="22" fill="var(--g-accent)"/><path d="M124 53L157 78L124 101Z" fill="var(--g-main)"/><path d="M57 119H108M57 136H87" stroke="var(--g-accent)" stroke-width="7"/></g></g></svg></span></button><div class="card-detail" id="spatial-3" aria-hidden="true"><p>공간음향 버전과 모션아트를 포함해 작품의 특성이 드러나는 발매 자료를 준비합니다.</p></div></article></div><div class="conditions"><p>공간음향 지원 여부는 기기, 스트리밍 플랫폼, 발매 포맷에 따라 달라질 수 있습니다.</p><p>추가 로열티의 적용 여부·비율은 플랫폼 정책 및 계약 조건에 따르며, 플레이리스트 편성은 보장되지 않습니다.</p></div></div></section>
 <section class="section" id="process" data-nav="process" data-accent="#315ddf" aria-labelledby="process-title"><div class="wrap"><p class="label">Process</p><h2 id="process-title">발매의 순서.</h2><ol class="steps"><li><small>01</small><h3>검토</h3><p>음악과 권리, 필요한 제작 범위를 확인합니다.</p></li><li><small>02</small><h3>준비</h3><p>조건과 일정을 협의하고 음원·아트워크·크레딧을 준비합니다.</p></li><li><small>03</small><h3>발매</h3><p>플랫폼 요건을 검수하고 국내외 발매를 진행합니다.</p></li><li><small>04</small><h3>정산</h3><p>정산 내역을 확인하고 카탈로그를 관리합니다.</p></li></ol></div></section>
 <section class="section partnership" id="partnership" data-nav="partnership" data-accent="#315ddf" aria-labelledby="partner-title"><div class="wrap"><div class="partner-head"><div><p class="label">Partnership</p><h2 id="partner-title">다음 작업을<br>함께.</h2><p class="lead">발매, 공동 제작, 새로운 시장.<br>프로젝트에 필요한 협력을 논의합니다.</p><div class="contact"><button class="btn" data-action="apply">음원 발매 접수</button><button class="inline-link" data-action="contact">파트너십 문의</button></div></div><div class="accordion-list partnership-list"><details><summary>IP 공동 제작·투자</summary><p>음악의 완성도, 권리 구조, 제작 범위와 시장성을 검토해 적합한 프로젝트의 제작비·발매 비용 투자와 IP 공동 개발을 협의합니다.</p></details><details><summary>공간음향 제작</summary><p>신규 발매와 기존 카탈로그의 원본 소스, 권리 상태, 목표 플랫폼을 확인하고 프로젝트에 맞는 공간음향 제작 방식을 제안합니다.</p></details><details><summary>피지컬·콘텐츠 협업</summary><p>CD·바이닐·키트 등 피지컬 제작과 모션아트, 인터뷰, 라이브 콘텐츠를 작품의 방향과 예산에 맞춰 협의합니다.</p></details><details><summary>한국·아시아 프로젝트</summary><p>해외 아티스트의 한국 활동과 국내 아티스트의 아시아 진출을 위해 로컬 발매, 공연·쇼케이스, 파트너 협력을 검토합니다.</p></details><p class="note">투자, 채널 노출, 공연 연계는 프로젝트별 검토와 별도 협의로 진행됩니다.</p></div></div></div></section>
 <section class="section faq-section" id="faq" data-nav="partnership" data-accent="#315ddf" aria-labelledby="faq-title"><div class="wrap"><p class="label">FAQ</p><h2 id="faq-title">자주 묻는 질문.</h2><div class="accordion-list faq-list"><details><summary>기존에 발매한 음원도 이전할 수 있나요?</summary><p>가능합니다. 기존 계약, 권리 상태, 음원과 메타데이터를 확인한 뒤 이전 범위와 일정을 안내합니다.</p></details><details><summary>공간음향 제작에는 어떤 자료가 필요한가요?</summary><p>보유한 멀티트랙 또는 스테레오 파일과 권리 정보를 확인합니다. 소스 상태, 일정, 플랫폼 요건에 따라 제작 방식과 가능 여부가 달라집니다.</p></details><details><summary>플레이리스트 피칭은 편성을 보장하나요?</summary><p>편성을 보장하지 않습니다. 발매 정보와 작품의 특성을 반영한 피칭 자료를 준비하며, 최종 편성은 각 플랫폼의 편집 기준에 따라 결정됩니다.</p></details><details><summary>YouTube Content ID는 모든 음원에 적용되나요?</summary><p>권리 관계와 YouTube 정책에 따라 등록 가능 여부가 달라집니다. 제3자 권리나 중복 등록 여부를 검토한 뒤 진행합니다.</p></details><details><summary>투자 또는 아티스트 서비스는 누구에게 제공되나요?</summary><p>모든 유통 신청에 자동으로 포함되지 않습니다. 음악, 권리 구조, 제작 범위, 프로젝트 방향을 검토해 적합한 프로젝트에 별도로 제안합니다.</p></details></div></div></section>
@@ -286,44 +435,106 @@
 const LINKS={apply:'./distribution.html',login:'https://sovo360.com/login',contact:''};
 const header=document.getElementById('header');
 const toggle=document.getElementById('menuToggle');
-const navLinks=[...document.querySelectorAll('.nav a')];
+const navigation=document.getElementById('navigation');
+const navLinks=[...navigation.querySelectorAll('a')];
 const stageSections=[...document.querySelectorAll('main>section[data-nav]')];
 const indicator=document.querySelector('.nav-indicator');
-function moveIndicator(activeLink){
-  if(!activeLink||innerWidth<=960){indicator.style.width='0';return}
-  indicator.style.width=activeLink.offsetWidth+'px';
-  indicator.style.transform='translateX('+activeLink.offsetLeft+'px)';
+const opening=document.querySelector('main'),heroSection=document.getElementById('hero');
+const heroContent=document.getElementById('hero-wrap');
+const servicesSection=document.getElementById('services'),servicesTitle=document.getElementById('services-title');
+const headerCTA=header.querySelector('[data-action="apply"]');
+const navMotion=matchMedia('(prefers-reduced-motion:reduce)');
+let pending=false,navFrame=0,navTarget=null,lastLink=null,indicatorReady=false,lastAccent='',lastBlend=-1;
+let navMetrics=new Map(),metricsDirty=true;
+const clamp01=n=>Math.max(0,Math.min(1,n));
+const smooth01=n=>{n=clamp01(n);return n*n*(3-2*n)};
+function measureNavigation(){
+  navMetrics=new Map(navLinks.map(a=>[a,{width:a.offsetWidth,left:a.offsetLeft}]));metricsDirty=false;
+}
+function moveIndicator(link){
+  if(!link||innerWidth<=960){indicator.style.opacity='0';indicatorReady=false;return}
+  const box=navMetrics.get(link);if(!box)return;
+  if(!indicatorReady)indicator.style.transition='none';
+  indicator.style.width=box.width+'px';indicator.style.transform='translateX('+box.left+'px)';
+  indicator.style.opacity='1';
+  if(!indicatorReady){indicator.getBoundingClientRect();indicator.style.removeProperty('transition');indicatorReady=true}
+}
+function selectNavigation(link,force=false){
+  if(link===lastLink&&!force)return;
+  lastLink=link;
+  navLinks.forEach(a=>{if(a===link)a.setAttribute('aria-current','location');else a.removeAttribute('aria-current')});
+  moveIndicator(link);
 }
 function closeMenu(){header.classList.remove('open');toggle.setAttribute('aria-expanded','false');toggle.textContent='메뉴'}
 toggle.addEventListener('click',()=>{const open=!header.classList.contains('open');header.classList.toggle('open',open);toggle.setAttribute('aria-expanded',String(open));toggle.textContent=open?'닫기':'메뉴'});
-navLinks.forEach(a=>a.addEventListener('click',()=>{closeMenu();requestAnimationFrame(()=>moveIndicator(a))}));
-document.querySelectorAll('a[href="#hero"]').forEach(a=>a.addEventListener('click',closeMenu));
-document.addEventListener('keydown',e=>{if(e.key==='Escape'&&header.classList.contains('open')){closeMenu();toggle.focus()}});
+function scheduleScroll(){if(!pending){pending=true;requestAnimationFrame(updateScroll)}}
+function stopNavigation(){cancelAnimationFrame(navFrame);navFrame=0;navTarget=null;scheduleScroll()}
+function navigateTo(event,link){
+  if(event.button!==0||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey)return;
+  const target=document.getElementById(link.hash.slice(1));if(!target)return;
+  event.preventDefault();cancelAnimationFrame(navFrame);navFrame=0;closeMenu();
+  // Stop a prior native anchor scroll before taking ownership of this movement.
+  const from=scrollY;window.scrollTo({top:from,behavior:'instant'});
+  if(metricsDirty)measureNavigation();
+  navTarget=navLinks.includes(link)?link:null;selectNavigation(navTarget);
+  const padding=parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop)||0;
+  const margin=parseFloat(getComputedStyle(target).scrollMarginTop)||0;
+  const destination=Math.max(0,Math.min(document.documentElement.scrollHeight-innerHeight,target.getBoundingClientRect().top+scrollY-padding-margin));
+  const delta=destination-from,duration=Math.min(1000,Math.max(320,Math.abs(delta)*.4));
+  const started=performance.now();
+  if(location.hash!==link.hash)history.pushState(null,'',link.hash);
+  function finish(){navFrame=0;navTarget=null;if(event.detail===0){const had=target.hasAttribute('tabindex');if(!had)target.setAttribute('tabindex','-1');target.focus({preventScroll:true});if(!had)target.addEventListener('blur',()=>target.removeAttribute('tabindex'),{once:true})}scheduleScroll()}
+  if(navMotion.matches||Math.abs(delta)<1){window.scrollTo({top:destination,behavior:'instant'});finish();return}
+  function step(now){
+    const t=clamp01((now-started)/duration),e=t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;
+    window.scrollTo({top:from+delta*e,behavior:'instant'});
+    if(t<1)navFrame=requestAnimationFrame(step);else finish();
+  }
+  navFrame=requestAnimationFrame(step);
+}
+navLinks.forEach(a=>a.addEventListener('click',e=>navigateTo(e,a)));
+document.querySelectorAll('a[href="#hero"]').forEach(a=>a.addEventListener('click',e=>navigateTo(e,a)));
+addEventListener('wheel',()=>{if(navFrame)stopNavigation()},{passive:true});
+addEventListener('touchstart',()=>{if(navFrame)stopNavigation()},{passive:true});
+addEventListener('pointerdown',e=>{if(navFrame&&!header.contains(e.target))stopNavigation()},{passive:true});
+addEventListener('popstate',stopNavigation);
+document.addEventListener('keydown',e=>{
+  if(navFrame&&['ArrowUp','ArrowDown','PageUp','PageDown','Home','End',' ','Escape','Tab'].includes(e.key))stopNavigation();
+  if(e.key==='Escape'&&header.classList.contains('open')){closeMenu();toggle.focus()}
+});
 document.addEventListener('click',e=>{if(!header.contains(e.target))closeMenu()});
-let pending=false;
 function updateScroll(){
   pending=false;
-  const heroBottom=document.getElementById('hero').getBoundingClientRect().bottom;
-  const heroHeight=document.getElementById('hero').offsetHeight;
-  header.classList.toggle('scrolled',heroBottom<=heroHeight*.15);
-  const showCTA=document.getElementById('services-title').getBoundingClientRect().top<=innerHeight*.35;
-  header.classList.toggle('cta-visible',showCTA);
-  const headerCTA=header.querySelector('[data-action="apply"]');headerCTA.inert=!showCTA;
-  let activeSection=null;
+  // Complete geometry reads before applying style changes.
+  const heroRect=heroSection.getBoundingClientRect(),serviceTop=servicesSection.getBoundingClientRect().top;
+  const showCTA=servicesTitle.getBoundingClientRect().top<=innerHeight*.35;
   const threshold=Math.min(innerHeight*.42,320);
+  let activeSection=null;
   stageSections.forEach(section=>{if(section.getBoundingClientRect().top<=threshold)activeSection=section});
   if(innerHeight+scrollY>=document.documentElement.scrollHeight-4)activeSection=stageSections[stageSections.length-1];
-  const navId=activeSection?.dataset.nav;
-  const activeLink=navLinks.find(a=>a.getAttribute('href')==='#'+navId);
-  navLinks.forEach(a=>{if(a===activeLink)a.setAttribute('aria-current','location');else a.removeAttribute('aria-current')});
-  if(activeSection){document.documentElement.style.setProperty('--stage-accent',activeSection.dataset.accent||'#315ddf')}
-  moveIndicator(activeLink);
+  const force=metricsDirty;if(force)measureNavigation();
+  const link=navFrame?navTarget:(navLinks.find(a=>a.hash==='#'+activeSection?.dataset.nav)||null);
+  const blend=smooth01((innerHeight-serviceTop)/(innerHeight*.85));
+  header.classList.toggle('scrolled',heroRect.bottom<=heroRect.height*.15);
+  header.classList.toggle('opening-light',!navMotion.matches&&blend>.55);
+  header.classList.toggle('cta-visible',showCTA);
+  if(headerCTA.inert===showCTA)headerCTA.inert=!showCTA;
+  selectNavigation(link,force);
+  const accent=activeSection?.dataset.accent||'#315ddf';
+  if(accent!==lastAccent){document.documentElement.style.setProperty('--stage-accent',accent);lastAccent=accent}
+  if(blend!==lastBlend){
+    opening.style.setProperty('--opening-progress',blend.toFixed(4));
+    opening.style.setProperty('--opening-content',smooth01((blend-.12)/.65).toFixed(4));
+    const copyOpacity=1-smooth01(blend/.48);
+    opening.style.setProperty('--hero-copy',copyOpacity.toFixed(4));heroContent.inert=copyOpacity===0&&!navMotion.matches;lastBlend=blend;
+  }
 }
-addEventListener('scroll',()=>{if(!pending){pending=true;requestAnimationFrame(updateScroll)}},{passive:true});
-addEventListener('resize',()=>{if(innerWidth>960)closeMenu();updateScroll()});
+addEventListener('scroll',scheduleScroll,{passive:true});
+addEventListener('resize',()=>{stopNavigation();metricsDirty=true;if(innerWidth>960)closeMenu();scheduleScroll()},{passive:true});
+new ResizeObserver(()=>{metricsDirty=true;scheduleScroll()}).observe(navigation);
+navMotion.addEventListener('change',()=>{lastBlend=-1;stopNavigation()});
 // Card disclosure: hover, keyboard focus, and tap share one state.
 const finePointer=matchMedia('(hover:hover) and (pointer:fine)');
-const reducedMotion=matchMedia('(prefers-reduced-motion:reduce)');
 document.querySelectorAll('.focus-group').forEach(group=>{
   const cards=[...group.querySelectorAll('.focus-card')];
   let active=null,hovered=null,focused=null,pinned=null,keyboard=false,suppressed=null;
@@ -349,7 +560,7 @@ document.querySelectorAll('.focus-group').forEach(group=>{
 });
 /* Hero animation is managed by the isolated controller below. */
 document.querySelectorAll('.accordion-list').forEach(list=>list.querySelectorAll('details').forEach(item=>item.addEventListener('toggle',()=>{if(item.open)list.querySelectorAll('details[open]').forEach(openItem=>{if(openItem!==item)openItem.open=false})})));
-document.fonts?.ready.then(updateScroll);updateScroll();
+document.fonts?.ready.then(()=>{metricsDirty=true;scheduleScroll()});updateScroll();
 
 document.querySelectorAll('[data-action]').forEach(button=>button.addEventListener('click',()=>{
  const action=button.dataset.action;
@@ -361,7 +572,7 @@ document.querySelectorAll('[data-action]').forEach(button=>button.addEventListen
 <script>
 (()=>{
 
- const hero=document.getElementById('hero'),wrap=document.getElementById('hero-wrap'),title=document.getElementById('hero-title'),anchor=document.getElementById('hero-button-anchor'),btn=document.getElementById('hero-button');
+ const hero=document.getElementById('hero'),wrap=document.getElementById('hero-wrap'),title=document.getElementById('hero-title'),btn=document.getElementById('hero-button');
  const canvas=document.getElementById('warp'),reflect=document.getElementById('reflection'),ctx=canvas.getContext('2d'),rc=reflect.getContext('2d');
  const motion=matchMedia('(prefers-reduced-motion: reduce)'),fine=matchMedia('(hover:hover) and (pointer:fine)');
  let W=1,H=1,frame=0,last=0,visible=false,active=false,hover=false,tx=0,ty=0,x=0,y=0,m=0,bx=0,by=0,mx=0,my=0,boost=0,box=null;
@@ -436,7 +647,8 @@ document.querySelectorAll('[data-action]').forEach(button=>button.addEventListen
   const target=Math.pow(smooth(proximity),1.35);
   m+=(target-m)*(1-Math.exp(-(target>m?15:6.3)*dt));if(Math.abs(target-m)<.00001)m=target;
   bx+=((active?(mx-cx)*m*.4:0)-bx)*ease;by+=((active?(my-cy)*m*.4:0)-by)*ease;
-  setStyle(wrap,'--hx',x*31.2+'px');setStyle(wrap,'--hy',y*24+'px');setStyle(wrap,'--hrx',-y*6.6+'deg');setStyle(wrap,'--hry',x*6.6+'deg');setStyle(wrap,'scale',(1+Math.hypot(x,y)*.048).toFixed(5));
+  const wrapScale=1+Math.hypot(x,y)*.048;
+  setStyle(wrap,'--hx',x*31.2+'px');setStyle(wrap,'--hy',y*24+'px');setStyle(wrap,'--hrx',-y*6.6+'deg');setStyle(wrap,'--hry',x*6.6+'deg');setStyle(wrap,'scale',wrapScale.toFixed(5));
   setStyle(title,'--chrome',50+x*84+'%');
   setStyle(hero,'--bg-x',-x*16.8+'px');setStyle(hero,'--bg-y',-y*12+'px');setStyle(hero,'--bg-x2',-x*10.8+'px');setStyle(hero,'--bg-y2',-y*8.4+'px');
   
@@ -444,7 +656,7 @@ document.querySelectorAll('[data-action]').forEach(button=>button.addEventListen
   setStyle(btn,'--bx',bx.toFixed(3)+'px');setStyle(btn,'--by',by.toFixed(3)+'px');setStyle(btn,'--bs',1+Math.max(m,boost)*.26);setStyle(btn,'--magnet',Math.max(m,boost));setStyle(btn,'--shine',Math.max(m,boost)*140-40+'%');
   ctx.clearRect(0,0,W,H);
   if(reflectionDirty){const r=geometry.ref;rc.clearRect(r.left,r.top,r.width,r.height);reflectionDirty=false}
-  const scale=1+Math.hypot(x,y)*.048,rx=-y*6.6,ry=x*6.6;
+  const scale=wrapScale,rx=-y*6.6,ry=x*6.6;
   const tr=projectedRect(geometry.title,x*31.2,y*24,rx,ry,scale);
   const movedButton={...geometry.button,left:geometry.button.left+bx,top:geometry.button.top+by};
   const br=projectedRect(movedButton,x*31.2,y*24,rx,ry,scale,1+Math.max(m,boost)*.26);
